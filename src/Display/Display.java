@@ -36,4 +36,14 @@ public class Display {
         frame.add(canvas);
         frame.pack();
     }
+
+
+    /**
+     * Gets canvas.
+     *
+     * @return Value of canvas.
+     */
+    public Canvas getCanvas() {
+        return canvas;
+    }
 }

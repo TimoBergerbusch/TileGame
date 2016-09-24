@@ -1,5 +1,10 @@
 package tilegame;
 
+import org.omg.PortableInterceptor.DISCARDING;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
+
 import Display.Display;
 
 public class Game implements Runnable {
@@ -10,6 +15,9 @@ public class Game implements Runnable {
 
     private boolean running = false;
     private Thread thread;
+
+    private BufferStrategy bs;
+    private Graphics g;
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -22,7 +30,12 @@ public class Game implements Runnable {
     }
 
     private void render() {
-
+        bs = display.getCanvas().getBufferStrategy();
+        if (bs == null) {
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        g = bs.getDrawGraphics();
     }
 
     private void tick() {
@@ -40,7 +53,7 @@ public class Game implements Runnable {
         stop();
     }
 
-    public synchronized void start() {
+    synchronized void start() {
         if (running)
             return;
         running = true;
