@@ -1,6 +1,4 @@
-package tiles.Bushwalls;
-
-import java.awt.image.BufferedImage;
+package tiles.bushwalls;
 
 import gfx.Assets;
 import utils.Utils;

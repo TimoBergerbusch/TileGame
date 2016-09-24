@@ -1,4 +1,4 @@
-package tiles.Fence;
+package tiles.fence;
 
 import java.awt.image.BufferedImage;
 

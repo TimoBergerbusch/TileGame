@@ -1,4 +1,4 @@
-package tiles.Bushwalls;
+package tiles.bushwalls;
 
 import gfx.Assets;
 

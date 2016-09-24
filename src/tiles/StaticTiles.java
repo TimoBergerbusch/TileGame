@@ -1,7 +1,8 @@
 package tiles;
 
-import tiles.Fence.*;
-import tiles.Bushwalls.*;
+import tiles.fence.*;
+import tiles.bushwalls.*;
+import tiles.stillWater.*;
 
 public class StaticTiles {
 
@@ -32,5 +33,17 @@ public class StaticTiles {
     public static Tile bushwallEndDownTile = new BushwallEndDownTile(27);
     public static Tile bushwallEndLeftTile = new BushwallEndLeftTile(28);
     public static Tile bushwallEndRightTile = new BushwallEndRightTile(29);
+
+    //StillWater
+    public static Tile waterTile = new WaterTile(30);
+    public static Tile waterEdgeTopTile = new WaterEdgeTopTile(31);
+    public static Tile waterEdgeBottumTile = new WaterEdgeBottumTile(32);
+    public static Tile waterEdgeLeftTile = new WaterEdgeLeftTile(33);
+    public static Tile waterEdgeRightTile = new WaterEdgeRightTile(34);
+    public static Tile waterEdgeTopLeftTile = new WaterEdgeTopLeftTile(35);
+    public static Tile waterEdgeTopRightTile = new WaterEdgeTopRightTile(36);
+    public static Tile waterEdgeBottumLeftTile = new WaterEdgeBottumLeftTile(37);
+    public static Tile waterEdgeBottumRightTile = new WaterEdgeBottumRightTile(38);
+
 
 }

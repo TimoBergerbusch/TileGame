@@ -3,8 +3,6 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
-import javafx.scene.input.KeyCode;
-
 public class Assets {
 
     private static final int TileWidth = 16, TileHeight = 16;
@@ -12,7 +10,7 @@ public class Assets {
     public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, sign, tree;
     public static BufferedImage bushwallCornerTopLeft, bushwallDown, bushwallEndLeft, bushwallendRight, bushwallEndDown, bushwallEndUp;
     public static BufferedImage fenceTop, fenceLeft, fenceRight, fenceIntersectionLeft, fenceIntersectionRight, fenceCornerTopRight, fenceCornerTopLeft, fenceCornerBottumLeft, fenceCornerBottumRight;
-    public static BufferedImage waterEdgeTopLeft, waterEdgeTop, waterEdgeTopRight, waterEdgeLeft, water, waterEdgeRight, waterEdgeBotuumLeft, waterEdgeBottum, waterEdgeBottumRight;
+    public static BufferedImage waterEdgeTopLeft, waterEdgeTop, waterEdgeTopRight, waterEdgeLeft, water, waterEdgeRight, waterEdgeBottumLeft, waterEdgeBottum, waterEdgeBottumRight;
     public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight;
     public static BufferedImage player;
 
@@ -39,7 +37,7 @@ public class Assets {
         bushwallEndDown = TileSheet.crop(TileWidth, 4 * TileHeight, TileWidth, TileHeight);
         bushwallEndUp = TileSheet.crop(TileWidth, 5 * TileHeight, TileWidth, TileHeight);
 
-        //Fence
+        //fence
         fenceTop = TileSheet.crop(2 * TileWidth, 0, TileWidth, TileHeight);
         fenceLeft = TileSheet.crop(2 * TileWidth, TileHeight, TileWidth, TileHeight);
         fenceRight = TileSheet.crop(2 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
@@ -57,9 +55,9 @@ public class Assets {
         waterEdgeLeft = TileSheet.crop(3 * TileWidth, TileHeight, TileWidth, TileHeight);
         water = TileSheet.crop(4 * TileWidth, TileHeight, TileWidth, TileHeight);
         waterEdgeRight = TileSheet.crop(5 * TileWidth, TileHeight, TileWidth, TileHeight);
-        waterEdgeBotuumLeft = TileSheet.crop(3 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+        waterEdgeBottumLeft = TileSheet.crop(3 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
         waterEdgeBottum = TileSheet.crop(4 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
-        waterEdgeBotuumLeft = TileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+        waterEdgeBottumRight = TileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
 
         //Path
         pathEndTopLeft = TileSheet.crop(3 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
