@@ -4,8 +4,12 @@ import org.omg.PortableInterceptor.DISCARDING;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import Display.Display;
+import gfx.Assets;
+import gfx.ImageLoader;
+import gfx.SpriteSheet;
 
 public class Game implements Runnable {
 
@@ -27,6 +31,10 @@ public class Game implements Runnable {
 
     private void init() {
         display = new Display(title, width, height);
+        Assets.init();
+    }
+
+    private void tick() {
     }
 
     private void render() {
@@ -36,9 +44,15 @@ public class Game implements Runnable {
             return;
         }
         g = bs.getDrawGraphics();
-    }
+        //Clear Screen
+        g.clearRect(0, 0, width, height);
+        //Draw
 
-    private void tick() {
+
+
+        //End Draw
+        bs.show();
+        g.dispose();
     }
 
     @Override
