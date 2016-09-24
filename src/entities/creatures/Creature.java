@@ -5,8 +5,8 @@ import entities.Entity;
 public abstract class Creature extends Entity {
 
     public static final int DEFAULT_HEALTH = 10;
-    public static final float DEFAULT_SPEED = 3.0f;
-    public static final int DEFAULT_CREATURE_WIDTH = 32, DEFAULT_CREATURE_HEIGHT = 46;
+    public static final float DEFAULT_SPEED = 5.0f;
+    public static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 94;
 
     protected int health;
     protected float speed;

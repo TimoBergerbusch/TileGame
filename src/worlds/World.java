@@ -2,6 +2,7 @@ package worlds;
 
 import java.awt.*;
 
+import tiles.StaticTiles;
 import tiles.Tile;
 import utils.Utils;
 
@@ -28,9 +29,9 @@ public class World {
     }
 
     public Tile getTile(int x, int y) {
-        Tile t = Tile.tiles[tiles[x][y]];
+        Tile t = StaticTiles.tiles[tiles[x][y]];
         if (t == null)
-            return Tile.grassTile;
+            return StaticTiles.grassTile;
         return t;
     }
 

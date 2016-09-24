@@ -4,16 +4,12 @@ package tiles;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import states.State;
+
 public abstract class Tile {
 
-    //Static
-    public static Tile[] tiles = new Tile[2500];
-    public static Tile grassTile = new GrassTile(0);
-    public static Tile roundBushTile = new RoundBushTile(1);
-    public static Tile farnTile = new FarneTile(2);
-
     //Class
-    public static final int TILE_WIDTH = 32, TILE_HEIGHT = 32;
+    public static final int TILE_WIDTH = 64, TILE_HEIGHT = 64;
 
     protected BufferedImage texture;
     protected final int id;
@@ -22,7 +18,7 @@ public abstract class Tile {
         this.texture = texture;
         this.id = id;
 
-        tiles[id] = this;
+        StaticTiles.tiles[id] = this;
     }
 
     public void tick() {
