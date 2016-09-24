@@ -2,17 +2,20 @@ package worlds;
 
 import java.awt.*;
 
+import tilegame.Game;
 import tiles.StaticTiles;
 import tiles.Tile;
 import utils.Utils;
 
 public class World {
 
+    private Game game;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(String path) {
+    public World(Game game, String path) {
+        this.game = game;
         loadWorld(path);
     }
 
@@ -23,7 +26,8 @@ public class World {
     public void render(Graphics g) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                getTile(x, y).render(g, x * Tile.TILE_WIDTH, y * Tile.TILE_WIDTH);
+                getTile(x, y).render(g, (int) (x * Tile.TILE_WIDTH - game.getGameCamera().getXOffset()),
+                        (int) (y * Tile.TILE_WIDTH - game.getGameCamera().getYOffset()));
             }
         }
     }
