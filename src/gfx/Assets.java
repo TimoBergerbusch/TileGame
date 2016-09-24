@@ -69,7 +69,7 @@ public class Assets {
         pathEndBottumLeft = TileSheet.crop(3 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
         pathEndBottumRight = TileSheet.crop(4 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
 
-        player = PlayerSheet.crop(69, 34, 17, 23);
+        player = PlayerSheet.crop(68, 33, 18, 24);
     }
 
 }

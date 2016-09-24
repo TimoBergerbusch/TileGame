@@ -2,6 +2,8 @@ package states;
 
 import java.awt.*;
 
+import tilegame.Game;
+
 public abstract class State {
 
     //StateManager
@@ -16,6 +18,13 @@ public abstract class State {
     }
 
     //Class
+
+    protected Game game;
+
+    public State(Game game) {
+        this.game = game;
+    }
+
     public abstract void tick();
 
     public abstract void render(Graphics g);

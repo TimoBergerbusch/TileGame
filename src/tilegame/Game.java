@@ -10,7 +10,9 @@ import Display.Display;
 import gfx.Assets;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
+import input.KeyManager;
 import states.GameState;
+import states.MenuState;
 import states.State;
 
 public class Game implements Runnable {
@@ -27,22 +29,32 @@ public class Game implements Runnable {
 
     //States
     private State gameState;
+    private State menuState;
+
+    //Input
+    private KeyManager keyManager;
 
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
         this.height = height;
+
+        keyManager = new KeyManager();
     }
 
     private void init() {
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
 
-        gameState = new GameState();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
         State.setState(gameState);
     }
 
     private void tick() {
+        keyManager.tick();
+
         if (State.getState() != null)
             State.getState().tick();
     }
@@ -119,5 +131,14 @@ public class Game implements Runnable {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Gets keyManager.
+     *
+     * @return Value of keyManager.
+     */
+    public KeyManager getKeyManager() {
+        return keyManager;
     }
 }
