@@ -8,7 +8,7 @@ public abstract class Tile {
 
     //Static
     public static Tile[] tiles = new Tile[2500];
-    public static Tile grasTile = new GrassTile(0);
+    public static Tile grassTile = new GrassTile(0);
     public static Tile roundBushTile = new RoundBushTile(1);
     public static Tile farnTile = new FarneTile(2);
 
