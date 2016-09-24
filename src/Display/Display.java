@@ -1,10 +1,13 @@
 package Display;
 
+import java.awt.*;
+
 import javax.swing.*;
 
 public class Display {
 
     private JFrame frame;
+    private Canvas canvas;
 
     private String title;
     private int width, heigth;
@@ -25,5 +28,12 @@ public class Display {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        canvas = new Canvas();
+        canvas.setPreferredSize(new Dimension(width, heigth));
+        canvas.setMaximumSize(new Dimension(width, heigth));
+        canvas.setMinimumSize(new Dimension(width, heigth));
+
+        frame.add(canvas);
+        frame.pack();
     }
 }

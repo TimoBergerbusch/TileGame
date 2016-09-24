@@ -1,8 +1,10 @@
+package tilegame;
+
 import Display.Display;
 
 public class Launcher {
 
     public static void main(String [] args){
-        new Display("Test", 1000, 400);
+        new Game("Tile Game!", 400, 400);
     }
 }
