@@ -1,6 +1,5 @@
 package tiles;
 
-import tiles.Bridge.*;
 import tiles.bushwalls.*;
 import tiles.fence.fence.*;
 import tiles.fence.woodFence.*;
@@ -71,28 +70,28 @@ public class StaticTiles {
     public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(56);
 
     //Bridge
-//    public static Tile bridgeDownLeftTile = new BridgeDownLeftTile(60);
-//    public static Tile bridgePostLeftTile = new BridgePostLeftTile(65);
-//    public static Tile bridgeHandrailLeftTile = new BridgeHandrailLeftTile(70);
-//    public static Tile bridgeUpLeftTile = new BridgeUpLeftTile(72);
+//    public static Tile bridgeDownLeftTile = new BridgeDownLeft(60);
+//    public static Tile bridgePostLeftTile = new BridgePostLeft(65);
+//    public static Tile bridgeHandrailLeftTile = new BridgeHandrailLeft(70);
+//    public static Tile bridgeUpLeftTile = new BridgeUpLeft(72);
 //
 //
-//    public static Tile bridgeStairsDownLeftTile = new BridgeStairsDownLeftTile(61);
-//    public static Tile bridgePlanksEndLeftTile = new BridgePlanksEndLeftTile(66);
-//    public static Tile bridgeStairsUpLeftTile = new BridgeStairsUpLeftTile(73);
+//    public static Tile bridgeStairsDownLeftTile = new BridgeStairsDownLeft(61);
+//    public static Tile bridgePlanksEndLeftTile = new BridgePlanksEndLeft(66);
+//    public static Tile bridgeStairsUpLeftTile = new BridgeStairsUpLeft(73);
 //
-//    public static Tile bridgeStairsDownMidTile = new BridgeStairsDownMidTile(62);
-//    public static Tile bridgePlanksMidTile = new BridgePlanksMidTile(67);
-//    public static Tile bridgeStairsUpMidTile = new BridgeStairsUpMidTile(74);
+//    public static Tile bridgeStairsDownMidTile = new BridgeStairsDownMid(62);
+//    public static Tile bridgePlanksMidTile = new BridgePlanksMid(67);
+//    public static Tile bridgeStairsUpMidTile = new BridgeStairsUpMid(74);
 //
-//    public static Tile bridgeStairsDownRightTile = new BridgeStairsDownRightTile(63);
-//    public static Tile bridgePlanksEndRightTile = new BridgePlanksEndRightTile(68);
-//    public static Tile bridgeStairsUpRightTile = new BridgeStairsUpRightTile(75);
+//    public static Tile bridgeStairsDownRightTile = new BridgeStairsDownRight(63);
+//    public static Tile bridgePlanksEndRightTile = new BridgePlanksEndRight(68);
+//    public static Tile bridgeStairsUpRightTile = new BridgeStairsUpRight(75);
 //
-//    public static Tile bridgeDownRightTile = new BridgeDownRightTile(64);
-//    public static Tile bridgePostRightTile = new BridgePostRightTile(69);
-//    public static Tile bridgeHandrailRightTile = new BridgeHandrailRightTile(71);
-//    public static Tile bridgeUpRightTile = new BridgeUpRightTile(76);
+//    public static Tile bridgeDownRightTile = new BridgeDownRight(64);
+//    public static Tile bridgePostRightTile = new BridgePostRight(69);
+//    public static Tile bridgeHandrailRightTile = new BridgeHandrailRight(71);
+//    public static Tile bridgeUpRightTile = new BridgeUpRight(76);
 
 
 }

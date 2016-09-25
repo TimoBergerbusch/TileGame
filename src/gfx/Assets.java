@@ -23,7 +23,7 @@ public class Assets {
     //    public static BufferedImage[] deepWater;
 
     //Bridge
-    public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlankMid, bridgeStairsDownMid, bridgeStairsUpRight,
+    public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlanksMid, bridgeStairsDownMid, bridgeStairsUpRight,
             bridgePlanksEndRight, bridgeStairsDownRight, bridgeUpRight, bridgeHandrailRight, bridgePostRight, bridgeDownRight;
 
     //Path
@@ -202,7 +202,7 @@ public class Assets {
         bridgeStairsUpLeft = tileSheet.crop(3 * TileWidth, 15 * TileHeight);
 
         bridgeStairsDownMid = tileSheet.crop(4 * TileWidth, 12 * TileHeight);
-        bridgePlankMid = tileSheet.crop(4 * TileWidth, 13 * TileHeight);
+        bridgePlanksMid = tileSheet.crop(4 * TileWidth, 13 * TileHeight);
         bridgeStairsUpMid = tileSheet.crop(4 * TileWidth, 15 * TileHeight);
 
         bridgeStairsDownRight = tileSheet.crop(5 * TileWidth, 12 * TileHeight);

@@ -5,6 +5,7 @@ import java.awt.*;
 import entities.EntityManager;
 import entities.Farne;
 import entities.creatures.Player;
+import entities.statics.Bridge.*;
 import entities.statics.MetalSign;
 import entities.statics.Statue;
 import entities.statics.Tree;
@@ -33,8 +34,14 @@ public class World {
 
         //TestEntitys
 //        entityManager.addEntity(new Statue(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new MetalSign(handler, 5 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new WoodSign(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new MetalSign(handler, 5 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new WoodSign(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+
+        entityManager.addEntity(new BridgeDown(handler, 6 * Tile.TILE_WIDTH, 12 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgePost(handler, 6 * Tile.TILE_WIDTH, 14 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
         //TestEntitys
 
