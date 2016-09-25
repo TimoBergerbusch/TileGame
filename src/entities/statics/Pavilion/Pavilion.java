@@ -23,9 +23,4 @@ public class Pavilion extends EntityBuild {
 
     }
 
-    @Override
-    public void render(Graphics g) {
-        for(Entity e: parts)
-            e.render(g);
-    }
 }

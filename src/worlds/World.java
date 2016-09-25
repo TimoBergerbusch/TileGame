@@ -8,6 +8,7 @@ import entities.statics.Pavilion.Pavilion;
 import entities.statics.Pavilion.PavilionLeft;
 import entities.statics.Pavilion.PavilionMid;
 import entities.statics.Pavilion.PavilionRight;
+import entities.statics.TestBuild;
 import entities.statics.Tree;
 import entities.statics.houses.GreenHouse;
 import tilegame.Handler;
@@ -40,7 +41,7 @@ public class World {
         entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
 //        entityManager.addEntity(new GreenHouse(handler, 4 * Tile.TILE_WIDTH, Tile.TILE_HEIGHT));
 
-        entityManager.addEntity(new Pavilion(handler, 10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
+        entityManager.addEntity(new TestBuild(handler, 10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
 //        entityManager.addEntity(new PavilionLeft(handler,10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
 //        entityManager.addEntity(new PavilionMid(handler,11*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
 //        entityManager.addEntity(new PavilionRight(handler,12*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));

@@ -19,6 +19,8 @@ public abstract class EntityBuild extends Entity {
     public boolean checkEntityCollisionOfBuild(float xOffset, float yOffset) {
         boolean bool = false;
         for (Entity e : parts) {
+            if (e.equals(this))
+                continue;
             if (e.checkEntityCollision(xOffset, yOffset))
                 bool = true;
         }
@@ -26,14 +28,31 @@ public abstract class EntityBuild extends Entity {
     }
 
     public Rectangle[] getCollisionBoundsOfBuild(float xOffset, float yOffset) {
-        Rectangle[] rectangles = new Rectangle[parts.size()];
-        for (int i = 0; i < rectangles.length; i++) {
-            if(parts.get(i) instanceof EntityBuild)
-                System.out.println("EntityBuild in EntityBuild");
-            rectangles[i] = parts.get(i).getCollisionBounds(xOffset, yOffset);
+//        Rectangle[] rectangles = new Rectangle[parts.size()];
+        ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
+        int End = parts.size();
+        for (int i = 0; i < End; i++) {
+            if (parts.get(i) instanceof EntityBuild) {
+                ArrayList<Rectangle> innerRec = new ArrayList<Rectangle>();
+
+                for (Rectangle r : ((EntityBuild) parts.get(i)).getCollisionBoundsOfBuild(xOffset, yOffset)) {
+                    innerRec.add(r);
+                }
+                rectangles.addAll(innerRec);
+                i += innerRec.size();
+                End += innerRec.size();
+            } else {
+                rectangles.add(parts.get(i).getCollisionBounds(xOffset, yOffset));
+            }
         }
 
-        return rectangles;
+        return rectangles.toArray(new Rectangle[rectangles.size()]);
+    }
+
+    @Override
+    public void render(Graphics g) {
+        for (Entity e : parts)
+            e.render(g);
     }
 
 }
