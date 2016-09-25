@@ -2,6 +2,9 @@ package worlds;
 
 import java.awt.*;
 
+import entities.EntityManager;
+import entities.creatures.Player;
+import entities.statics.Tree;
 import tilegame.Handler;
 import tiles.StaticTiles;
 import tiles.Tile;
@@ -13,14 +16,23 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
+    //entites
+    private EntityManager entityManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
+        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+//        entityManager.addEntity(new Tree(handler, 2 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Tree(handler, 2 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+
         loadWorld(path);
+
+        entityManager.getPlayer().setX(spawnX);
+        entityManager.getPlayer().setY(spawnY);
     }
 
     public void tick() {
-
+        entityManager.tick();
     }
 
     public void render(Graphics g) {
@@ -35,6 +47,8 @@ public class World {
                         (int) (y * Tile.TILE_WIDTH - handler.getGameCamera().getYOffset()));
             }
         }
+
+        entityManager.render(g);
     }
 
     public Tile getTile(int x, int y) {
@@ -96,5 +110,9 @@ public class World {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 }

@@ -11,6 +11,8 @@ public class StaticTiles {
     public static Tile roundBushTile = new RoundBushTile(1);
     public static Tile farnTile = new FarneTile(2);
     public static Tile signTile = new FarneTile(3);
+    public static Tile treeShadowLeftTile = new TreeShadowLeftTile(4);
+    public static Tile treeShadowRightTile = new TreeShadowRightTile(5);
 
     //fence
     public static Tile fenceTopTile = new FenceTopTile(10);

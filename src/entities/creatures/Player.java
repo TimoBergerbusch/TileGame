@@ -27,10 +27,10 @@ public class Player extends Creature {
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
 
-        bounds.x = 5;
+        bounds.x = 13;
         bounds.y = 44;
-        bounds.width = 50;
-        bounds.height = 50;
+        bounds.width = 38;
+        bounds.height = 45;
 
         //animation
         direction = Direction.DOWN;
@@ -70,6 +70,9 @@ public class Player extends Creature {
     @Override
     public void render(Graphics g) {
         g.drawImage(getCurrentAniamtionFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
+
+//        g.setColor(Color.red);
+//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
     private BufferedImage getCurrentAniamtionFrame() {
