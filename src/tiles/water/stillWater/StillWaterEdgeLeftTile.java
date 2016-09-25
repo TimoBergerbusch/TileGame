@@ -1,0 +1,11 @@
+package tiles.water.stillWater;
+
+import gfx.Assets;
+import tiles.water.WaterTile;
+
+public class StillWaterEdgeLeftTile extends WaterTile {
+
+    public StillWaterEdgeLeftTile(int id) {
+        super(Assets.stillWaterEdgeLeft, id);
+    }
+}

@@ -1,8 +1,10 @@
 package tiles;
 
-import tiles.fence.*;
 import tiles.bushwalls.*;
-import tiles.stillWater.*;
+import tiles.fence.fence.*;
+import tiles.fence.woodFence.*;
+import tiles.water.stillWater.*;
+import tiles.water.deepWater.*;
 
 public class StaticTiles {
 
@@ -22,7 +24,8 @@ public class StaticTiles {
     public static Tile fenceCornerTopRightTile = new FenceCornerTopRightTile(14);
     public static Tile fenceCornerButtomLeftTile = new FenceCornerBottumLeftTile(15);
     public static Tile fenceCornerBottumRightTile = new FenceCornerBottumRightTile(16);
-
+    public static Tile fenceIntersectionLeftTile = new FenceIntersectionLeftTile(17);
+    public static Tile fenceIntersectionRightTile = new FenceIntersectionRightTile(18);
 
     //bushwalls
     public static Tile bushwallSideTile = new BushwallSideTile(20);
@@ -37,15 +40,34 @@ public class StaticTiles {
     public static Tile bushwallEndRightTile = new BushwallEndRightTile(29);
 
     //StillWater
-    public static Tile waterTile = new WaterTile(30);
-    public static Tile waterEdgeTopTile = new WaterEdgeTopTile(31);
-    public static Tile waterEdgeBottumTile = new WaterEdgeBottumTile(32);
-    public static Tile waterEdgeLeftTile = new WaterEdgeLeftTile(33);
-    public static Tile waterEdgeRightTile = new WaterEdgeRightTile(34);
-    public static Tile waterEdgeTopLeftTile = new WaterEdgeTopLeftTile(35);
-    public static Tile waterEdgeTopRightTile = new WaterEdgeTopRightTile(36);
-    public static Tile waterEdgeBottumLeftTile = new WaterEdgeBottumLeftTile(37);
-    public static Tile waterEdgeBottumRightTile = new WaterEdgeBottumRightTile(38);
+    public static Tile stillWaterTile = new StillWaterTile(30);
+    public static Tile stillWaterEdgeTopTile = new StillWaterEdgeTopTile(31);
+    public static Tile stillWaterEdgeBottumTile = new StillWaterEdgeBottumTile(32);
+    public static Tile stillWaterEdgeLeftTile = new StillWaterEdgeLeftTile(33);
+    public static Tile stillWaterEdgeRightTile = new StillWaterEdgeRightTile(34);
+    public static Tile stillWaterEdgeTopLeftTile = new StillWaterEdgeTopLeftTile(35);
+    public static Tile stillWaterEdgeTopRightTile = new StillWaterEdgeTopRightTile(36);
+    public static Tile stillWaterEdgeBottumLeftTile = new StillWaterEdgeBottumLeftTile(37);
+    public static Tile stillWaterEdgeBottumRightTile = new StillWaterEdgeBottumRightTile(38);
 
+    //DeepWaterTile
+    public static Tile deepWaterTile = new DeepWaterTile(40);
+    public static Tile deepWaterEdgeTopTile = new DeepWaterEdgeTopTile(41);
+    public static Tile deepWaterEdgeBottumTile = new DeepWaterEdgeBottumTile(42);
+    public static Tile deepWaterEdgeLeftTile = new DeepWaterEdgeLeftTile(43);
+    public static Tile deepWaterEdgeRightTile = new DeepWaterEdgeRightTile(44);
+    public static Tile deepWaterEdgeTopLeftTile = new DeepWaterEdgeTopLeftTile(45);
+    public static Tile deepWaterEdgeTopRightTile = new DeepWaterEdgeTopRightTile(46);
+    public static Tile deepWaterEdgeBottumLeftTile = new DeepWaterEdgeBottumLeftTile(47);
+    public static Tile deepWaterEdgeBottumRightTile = new DeepWaterEdgeBottumRightTile(48);
+
+    //WoodFence
+    public static Tile woodFenceTopTile = new WoodFenceTopTile(50);
+    public static Tile woodFenceLeftTile = new WoodFenceLeftTile(51);
+    public static Tile woodFenceRightTile = new WoodFenceRightTile(52);
+    public static Tile woodFenceCornerTopLeftTile = new WoodFenceCornerTopLeftTile(53);
+    public static Tile woodFenceCornerTopRightTile = new WoodFenceCornerTopRightTile(54);
+    public static Tile woodFenceCornerBottumLeftTile = new WoodFenceCornerBottumLeftTile(55);
+    public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(56);
 
 }

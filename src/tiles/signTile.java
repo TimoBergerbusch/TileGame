@@ -8,6 +8,6 @@ import gfx.Assets;
 public class signTile extends Tile{
 
     public signTile(int id){
-        super(Assets.sign,id);
+        super(Assets.metalSign,id);
     }
 }

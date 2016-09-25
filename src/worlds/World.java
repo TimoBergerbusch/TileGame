@@ -4,7 +4,12 @@ import java.awt.*;
 
 import entities.EntityManager;
 import entities.creatures.Player;
+import entities.statics.Pavilion.Pavilion;
+import entities.statics.Pavilion.PavilionLeft;
+import entities.statics.Pavilion.PavilionMid;
+import entities.statics.Pavilion.PavilionRight;
 import entities.statics.Tree;
+import entities.statics.houses.GreenHouse;
 import tilegame.Handler;
 import tiles.StaticTiles;
 import tiles.Tile;
@@ -23,7 +28,22 @@ public class World {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 //        entityManager.addEntity(new Tree(handler, 2 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Tree(handler, 2 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+
+        for (int x = 0; x < handler.getGame().getWidth(); x += 2) {
+            entityManager.addEntity(new Tree(handler, x * Tile.TILE_WIDTH, -Tile.TILE_HEIGHT));
+        }
+
+        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 2 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Tree(handler, Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new GreenHouse(handler, 4 * Tile.TILE_WIDTH, Tile.TILE_HEIGHT));
+
+        entityManager.addEntity(new Pavilion(handler, 10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new PavilionLeft(handler,10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new PavilionMid(handler,11*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
+//        entityManager.addEntity(new PavilionRight(handler,12*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
 
         loadWorld(path);
 
@@ -54,6 +74,7 @@ public class World {
     public Tile getTile(int x, int y) {
         if (x < 0 || x >= width || y < 0 || y >= height)
             return StaticTiles.grassTile;
+//        System.out.println(x + "\t" + y + "\t" + tiles[x][y]);
         Tile t = StaticTiles.tiles[tiles[x][y]];
         if (t == null)
             return StaticTiles.grassTile;
