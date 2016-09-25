@@ -12,7 +12,8 @@ public class Assets {
     public static BufferedImage fenceTop, fenceLeft, fenceRight, fenceIntersectionLeft, fenceIntersectionRight, fenceCornerTopRight, fenceCornerTopLeft, fenceCornerBottumLeft, fenceCornerBottumRight;
     public static BufferedImage waterEdgeTopLeft, waterEdgeTop, waterEdgeTopRight, waterEdgeLeft, water, waterEdgeRight, waterEdgeBottumLeft, waterEdgeBottum, waterEdgeBottumRight;
     public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight;
-    public static BufferedImage player;
+    public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
+    public static BufferedImage[] player_down, player_up, player_left, player_right;
 
     public static void init() {
         SpriteSheet TileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/spritesheet.png"));
@@ -67,7 +68,29 @@ public class Assets {
         pathEndBottumLeft = TileSheet.crop(3 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
         pathEndBottumRight = TileSheet.crop(4 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
 
-        player = PlayerSheet.crop(68, 33, 18, 24);
+        //Player
+        // 24 hoch, 17 breit
+        playerStillDown = PlayerSheet.crop(68, 33, 18, 24);
+        playerStillUp = PlayerSheet.crop(225, 33, 18, 24);
+        playerStillLeft = PlayerSheet.crop(293, 192, 18, 24);
+        playerStillRight = PlayerSheet.crop(327, 127, 18, 24);
+
+
+        player_down = new BufferedImage[2];
+        player_down[0] = PlayerSheet.crop(68, 64, 17, 24);
+        player_down[1] = PlayerSheet.crop(68, 96, 17, 24);
+
+        player_up = new BufferedImage[2];
+        player_up[0] = PlayerSheet.crop(68, 0, 17, 24);
+        player_up[1] = PlayerSheet.crop(357, 158, 17, 24);
+
+        player_left = new BufferedImage[2];
+        player_left[0] = PlayerSheet.crop(293, 158, 17, 24);
+        player_left[1] = PlayerSheet.crop(293, 222, 17, 24);
+
+        player_right = new BufferedImage[2];
+        player_right[0] = PlayerSheet.crop(326, 158, 17, 24);
+        player_right[1] = PlayerSheet.crop(326, 190, 17, 24);
     }
 
 }
