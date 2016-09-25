@@ -29,6 +29,12 @@ public abstract class Entity {
         for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
             if (e.equals(this))
                 continue;
+            if(e instanceof EntityBuild){
+                for(Rectangle r: ((EntityBuild)e).getCollisionBoundsOfBuild(0f,0f)){
+                    if(r.intersects(getCollisionBounds(xOffset, yOffset)))
+                        return true;
+                }
+            }
             if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
                 return true;
         }
