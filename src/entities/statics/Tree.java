@@ -6,7 +6,7 @@ import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
-public class Tree extends StaticEntitiy {
+public class Tree extends StaticEntity {
 
     public Tree(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH * 2, Tile.TILE_HEIGHT * 3);

@@ -1,5 +1,6 @@
 package tiles;
 
+import tiles.Bridge.*;
 import tiles.bushwalls.*;
 import tiles.fence.fence.*;
 import tiles.fence.woodFence.*;
@@ -12,7 +13,6 @@ public class StaticTiles {
     public static Tile grassTile = new GrassTile(0);
     public static Tile roundBushTile = new RoundBushTile(1);
     public static Tile farnTile = new FarneTile(2);
-    public static Tile signTile = new FarneTile(3);
     public static Tile treeShadowLeftTile = new TreeShadowLeftTile(4);
     public static Tile treeShadowRightTile = new TreeShadowRightTile(5);
 
@@ -69,5 +69,30 @@ public class StaticTiles {
     public static Tile woodFenceCornerTopRightTile = new WoodFenceCornerTopRightTile(54);
     public static Tile woodFenceCornerBottumLeftTile = new WoodFenceCornerBottumLeftTile(55);
     public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(56);
+
+    //Bridge
+//    public static Tile bridgeDownLeftTile = new BridgeDownLeftTile(60);
+//    public static Tile bridgePostLeftTile = new BridgePostLeftTile(65);
+//    public static Tile bridgeHandrailLeftTile = new BridgeHandrailLeftTile(70);
+//    public static Tile bridgeUpLeftTile = new BridgeUpLeftTile(72);
+//
+//
+//    public static Tile bridgeStairsDownLeftTile = new BridgeStairsDownLeftTile(61);
+//    public static Tile bridgePlanksEndLeftTile = new BridgePlanksEndLeftTile(66);
+//    public static Tile bridgeStairsUpLeftTile = new BridgeStairsUpLeftTile(73);
+//
+//    public static Tile bridgeStairsDownMidTile = new BridgeStairsDownMidTile(62);
+//    public static Tile bridgePlanksMidTile = new BridgePlanksMidTile(67);
+//    public static Tile bridgeStairsUpMidTile = new BridgeStairsUpMidTile(74);
+//
+//    public static Tile bridgeStairsDownRightTile = new BridgeStairsDownRightTile(63);
+//    public static Tile bridgePlanksEndRightTile = new BridgePlanksEndRightTile(68);
+//    public static Tile bridgeStairsUpRightTile = new BridgeStairsUpRightTile(75);
+//
+//    public static Tile bridgeDownRightTile = new BridgeDownRightTile(64);
+//    public static Tile bridgePostRightTile = new BridgePostRightTile(69);
+//    public static Tile bridgeHandrailRightTile = new BridgeHandrailRightTile(71);
+//    public static Tile bridgeUpRightTile = new BridgeUpRightTile(76);
+
 
 }

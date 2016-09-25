@@ -3,12 +3,12 @@ package entities.statics.Pavilion;
 
 import java.awt.*;
 
-import entities.statics.StaticEntitiy;
+import entities.statics.StaticEntity;
 import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
-public class PavilionRight extends StaticEntitiy {
+public class PavilionRight extends StaticEntity {
 
     public PavilionRight(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);

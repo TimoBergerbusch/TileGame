@@ -2,13 +2,12 @@ package entities.statics.houses;
 
 import java.awt.*;
 
-import entities.Entity;
-import entities.statics.StaticEntitiy;
+import entities.statics.StaticEntity;
 import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
-public class RedHouse extends StaticEntitiy {
+public class RedHouse extends StaticEntity {
     public RedHouse(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH * 5, Tile.TILE_HEIGHT * 5);
         bounds.x = 0;

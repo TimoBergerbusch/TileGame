@@ -3,17 +3,19 @@ package worlds;
 import java.awt.*;
 
 import entities.EntityManager;
+import entities.Farne;
 import entities.creatures.Player;
-import entities.statics.Pavilion.Pavilion;
-import entities.statics.Pavilion.PavilionLeft;
-import entities.statics.Pavilion.PavilionMid;
-import entities.statics.Pavilion.PavilionRight;
-import entities.statics.TestBuild;
+import entities.statics.MetalSign;
+import entities.statics.Statue;
 import entities.statics.Tree;
-import entities.statics.houses.GreenHouse;
+import entities.statics.WoodSign;
+import gfx.Assets;
 import tilegame.Handler;
+import tiles.FarneTile;
 import tiles.StaticTiles;
 import tiles.Tile;
+import tiles.TreeShadowLeftTile;
+import tiles.TreeShadowRightTile;
 import utils.Utils;
 
 public class World {
@@ -28,23 +30,13 @@ public class World {
     public World(Handler handler, String path) {
         this.handler = handler;
         entityManager = new EntityManager(handler, new Player(handler, 100, 100));
-//        entityManager.addEntity(new Tree(handler, 2 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
 
-        for (int x = 0; x < handler.getGame().getWidth(); x += 2) {
-            entityManager.addEntity(new Tree(handler, x * Tile.TILE_WIDTH, -Tile.TILE_HEIGHT));
-        }
+        //TestEntitys
+//        entityManager.addEntity(new Statue(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new MetalSign(handler, 5 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new WoodSign(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
 
-        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 2 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Tree(handler, Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Tree(handler, 3 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new GreenHouse(handler, 4 * Tile.TILE_WIDTH, Tile.TILE_HEIGHT));
-
-        entityManager.addEntity(new TestBuild(handler, 10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new PavilionLeft(handler,10*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new PavilionMid(handler,11*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new PavilionRight(handler,12*Tile.TILE_WIDTH,10*Tile.TILE_HEIGHT));
+        //TestEntitys
 
         loadWorld(path);
 
@@ -93,10 +85,31 @@ public class World {
 
         tiles = new int[width][height];
         for (int y = 0; y < height; y++)
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++) {
                 tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
+                checkForEntites(x, y);
+            }
+
     }
 
+    private void checkForEntites(int x, int y) {
+        checkIfTree(x, y);
+        checkIfFarne(x, y);
+    }
+
+    private void checkIfTree(int x, int y) {
+        if (getTile(x, y) instanceof TreeShadowRightTile) {
+            if (x == 0 || getTile(x - 1, y) instanceof TreeShadowLeftTile) {
+                entityManager.addEntity(new Tree(handler, (x - 1) * Tile.TILE_WIDTH, (y - 2) * Tile.TILE_HEIGHT));
+            }
+        }
+    }
+
+    private void checkIfFarne(int x, int y) {
+        if (getTile(x, y) instanceof FarneTile) {
+            entityManager.addEntity(new Farne(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
+        }
+    }
 
     /**
      * Sets new width.

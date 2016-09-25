@@ -7,7 +7,7 @@ public class Assets {
 
     public static final int TileWidth = 16, TileHeight = 16;
     //Enviroment (Town)
-    public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, metalSign, woodSign, tree, treeShadowLeft, treeShadowRight;
+    public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, metalSign, woodSign, tree, treeShadowLeft, treeShadowRight, statue;
     public static BufferedImage pavilionLeft, pavilionMid, pavilionRight;
     public static BufferedImage greenHouse, redHouse;
     //bushwall
@@ -21,6 +21,11 @@ public class Assets {
     public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottumLeft, stillWaterEdgeBottum, stillWaterEdgeBottumRight;
     public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottumLeft, deepWaterEdgeBottum, deepWaterEdgeBottumRight;
     //    public static BufferedImage[] deepWater;
+
+    //Bridge
+    public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlankMid, bridgeStairsDownMid, bridgeStairsUpRight,
+            bridgePlanksEndRight, bridgeStairsDownRight, bridgeUpRight, bridgeHandrailRight, bridgePostRight, bridgeDownRight;
+
     //Path
     public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight, pathTop, pathBottum, pathFull;
     //Player
@@ -38,6 +43,7 @@ public class Assets {
         hopedgeLeft = tileSheet.crop(0, 4 * TileHeight, TileWidth, TileHeight);
         hopedgeBottum = tileSheet.crop(0, 5 * TileHeight, TileWidth, TileHeight);
         hopedgeRight = tileSheet.crop(0, 6 * TileHeight, TileWidth, TileHeight);
+        statue = tileSheet.crop(10 * TileWidth, 8 * TileHeight, TileWidth, 2 * TileHeight);
 
         tree = tileSheet.crop(0, 8 * TileHeight, 2 * TileWidth, 3 * TileHeight);
         treeShadowLeft = tileSheet.crop(0, 11 * TileHeight, TileWidth, TileHeight);
@@ -46,6 +52,8 @@ public class Assets {
         pavilionLeft = tileSheet.crop(7 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
         pavilionMid = tileSheet.crop(8 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
         pavilionRight = tileSheet.crop(9 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
+
+        initTowns(tileSheet);
 
         initBushwall(tileSheet);
 
@@ -56,6 +64,8 @@ public class Assets {
 
         initPath(tileSheet);
 
+        initBridge(tileSheet);
+
         initPlayer();
 
 
@@ -64,8 +74,8 @@ public class Assets {
     private static void initTowns(SpriteSheet tileSheet) {
         initHouses(tileSheet);
 
-        metalSign = tileSheet.crop(0, 7 * TileHeight, TileWidth, TileHeight);
-        woodSign = tileSheet.crop(TileWidth, 7 * TileHeight, TileWidth, TileHeight);
+        metalSign = tileSheet.crop(0, 7 * TileHeight);
+        woodSign = tileSheet.crop(TileWidth, 7 * TileHeight);
     }
 
     private static void initHouses(SpriteSheet tileSheet) {
@@ -179,6 +189,31 @@ public class Assets {
         woodFenceCornerTopLeft = tileSheet.crop(6 * TileWidth, 9 * TileHeight);
         woodFenceCornerBottumLeft = tileSheet.crop(6 * TileWidth, 10 * TileHeight);
         woodFenceCornerBottumRight = tileSheet.crop(6 * TileWidth, 11 * TileHeight);
+    }
+
+    private static void initBridge(SpriteSheet tileSheet) {
+        bridgeDownLeft = tileSheet.crop(2 * TileWidth, 12 * TileHeight);
+        bridgePostLeft = tileSheet.crop(2 * TileWidth, 13 * TileHeight);
+        bridgeHandrailLeft = tileSheet.crop(2 * TileWidth, 14 * TileHeight);
+        bridgeUpLeft = tileSheet.crop(2 * TileWidth, 15 * TileHeight);
+
+        bridgeStairsDownLeft = tileSheet.crop(3 * TileWidth, 12 * TileHeight);
+        bridgePlanksEndLeft = tileSheet.crop(3 * TileWidth, 13 * TileHeight);
+        bridgeStairsUpLeft = tileSheet.crop(3 * TileWidth, 15 * TileHeight);
+
+        bridgeStairsDownMid = tileSheet.crop(4 * TileWidth, 12 * TileHeight);
+        bridgePlankMid = tileSheet.crop(4 * TileWidth, 13 * TileHeight);
+        bridgeStairsUpMid = tileSheet.crop(4 * TileWidth, 15 * TileHeight);
+
+        bridgeStairsDownRight = tileSheet.crop(5 * TileWidth, 12 * TileHeight);
+        bridgePlanksEndRight = tileSheet.crop(5 * TileWidth, 13 * TileHeight);
+        bridgeStairsUpRight = tileSheet.crop(5 * TileWidth, 15 * TileHeight);
+
+
+        bridgeDownRight = tileSheet.crop(6 * TileWidth, 12 * TileHeight);
+        bridgePostRight = tileSheet.crop(6 * TileWidth, 13 * TileHeight);
+        bridgeHandrailRight = tileSheet.crop(6 * TileWidth, 14 * TileHeight);
+        bridgeUpRight = tileSheet.crop(6 * TileWidth, 15 * TileHeight);
     }
 
 }

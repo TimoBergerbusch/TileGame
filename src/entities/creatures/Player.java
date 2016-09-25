@@ -65,6 +65,11 @@ public class Player extends Creature {
             xMove = -speed;
         if (handler.getKeyManager().right)
             xMove = speed;
+
+        if (handler.getKeyManager().running)
+            speed = 2 * DEFAULT_SPEED;
+        else
+            speed = DEFAULT_SPEED;
     }
 
     @Override
@@ -101,4 +106,6 @@ public class Player extends Creature {
             }
         }
     }
+
+
 }
