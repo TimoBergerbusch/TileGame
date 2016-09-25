@@ -7,6 +7,12 @@ import gfx.Animation;
 import tilegame.Handler;
 
 import gfx.Assets;
+import utils.Direction;
+
+import static utils.Direction.DOWN;
+import static utils.Direction.LEFT;
+import static utils.Direction.RIGHT;
+import static utils.Direction.UP;
 
 public class Player extends Creature {
 
@@ -16,7 +22,7 @@ public class Player extends Creature {
     private Animation animLeft;
     private Animation animRight;
 
-    private int direction;
+    private Direction direction;
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
@@ -27,7 +33,7 @@ public class Player extends Creature {
         bounds.height = 50;
 
         //animation
-        direction = 0;
+        direction = Direction.DOWN;
         animDown = new Animation(500, Assets.player_down);
         animUp = new Animation(500, Assets.player_up);
         animLeft = new Animation(500, Assets.player_left);
@@ -68,26 +74,28 @@ public class Player extends Creature {
 
     private BufferedImage getCurrentAniamtionFrame() {
         if (xMove < 0) {
-            direction = 2;
+            direction = LEFT;
             return animLeft.getCurrentFrame();
         } else if (xMove > 0) {
-            direction = 3;
+            direction = RIGHT;
             return animRight.getCurrentFrame();
         } else if (yMove < 0) {
-            direction = 0;
+            direction = UP;
             return animUp.getCurrentFrame();
         } else if (yMove > 0) {
-            direction = 1;
+            direction = DOWN;
             return animDown.getCurrentFrame();
         } else {
-            if (direction == 0)
-                return Assets.playerStillUp;
-            else if (direction == 1)
-                return Assets.playerStillDown;
-            else if (direction == 2)
-                return Assets.playerStillLeft;
-            else
-                return Assets.playerStillRight;
+            switch (direction) {
+                case UP:
+                    return Assets.playerStillUp;
+                case LEFT:
+                    return Assets.playerStillLeft;
+                case RIGHT:
+                    return Assets.playerStillRight;
+                default:
+                    return Assets.playerStillDown;
+            }
         }
     }
 }
