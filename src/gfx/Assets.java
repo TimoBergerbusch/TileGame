@@ -30,7 +30,8 @@ public class Assets {
     public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight, pathTop, pathBottum, pathFull;
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
-    public static BufferedImage[] player_down, player_up, player_left, player_right;
+    public static BufferedImage[] player_walking_down, player_walking_up, player_walking_left, player_walking_right;
+    public static BufferedImage[] player_running_down, player_running_up, player_running_left, player_running_right;
 
     public static void init() {
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/spritesheet.png"));
@@ -133,30 +134,77 @@ public class Assets {
         stillWaterEdgeBottumRight = tileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
     }
 
+    //Player start
     private static void initPlayer() {
+        int playerWidth = 20, playerHeight = 25;
+        SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/PlayerWalking.png"));
+        initPlayerStanding(PlayerSheet, playerWidth, playerHeight);
+        initPlayerWalking(PlayerSheet, playerWidth, playerHeight);
+        initPlayerRunning(new SpriteSheet(ImageLoader.loadImage("/textures/PlayerRunningSprite.png")), playerWidth, playerHeight);
+    }
 
-        SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/PlayerSpriteSheet.png"));
-        int playerWidth = 17, playerHeight = 25;
-        player_up = new BufferedImage[2];
-        player_up[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
-        player_up[1] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
+    private static void initPlayerStanding(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
         playerStillUp = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
-
-        player_down = new BufferedImage[2];
-        player_down[0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
-        player_down[1] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
         playerStillDown = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
-
-        player_left = new BufferedImage[2];
-        player_left[0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
-        player_left[1] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
         playerStillLeft = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-
-        player_right = new BufferedImage[2];
-        player_right[0] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_right[1] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
         playerStillRight = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
     }
+
+    private static void initPlayerWalking(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+
+        player_walking_up = new BufferedImage[4];
+        player_walking_up[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
+        player_walking_up[1] = playerStillUp;
+        player_walking_up[2] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
+        player_walking_up[3] = playerStillUp;
+
+        player_walking_down = new BufferedImage[4];
+        player_walking_down[0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
+        player_walking_down[1] = playerStillDown;
+        player_walking_down[2] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
+        player_walking_down[3] = playerStillDown;
+
+        player_walking_left = new BufferedImage[4];
+        player_walking_left[0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
+        player_walking_left[1] = playerStillLeft;
+        player_walking_left[2] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_walking_left[3] = playerStillLeft;
+
+        player_walking_right = new BufferedImage[4];
+        player_walking_right[0] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_walking_right[1] = playerStillRight;
+        player_walking_right[2] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_walking_right[3] = playerStillRight;
+    }
+
+    private static void initPlayerRunning(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+
+        player_running_up = new BufferedImage[4];
+        player_running_up[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
+        player_running_up[1] = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
+        player_running_up[2] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
+        player_running_up[3] = player_running_up[1];
+
+        player_running_down = new BufferedImage[4];
+        player_running_down[0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
+        player_running_down[1] = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
+        player_running_down[2] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
+        player_running_down[3] = player_running_down[1];
+
+        player_running_left = new BufferedImage[4];
+        player_running_left[0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_left[1] = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_left[2] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_left[3] = player_running_left[1];
+
+        player_running_right = new BufferedImage[4];
+        player_running_right[0] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_right[1] = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_right[2] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running_right[3] = player_running_right[1];
+
+    }
+    //Player end
 
     private static void initBushwall(SpriteSheet TileSheet) {
         //Bushwall

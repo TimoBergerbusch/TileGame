@@ -16,13 +16,21 @@ import static utils.Direction.UP;
 
 public class Player extends Creature {
 
-    //Animations
+    //Animations Start
+    //Walking
     private Animation animDown;
     private Animation animUp;
     private Animation animLeft;
     private Animation animRight;
+    //Running
+    private Animation animRunningUp;
+    private Animation animRunningDown;
+    private Animation animRunningLeft;
+    private Animation animRunningRight;
+    //Amimations End
 
     private Direction direction;
+    private int animationTime = 250;
 
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
@@ -32,12 +40,29 @@ public class Player extends Creature {
         bounds.width = 38;
         bounds.height = 45;
 
-        //animation
+        //Animation Start
+        //walking
         direction = Direction.DOWN;
-        animDown = new Animation(500, Assets.player_down);
-        animUp = new Animation(500, Assets.player_up);
-        animLeft = new Animation(500, Assets.player_left);
-        animRight = new Animation(500, Assets.player_right);
+        animDown = new Animation(animationTime, Assets.player_walking_down);
+        animUp = new Animation(animationTime, Assets.player_walking_up);
+        animLeft = new Animation(animationTime, Assets.player_walking_left);
+        animRight = new Animation(animationTime, Assets.player_walking_right);
+        //Running
+        animRunningUp = new Animation(animationTime, Assets.player_running_up);
+        animRunningDown = new Animation(animationTime, Assets.player_running_down);
+        animRunningLeft = new Animation(animationTime, Assets.player_running_left);
+        animRunningRight = new Animation(animationTime, Assets.player_running_right);
+        //Animations End
+    }
+
+    @Override
+    public void move() {
+        if (!checkEntityCollision(xMove, 0)) {
+            moveX();
+        }
+//        if (!checkEntityCollision(0, yMove) && xMove == 0)
+        if (!checkEntityCollision(0, yMove))
+            moveY();
     }
 
     @Override
@@ -47,6 +72,10 @@ public class Player extends Creature {
         animUp.tick();
         animLeft.tick();
         animRight.tick();
+        animRunningUp.tick();
+        animRunningDown.tick();
+        animRunningLeft.tick();
+        animRunningRight.tick();
 
         //Movement
         getInput();
@@ -74,24 +103,32 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAniamtionFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
 //        g.setColor(Color.red);
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
-    private BufferedImage getCurrentAniamtionFrame() {
+    private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             direction = LEFT;
+            if (handler.getKeyManager().running)
+                return animRunningLeft.getCurrentFrame();
             return animLeft.getCurrentFrame();
         } else if (xMove > 0) {
             direction = RIGHT;
+            if (handler.getKeyManager().running)
+                return animRunningRight.getCurrentFrame();
             return animRight.getCurrentFrame();
         } else if (yMove < 0) {
             direction = UP;
+            if (handler.getKeyManager().running)
+                return animRunningUp.getCurrentFrame();
             return animUp.getCurrentFrame();
         } else if (yMove > 0) {
             direction = DOWN;
+            if (handler.getKeyManager().running)
+                return animRunningDown.getCurrentFrame();
             return animDown.getCurrentFrame();
         } else {
             switch (direction) {

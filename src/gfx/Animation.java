@@ -21,11 +21,11 @@ public class Animation {
         lastTime = System.currentTimeMillis();
 
         if (timer > speed) {
-//            index = (index + 1) % frames.length;
-            index++;
+            index = (index + 1) % frames.length;
+//            index++;
             timer = 0;
-            if(index >= frames.length)
-                index=0;
+//            if(index >= frames.length)
+//                index=0;
         }
     }
 
