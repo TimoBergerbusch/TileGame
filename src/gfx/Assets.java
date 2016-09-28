@@ -15,11 +15,11 @@ public class Assets {
     //Fence
     public static BufferedImage fenceTop, fenceLeft, fenceRight, fenceIntersectionLeft, fenceIntersectionRight, fenceCornerTopRight, fenceCornerTopLeft, fenceCornerBottumLeft, fenceCornerBottumRight;
 
-    public static BufferedImage woodFenceTop, woodFenceLeft, woodFenceRight, woodFenceIntersectionLeft, woodFenceIntersectionRight, woodFenceCornerTopRight, woodFenceCornerTopLeft, woodFenceCornerBottumLeft, woodFenceCornerBottumRight;
+    public static BufferedImage woodFenceTop, woodFenceLeft, woodFenceRight, woodFenceCornerTopRight, woodFenceCornerTopLeft, woodFenceCornerBottumLeft, woodFenceCornerBottumRight;
 
     //Water
     public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottumLeft, stillWaterEdgeBottum, stillWaterEdgeBottumRight;
-    public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottumLeft, deepWaterEdgeBottum, deepWaterEdgeBottumRight;
+    public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottumLeft, deepWaterEdgeBottum, deepWaterEdgeBottumRight, deepWaterOutsideEdgeTopLeft, deepWaterOutsideEdgeTopRight, deepWaterOutsideEdgeBottumLeft, deepWaterOutsideEdgeBottumRight;
     //    public static BufferedImage[] deepWater;
 
     //Bridge
@@ -112,6 +112,10 @@ public class Assets {
         deepWaterEdgeBottumLeft = tileSheet.crop(3 * TileWidth, 8 * TileHeight);
         deepWaterEdgeBottum = tileSheet.crop(4 * TileWidth, 8 * TileHeight);
         deepWaterEdgeBottumRight = tileSheet.crop(5 * TileWidth, 8 * TileHeight);
+        deepWaterOutsideEdgeTopLeft = tileSheet.crop(8 * TileWidth, 12 * TileHeight);
+        deepWaterOutsideEdgeTopRight = tileSheet.crop(7 * TileWidth, 12 * TileHeight);
+        deepWaterOutsideEdgeBottumLeft = tileSheet.crop(8 * TileWidth, 11 * TileHeight);
+        deepWaterOutsideEdgeBottumRight = tileSheet.crop(7 * TileWidth, 11 * TileHeight);
 
 //        deepWater = new BufferedImage[4];
 //        deepWater[0] = tileSheet.crop(2 * TileWidth, 11 * TileHeight);

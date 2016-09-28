@@ -59,39 +59,18 @@ public class StaticTiles {
     public static Tile deepWaterEdgeTopRightTile = new DeepWaterEdgeTopRightTile(46);
     public static Tile deepWaterEdgeBottumLeftTile = new DeepWaterEdgeBottumLeftTile(47);
     public static Tile deepWaterEdgeBottumRightTile = new DeepWaterEdgeBottumRightTile(48);
+    public static Tile deepWaterOutsideEdgeTopLeftTile = new DeepWaterOutsideEdgeTopLeftTile(49);
+    public static Tile deepWaterOutsideEdgeTopRightTile = new DeepWaterOutsideEdgeTopRightTile(50);
+    public static Tile deepWaterOutsideEdgeBottumLeftTile = new DeepWaterOutsideEdgeBottumLeftTile(51);
+    public static Tile deepWaterOutsideEdgeBottumRightTile = new DeepWaterOutsideEdgeBottumRightTile(52);
 
     //WoodFence
-    public static Tile woodFenceTopTile = new WoodFenceTopTile(50);
-    public static Tile woodFenceLeftTile = new WoodFenceLeftTile(51);
-    public static Tile woodFenceRightTile = new WoodFenceRightTile(52);
-    public static Tile woodFenceCornerTopLeftTile = new WoodFenceCornerTopLeftTile(53);
-    public static Tile woodFenceCornerTopRightTile = new WoodFenceCornerTopRightTile(54);
-    public static Tile woodFenceCornerBottumLeftTile = new WoodFenceCornerBottumLeftTile(55);
-    public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(56);
-
-    //Bridge
-//    public static Tile bridgeDownLeftTile = new BridgeDownLeft(60);
-//    public static Tile bridgePostLeftTile = new BridgePostLeft(65);
-//    public static Tile bridgeHandrailLeftTile = new BridgeHandrailLeft(70);
-//    public static Tile bridgeUpLeftTile = new BridgeUpLeft(72);
-//
-//
-//    public static Tile bridgeStairsDownLeftTile = new BridgeStairsDownLeft(61);
-//    public static Tile bridgePlanksEndLeftTile = new BridgePlanksEndLeft(66);
-//    public static Tile bridgeStairsUpLeftTile = new BridgeStairsUpLeft(73);
-//
-//    public static Tile bridgeStairsDownMidTile = new BridgeStairsDownMid(62);
-//    public static Tile bridgePlanksMidTile = new BridgePlanksMid(67);
-//    public static Tile bridgeStairsUpMidTile = new BridgeStairsUpMid(74);
-//
-//    public static Tile bridgeStairsDownRightTile = new BridgeStairsDownRight(63);
-//    public static Tile bridgePlanksEndRightTile = new BridgePlanksEndRight(68);
-//    public static Tile bridgeStairsUpRightTile = new BridgeStairsUpRight(75);
-//
-//    public static Tile bridgeDownRightTile = new BridgeDownRight(64);
-//    public static Tile bridgePostRightTile = new BridgePostRight(69);
-//    public static Tile bridgeHandrailRightTile = new BridgeHandrailRight(71);
-//    public static Tile bridgeUpRightTile = new BridgeUpRight(76);
-
+    public static Tile woodFenceTopTile = new WoodFenceTopTile(60);
+    public static Tile woodFenceLeftTile = new WoodFenceLeftTile(61);
+    public static Tile woodFenceRightTile = new WoodFenceRightTile(62);
+    public static Tile woodFenceCornerTopLeftTile = new WoodFenceCornerTopLeftTile(63);
+    public static Tile woodFenceCornerTopRightTile = new WoodFenceCornerTopRightTile(64);
+    public static Tile woodFenceCornerBottumLeftTile = new WoodFenceCornerBottumLeftTile(65);
+    public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(66);
 
 }
