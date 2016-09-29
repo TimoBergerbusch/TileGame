@@ -2,6 +2,7 @@ package tilegame;
 
 import gfx.GameCamera;
 import input.KeyManager;
+import input.MouseManager;
 import worlds.World;
 
 public class Handler {
@@ -23,6 +24,10 @@ public class Handler {
 
     public KeyManager getKeyManager(){
         return game.getKeyManager();
+    }
+
+    public MouseManager getMouseManager(){
+        return game.getMouseManager();
     }
 
     public GameCamera getGameCamera(){
@@ -64,4 +69,6 @@ public class Handler {
     public void setGame(Game game) {
         this.game = game;
     }
+
+
 }

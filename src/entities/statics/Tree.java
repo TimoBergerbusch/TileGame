@@ -28,4 +28,14 @@ public class Tree extends StaticEntity {
 //        g.setColor(Color.red);
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
+
+    @Override
+    public void hurt(int amt){
+//        System.out.println("trees cant be hurt");
+    }
+
+    @Override
+    public void die() {
+
+    }
 }

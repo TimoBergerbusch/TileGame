@@ -43,6 +43,8 @@ public class World {
         entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
+        entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
+
         //TestEntitys
 
         loadWorld(path);
@@ -74,7 +76,6 @@ public class World {
     public Tile getTile(int x, int y) {
         if (x < 0 || x >= width || y < 0 || y >= height)
             return StaticTiles.grassTile;
-//        System.out.println(x + "\t" + y + "\t" + tiles[x][y]);
         Tile t = StaticTiles.tiles[tiles[x][y]];
         if (t == null)
             return StaticTiles.grassTile;

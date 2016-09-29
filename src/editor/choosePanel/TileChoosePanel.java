@@ -10,6 +10,7 @@ import javax.swing.*;
 import editor.WorldEditor;
 import editor.mainPanel.EditorTile;
 import gfx.Sets;
+import tiles.Tile;
 
 public class TileChoosePanel extends JPanel {
 
@@ -20,7 +21,7 @@ public class TileChoosePanel extends JPanel {
     public TileChoosePanel() {
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         buttonListener = new buttonListener();
-        loadTiles("enviroment");
+        loadTiles("enviromentTiles");
     }
 
     public void loadTiles(String set) {
@@ -31,9 +32,23 @@ public class TileChoosePanel extends JPanel {
             case "WoodFence":
                 loadButtons(Sets.woodFence);
                 break;
+            case "enviromentTiles":
+                loadButtonsFromTiles(Sets.enviromentTiles);
+                break;
             default:
                 loadButtons(Sets.enviroment);
                 break;
+        }
+    }
+
+    private void loadButtonsFromTiles(Tile[] tiles) {
+        for (Tile t : tiles) {
+            JButton btn = new JButton(new ImageIcon(t.getTexture().getScaledInstance(tileChooserWidth, tileChooserHeight, Image.SCALE_SMOOTH)));
+            btn.setPreferredSize(new Dimension(tileChooserWidth, tileChooserHeight));
+            btn.setMinimumSize(new Dimension(tileChooserWidth, tileChooserHeight));
+            btn.setMaximumSize(new Dimension(tileChooserWidth, tileChooserHeight));
+            btn.addActionListener(buttonListener);
+            this.add(btn);
         }
     }
 

@@ -17,13 +17,13 @@ public class EntityManager {
     private Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
         public int compare(Entity a, Entity b) {
-            if(a.alwaysInBack())
+            if (a.alwaysInBack())
                 return -1;
-            if(b.alwaysInBack())
+            if (b.alwaysInBack())
                 return 1;
 
 
-            if(a.getY()+a.getHeight() < b.getY()+b.getHeight())
+            if (a.getY() + a.getHeight() < b.getY() + b.getHeight())
                 return -1;
             else
                 return 1;
@@ -41,12 +41,14 @@ public class EntityManager {
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
             e.tick();
+            if (!e.isActive())
+                entities.remove(e);
         }
         entities.sort(renderSorter);
     }
 
     public void render(Graphics g) {
-        for(Entity e: entities)
+        for (Entity e : entities)
             e.render(g);
     }
 

@@ -6,9 +6,13 @@ import tilegame.Handler;
 
 public abstract class Entity {
 
+    public static final int DEFAULT_HEALTH = 10;
+
     protected Handler handler;
     protected float x, y;
     protected int width, height;
+    protected int health;
+    protected boolean active = true;
     protected Rectangle bounds;
 
     public Entity(Handler handler, float x, float y, int width, int height) {
@@ -17,6 +21,7 @@ public abstract class Entity {
         this.width = width;
         this.height = height;
         this.handler = handler;
+        health = DEFAULT_HEALTH;
 
         bounds = new Rectangle(0, 0, width, height);
     }
@@ -25,7 +30,7 @@ public abstract class Entity {
 
     public abstract void render(Graphics g);
 
-    public boolean alwaysInBack(){
+    public boolean alwaysInBack() {
         return false;
     }
 
@@ -33,9 +38,9 @@ public abstract class Entity {
         for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
             if (e.equals(this))
                 continue;
-            if(e instanceof EntityBuild){
-                for(Rectangle r: ((EntityBuild)e).getCollisionBoundsOfBuild(0f,0f)){
-                    if(r.intersects(getCollisionBounds(xOffset, yOffset)))
+            if (e instanceof EntityBuild) {
+                for (Rectangle r : ((EntityBuild) e).getCollisionBoundsOfBuild(0f, 0f)) {
+                    if (r.intersects(getCollisionBounds(xOffset, yOffset)))
                         return true;
                 }
             }
@@ -46,11 +51,21 @@ public abstract class Entity {
     }
 
     public Rectangle getCollisionBounds(float xOffset, float yOffset) {
-        if(bounds== (null)){
-            return new Rectangle(0,0,0,0);
+        if (bounds == (null)) {
+            return new Rectangle(0, 0, 0, 0);
         }
         return new Rectangle((int) (x + bounds.x + xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height);
     }
+
+    public void hurt(int amt) {
+        health -= amt;
+        if (health <= 0) {
+            active = false;
+            die();
+        }
+    }
+
+    public abstract void die();
 
     /**
      * Gets height.
@@ -122,5 +137,78 @@ public abstract class Entity {
      */
     public void setHeight(int height) {
         this.height = height;
+    }
+
+
+    /**
+     * Sets new handler.
+     *
+     * @param handler New value of handler.
+     */
+    public void setHandler(Handler handler) {
+        this.handler = handler;
+    }
+
+    /**
+     * Gets health.
+     *
+     * @return Value of health.
+     */
+    public int getHealth() {
+        return health;
+    }
+
+    /**
+     * Gets active.
+     *
+     * @return Value of active.
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * Sets new bounds.
+     *
+     * @param bounds New value of bounds.
+     */
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    /**
+     * Sets new active.
+     *
+     * @param active New value of active.
+     */
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    /**
+     * Gets bounds.
+     *
+     * @return Value of bounds.
+     */
+    public Rectangle getBounds() {
+        return bounds;
+    }
+
+    /**
+     * Sets new health.
+     *
+     * @param health New value of health.
+     */
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    /**
+     * Gets handler.
+     *
+     * @return Value of handler.
+     */
+    public Handler getHandler() {
+        return handler;
     }
 }

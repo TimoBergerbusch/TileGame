@@ -55,4 +55,13 @@ public abstract class EntityBuild extends Entity {
             e.render(g);
     }
 
+    public void hurt(int amt){
+        System.out.println("Builds cant be hurt");
+    }
+
+    @Override
+    public void die() {
+        System.out.println("Builds Cant die");
+    }
+
 }

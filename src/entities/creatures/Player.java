@@ -3,6 +3,8 @@ package entities.creatures;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import entities.AbleToInteract;
+import entities.Entity;
 import gfx.Animation;
 import tilegame.Handler;
 
@@ -28,6 +30,11 @@ public class Player extends Creature {
     private Animation animRunningLeft;
     private Animation animRunningRight;
     //Amimations End
+
+    //Attack timer
+    private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
+    //Interact timer
+    private long lastInteractTimer, interactCooldown = 500, interactTimer = interactCooldown;
 
     private Direction direction;
     private int animationTime = 250;
@@ -82,6 +89,94 @@ public class Player extends Creature {
         getInput();
         move();
         handler.getGameCamera().centerOnEntity(this);
+
+        //Interact
+        if (handler.getKeyManager().interact)
+            checkInteract();
+        //Attack
+        if (handler.getKeyManager().attack)
+            checkAttacks();
+    }
+
+    private void checkInteract() {
+        interactTimer += System.currentTimeMillis() - lastInteractTimer;
+        lastInteractTimer = System.currentTimeMillis();
+        if (interactTimer < interactCooldown)
+            return;
+
+        Rectangle cb = getCollisionBounds(0, 0);
+        Rectangle ar = new Rectangle();
+        int arSize = 20;
+        ar.width = arSize;
+        ar.height = arSize;
+
+        if (direction == Direction.UP) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y - arSize;
+        } else if (direction == Direction.DOWN) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y + cb.height;
+        } else if (direction == Direction.LEFT) {
+            ar.x = cb.x - arSize;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        } else if (direction == Direction.RIGHT) {
+            ar.x = cb.x + cb.width;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        } else {
+            return;
+        }
+
+        interactTimer = 0;
+
+        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+            if (e.equals(this))
+                continue;
+            if (e instanceof AbleToInteract && e.getCollisionBounds(0, 0).intersects(ar)) {
+                ((AbleToInteract) e).interact();
+                return;
+            }
+        }
+    }
+
+    private void checkAttacks() {
+        attackTimer += System.currentTimeMillis() - lastAttackTimer;
+        lastAttackTimer = System.currentTimeMillis();
+        if (attackTimer < attackCooldown)
+            return;
+
+        Rectangle cb = getCollisionBounds(0, 0);
+        Rectangle ar = new Rectangle();
+        int arSize = 20;
+        ar.width = arSize;
+        ar.height = arSize;
+
+        if (direction == Direction.UP) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y - arSize;
+        } else if (direction == Direction.DOWN) {
+            ar.x = cb.x + cb.width / 2 - arSize / 2;
+            ar.y = cb.y + cb.height;
+        } else if (direction == Direction.LEFT) {
+            ar.x = cb.x - arSize;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        } else if (direction == Direction.RIGHT) {
+            ar.x = cb.x + cb.width;
+            ar.y = cb.y + cb.height / 2 - arSize / 2;
+        } else {
+            return;
+        }
+
+        attackTimer = 0;
+
+        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
+            if (e.equals(this))
+                continue;
+            if (e.getCollisionBounds(0, 0).intersects(ar)) {
+                e.hurt(1);
+                return;
+            }
+        }
+
     }
 
     private void getInput() {
@@ -100,6 +195,11 @@ public class Player extends Creature {
             speed = 2 * DEFAULT_SPEED;
         else
             speed = DEFAULT_SPEED;
+    }
+
+    public void die() {
+
+        System.out.println("You Lose");
     }
 
     @Override

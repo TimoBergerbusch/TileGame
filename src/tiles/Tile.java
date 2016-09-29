@@ -36,4 +36,8 @@ public abstract class Tile {
     public int getId() {
         return id;
     }
+
+    public BufferedImage getTexture(){
+        return texture;
+    }
 }
