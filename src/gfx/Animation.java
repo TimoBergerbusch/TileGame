@@ -22,10 +22,7 @@ public class Animation {
 
         if (timer > speed) {
             index = (index + 1) % frames.length;
-//            index++;
             timer = 0;
-//            if(index >= frames.length)
-//                index=0;
         }
     }
 
