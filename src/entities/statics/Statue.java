@@ -35,11 +35,19 @@ public class Statue extends StaticEntity implements AbleToInteract {
 
     @Override
     public void interact() {
-        if (message == null)
-            message = new Message(new String[]{"Hello You!", "You rock!", "Let's test how much Text i can write in here"});
-        else if (!message.isLastSide())
+        if (message == null) {
+            message = new Message(new String[]{"Hello You!",
+                    "You rock!",
+                    "Let's test how much Text i can write in here, Let's test how much Text i can write in here, Let's test how much Text i can write in here"},
+                    Assets.metalSignBackground,
+                    new Font("Serif Itlaic", Font.ITALIC, 45));
+            message.setxOffset(60);
+            message.setyOffset(80);
+        } else if (!message.isLastSide())
             message.nextSide();
         else
             message = null;
     }
+
+
 }

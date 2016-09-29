@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
     public static final int TileWidth = 16, TileHeight = 16;
+    public static final int interactionWidth = 1250, interactionHeight = 250;
     //Enviroment (Town)
     public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, metalSign, woodSign, tree, treeShadowLeft, treeShadowRight, statue;
     public static BufferedImage pavilionLeft, pavilionMid, pavilionRight;
@@ -32,6 +33,9 @@ public class Assets {
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
     public static BufferedImage[] player_walking_down, player_walking_up, player_walking_left, player_walking_right;
     public static BufferedImage[] player_running_down, player_running_up, player_running_left, player_running_right;
+
+    //Interaction Backgrounds
+    public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
 
     public static void init() {
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/spritesheet.png"));
@@ -69,7 +73,15 @@ public class Assets {
 
         initPlayer();
 
+        initInteractionBackgrounds();
+    }
 
+    private static void initInteractionBackgrounds() {
+        SpriteSheet backgroundSheet = new SpriteSheet(ImageLoader.loadImage("/textures/dialogBackgrounds/backgrounds.png"));
+
+        greyBackground = backgroundSheet.crop(0, 0, interactionWidth, interactionHeight);
+        scriptRollBackground = backgroundSheet.crop(0, interactionHeight, interactionWidth, interactionHeight);
+        metalSignBackground = backgroundSheet.crop(0, 2 * interactionHeight, interactionWidth, interactionHeight);
     }
 
     private static void initTowns(SpriteSheet tileSheet) {
