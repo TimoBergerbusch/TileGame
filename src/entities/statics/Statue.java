@@ -2,25 +2,54 @@ package entities.statics;
 
 import java.awt.*;
 
-import entities.AbleToInteract;
+import entities.StaticInteractableEntity;
 import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
 import tiles.Tile;
-import messages.MessageField;
 
-public class Statue extends StaticEntity implements AbleToInteract {
+/**
+ * defines a Statue as a subclass of {@link StaticEntity} and implements {@link
+ * StaticInteractableEntity}
+ */
+public class Statue extends StaticInteractableEntity {
 
-    private Message message;
+    //Constructors
 
+    /**
+     * creates a new Statue at a given position, using {@link StaticEntity#StaticEntity(Handler,
+     * float, float, int, int)}
+     *
+     * @param handler the {@link Handler} of the {@link tilegame.Game}
+     * @param x       the x-Position of the {@link Statue}
+     * @param y       the y-Position of the {@link Statue}
+     * @see StaticEntity
+     */
     public Statue(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 2 * Tile.TILE_HEIGHT);
         bounds.x = 0;
         bounds.y = Tile.TILE_HEIGHT;
         bounds.width = Tile.TILE_WIDTH;
         bounds.height = Tile.TILE_HEIGHT;
+        message.setXOffset(60);
+        message.setYOffset(80);
     }
 
+    /**
+     * creates a new Statue at a given position with a given {@link Message} using {@link
+     * Statue#Statue(Handler, float, float)}
+     *
+     * @param handler the {@link Handler} of a {@link tilegame.Game}
+     * @param x       the x-Position of the {@link Statue}
+     * @param y       the y-Position of the {@link Statue}
+     * @see Statue#Statue(Handler, float, float)
+     */
+    public Statue(Handler handler, float x, float y, Message message) {
+        this(handler, x, y);
+        this.message = message;
+    }
+
+    //Methods
     @Override
     public void tick() {
     }
@@ -29,24 +58,7 @@ public class Statue extends StaticEntity implements AbleToInteract {
     public void render(Graphics g) {
         g.drawImage(Assets.statue, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-        if (message != null)
-            message.render(g);
-    }
-
-    @Override
-    public void interact() {
-        if (message == null) {
-            message = new Message(new String[]{"Hello You!",
-                    "You rock!",
-                    "Let's test how much Text i can write in here, Let's test how much Text i can write in here, Let's test how much Text i can write in here"},
-                    Assets.metalSignBackground,
-                    new Font("Serif Itlaic", Font.ITALIC, 45));
-            message.setxOffset(60);
-            message.setyOffset(80);
-        } else if (!message.isLastSide())
-            message.nextSide();
-        else
-            message = null;
+        message.render(g);
     }
 
 

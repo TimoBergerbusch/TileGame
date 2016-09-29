@@ -4,26 +4,66 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 
+/**
+ * This class is the background on with a {@link Message} is written. It can be drawn like normal
+ * objects or it can hold a {@link BufferedImage} called {@link #texture}.
+ *
+ * @see {@link Message}
+ */
 public class MessageField {
 
-    protected float x = 0, y = 500;
-    protected int width = 1250, height = 250;
-    protected Rectangle bounds;
+    /**
+     * the x-Position of the [@link {@link MessageField}}
+     */
+    protected float x = 0;
+    /**
+     * the y-Position of the [@link {@link MessageField}}
+     */
+    protected float y = 500;
+    /**
+     * the width of the [@link {@link MessageField}}, which should be full window width
+     */
+    protected int width = 1250;
+    /**
+     * the height of the [@link {@link MessageField}}, which is one third of the window height as
+     * default
+     */
+    protected int height = 250;
+
+    /**
+     * the texture which can be drawn instead of a default grey background
+     */
     protected BufferedImage texture;
 
+    /**
+     * the default constructor with default background
+     */
     public MessageField() {
-        bounds = new Rectangle((int) x, (int) y, width, height);
+
     }
 
+    /**
+     * the constructor setting the {@link #texture}
+     *
+     * @param texture the new {@link #texture}
+     */
     public MessageField(BufferedImage texture) {
-        super();
         this.texture = texture;
     }
 
+    /**
+     * the tick method NOTE: empty and unused
+     */
     public void tick() {
 
     }
 
+    /**
+     * draws the {@link #texture} or the default background to the screen at {@link #x}, {@link #y},
+     * {@link #width} and {@link #height}
+     *
+     * @param g the {@link Graphics}-Object to draw with
+     */
     public void render(Graphics g) {
         if (texture != null)
             g.drawImage(texture, (int) x, (int) y, width, height, null);
@@ -38,112 +78,101 @@ public class MessageField {
         }
     }
 
-    /**
-     * Gets x.
-     *
-     * @return Value of x.
-     */
-    public float getX() {
-        return x;
-    }
+    //Getter and Setters
 
     /**
-     * Sets new bounds.
+     * Gets the height of the [@link {@link MessageField}}, which is one third of the window height as
+     * default.
      *
-     * @param bounds New value of bounds.
-     */
-    public void setBounds(Rectangle bounds) {
-        this.bounds = bounds;
-    }
-
-    /**
-     * Gets y.
-     *
-     * @return Value of y.
-     */
-    public float getY() {
-        return y;
-    }
-
-    /**
-     * Gets width.
-     *
-     * @return Value of width.
-     */
-    public int getWidth() {
-        return width;
-    }
-
-    /**
-     * Sets new height.
-     *
-     * @param height New value of height.
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * Gets bounds.
-     *
-     * @return Value of bounds.
-     */
-    public Rectangle getBounds() {
-        return bounds;
-    }
-
-    /**
-     * Gets height.
-     *
-     * @return Value of height.
+     * @return Value of the height of the [@link {@link MessageField}}, which is one third of the window
+     * height as default.
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     * Sets new width.
+     * Gets the texture which can be drawn instead of a default grey background.
      *
-     * @param width New value of width.
+     * @return Value of the texture which can be drawn instead of a default grey background.
      */
-    public void setWidth(int width) {
-        this.width = width;
+    public BufferedImage getTexture() {
+        return texture;
     }
 
     /**
-     * Sets new x.
+     * Gets the x-Position of the [@link {@link MessageField}}.
      *
-     * @param x New value of x.
+     * @return Value of the x-Position of the [@link {@link MessageField}}.
+     */
+    public float getX() {
+        return x;
+    }
+
+    /**
+     * Sets new the x-Position of the [@link {@link MessageField}}.
+     *
+     * @param x New value of the x-Position of the [@link {@link MessageField}}.
      */
     public void setX(float x) {
         this.x = x;
     }
 
     /**
-     * Sets new y.
+     * Gets the y-Position of the [@link {@link MessageField}}.
      *
-     * @param y New value of y.
+     * @return Value of the y-Position of the [@link {@link MessageField}}.
      */
-    public void setY(float y) {
-        this.y = y;
+    public float getY() {
+        return y;
     }
 
+    /**
+     * Sets new the width of the [@link {@link MessageField}}, which should be full window width.
+     *
+     * @param width New value of the width of the [@link {@link MessageField}}, which should be full
+     *              window width.
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
     /**
-     * Sets new texture.
+     * Sets new the height of the [@link {@link MessageField}}, which is one third of the window height
+     * as default.
      *
-     * @param texture New value of texture.
+     * @param height New value of the height of the [@link {@link MessageField}}, which is one third of
+     *               the window height as default.
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
+     * Sets new the texture which can be drawn instead of a default grey background.
+     *
+     * @param texture New value of the texture which can be drawn instead of a default grey background.
      */
     public void setTexture(BufferedImage texture) {
         this.texture = texture;
     }
 
     /**
-     * Gets texture.
+     * Gets the width of the [@link {@link MessageField}}, which should be full window width.
      *
-     * @return Value of texture.
+     * @return Value of the width of the [@link {@link MessageField}}, which should be full window
+     * width.
      */
-    public BufferedImage getTexture() {
-        return texture;
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * Sets new the y-Position of the [@link {@link MessageField}}.
+     *
+     * @param y New value of the y-Position of the [@link {@link MessageField}}.
+     */
+    public void setY(float y) {
+        this.y = y;
     }
 }

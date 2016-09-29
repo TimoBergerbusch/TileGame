@@ -11,6 +11,7 @@ import entities.statics.Statue;
 import entities.statics.Tree;
 import entities.statics.WoodSign;
 import gfx.Assets;
+import messages.Message;
 import tilegame.Handler;
 import tiles.FarneTile;
 import tiles.StaticTiles;
@@ -33,10 +34,6 @@ public class World {
         entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 
         //TestEntitys
-//        entityManager.addEntity(new Statue(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new MetalSign(handler, 5 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT));
-//        entityManager.addEntity(new WoodSign(handler, 8 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT));
-
         entityManager.addEntity(new BridgeDown(handler, 6 * Tile.TILE_WIDTH, 12 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgePost(handler, 6 * Tile.TILE_WIDTH, 14 * Tile.TILE_HEIGHT));
@@ -44,6 +41,8 @@ public class World {
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen"}, Assets.metalSignBackground)));
+        entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
 
         //TestEntitys
 
@@ -118,6 +117,9 @@ public class World {
             entityManager.addEntity(new Farne(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
         }
     }
+
+
+    //Getters and Setters
 
     /**
      * Sets new width.

@@ -3,7 +3,7 @@ package entities.creatures;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import entities.AbleToInteract;
+import entities.StaticInteractableEntity;
 import entities.Entity;
 import gfx.Animation;
 import tilegame.Handler;
@@ -131,8 +131,8 @@ public class Player extends Creature {
         for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
             if (e.equals(this))
                 continue;
-            if (e instanceof AbleToInteract && e.getCollisionBounds(0, 0).intersects(ar)) {
-                ((AbleToInteract) e).interact();
+            if (e instanceof StaticInteractableEntity && e.getCollisionBounds(0, 0).intersects(ar)) {
+                ((StaticInteractableEntity) e).interact();
                 return;
             }
         }
