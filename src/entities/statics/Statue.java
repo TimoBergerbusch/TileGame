@@ -9,8 +9,7 @@ import tilegame.Handler;
 import tiles.Tile;
 
 /**
- * defines a Statue as a subclass of {@link StaticEntity} and implements {@link
- * StaticInteractableEntity}
+ * defines a Statue as a subclass of {@link StaticInteractableEntity}
  */
 public class Statue extends StaticInteractableEntity {
 
@@ -31,8 +30,8 @@ public class Statue extends StaticInteractableEntity {
         bounds.y = Tile.TILE_HEIGHT;
         bounds.width = Tile.TILE_WIDTH;
         bounds.height = Tile.TILE_HEIGHT;
-        message.setXOffset(60);
-        message.setYOffset(80);
+        Message.setXOffset(60);
+        Message.setYOffset(80);
     }
 
     /**
@@ -42,6 +41,7 @@ public class Statue extends StaticInteractableEntity {
      * @param handler the {@link Handler} of a {@link tilegame.Game}
      * @param x       the x-Position of the {@link Statue}
      * @param y       the y-Position of the {@link Statue}
+     * @param message the {@link Message} to show during {@link #interact()}
      * @see Statue#Statue(Handler, float, float)
      */
     public Statue(Handler handler, float x, float y, Message message) {
@@ -50,6 +50,7 @@ public class Statue extends StaticInteractableEntity {
     }
 
     //Methods
+
     @Override
     public void tick() {
     }

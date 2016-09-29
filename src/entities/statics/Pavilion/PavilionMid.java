@@ -8,8 +8,20 @@ import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
+/**
+ * defines the middle part of a Pavilion
+ */
 public class PavilionMid extends StaticEntity {
 
+    //Constructors
+
+    /**
+     * creates a new {@link PavilionMid}
+     *
+     * @param handler the {@link Handler} to the {@link tilegame.Game}
+     * @param x       the x-position of the {@link entities.Entity}
+     * @param y       the y-position of the {@link entities.Entity}
+     */
     public PavilionMid(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);
         bounds.x = 0;
@@ -18,6 +30,7 @@ public class PavilionMid extends StaticEntity {
         bounds.height = 0;
     }
 
+    //Implemented Methods
     @Override
     public void tick() {
 

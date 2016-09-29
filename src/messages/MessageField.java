@@ -8,7 +8,7 @@ import java.nio.Buffer;
  * This class is the background on with a {@link Message} is written. It can be drawn like normal
  * objects or it can hold a {@link BufferedImage} called {@link #texture}.
  *
- * @see {@link Message}
+ * @see Message
  */
 public class MessageField {
 
@@ -81,11 +81,11 @@ public class MessageField {
     //Getter and Setters
 
     /**
-     * Gets the height of the [@link {@link MessageField}}, which is one third of the window height as
-     * default.
+     * Gets the height of the [@link {@link MessageField}}, which is one third of the window height
+     * as default.
      *
-     * @return Value of the height of the [@link {@link MessageField}}, which is one third of the window
-     * height as default.
+     * @return Value of the height of the [@link {@link MessageField}}, which is one third of the
+     * window height as default.
      */
     public int getHeight() {
         return height;
@@ -138,11 +138,11 @@ public class MessageField {
     }
 
     /**
-     * Sets new the height of the [@link {@link MessageField}}, which is one third of the window height
-     * as default.
+     * Sets new the height of the [@link {@link MessageField}}, which is one third of the window
+     * height as default.
      *
-     * @param height New value of the height of the [@link {@link MessageField}}, which is one third of
-     *               the window height as default.
+     * @param height New value of the height of the [@link {@link MessageField}}, which is one third
+     *               of the window height as default.
      */
     public void setHeight(int height) {
         this.height = height;
@@ -151,7 +151,8 @@ public class MessageField {
     /**
      * Sets new the texture which can be drawn instead of a default grey background.
      *
-     * @param texture New value of the texture which can be drawn instead of a default grey background.
+     * @param texture New value of the texture which can be drawn instead of a default grey
+     *                background.
      */
     public void setTexture(BufferedImage texture) {
         this.texture = texture;

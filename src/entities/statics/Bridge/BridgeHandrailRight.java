@@ -7,10 +7,22 @@ import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
+/**
+ * defines the right side of a bridge handrail as a subclass of {@link StaticEntity}
+ */
 public class BridgeHandrailRight extends StaticEntity {
+    //Constructors
+
+    /**
+     * creates a new {@link BridgeHandrailRight} at the given x/y-position
+     *
+     * @param handler the {@link Handler} to the {@link tilegame.Game}
+     * @param x       the x-position of the {@link entities.Entity}
+     * @param y       the y-position of the {@link entities.Entity}
+     */
     public BridgeHandrailRight(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT);
-        bounds.width=Tile.TILE_WIDTH/2;
+        bounds.width = Tile.TILE_WIDTH / 2;
     }
 
     @Override

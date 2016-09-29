@@ -1,19 +1,37 @@
 package entities;
 
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import tilegame.Handler;
-
 import entities.creatures.Player;
 
+/**
+ * this class is used to store every {@link Entity} the {@link tilegame.Game} should contain. It is
+ * used to {@link Entity#render(Graphics) render} and {@link Entity#tick() tick} every {@link
+ * Entity}
+ */
 public class EntityManager {
 
+    /**
+     * a {@link Handler} to the {@link tilegame.Game}
+     */
     private Handler handler;
+    /**
+     * the {@link Player} NOTE: only one player
+     */
     private Player player;
+    /**
+     * an ArrayList of all the {@link Entity Entities}
+     */
     private ArrayList<Entity> entities;
+    /**
+     * a comparator to render the {@link Entity Entities} in a strategy. It renders {@link Entity
+     * Entities} that have set {@link Entity#alwaysInBack()} equal to <code> true</code> behind
+     * every other {@link Entity} and everything else depending on their bottom left bound corner.
+     * If the value is smaller it's rendered before the other one.
+     */
     private Comparator<Entity> renderSorter = new Comparator<Entity>() {
         @Override
         public int compare(Entity a, Entity b) {
@@ -30,6 +48,14 @@ public class EntityManager {
         }
     };
 
+    //Constructors
+
+    /**
+     * creates a new {@link EntityManager}
+     *
+     * @param handler the ´{@link Handler} to the {@link tilegame.Game}
+     * @param player  the {@link Player}
+     */
     public EntityManager(Handler handler, Player player) {
         this.handler = handler;
         this.player = player;
@@ -37,6 +63,11 @@ public class EntityManager {
         addEntity(player);
     }
 
+    //Methods
+
+    /**
+     * calls {@link Entity#tick()} on every {@link Entity} within {@link #entities}
+     */
     public void tick() {
         for (int i = 0; i < entities.size(); i++) {
             Entity e = entities.get(i);
@@ -47,11 +78,17 @@ public class EntityManager {
         entities.sort(renderSorter);
     }
 
+    /**
+     * calls {@link Entity#render(Graphics)} on every {@link Entity} within {@link #entities}
+     */
     public void render(Graphics g) {
         for (Entity e : entities)
             e.render(g);
     }
 
+    /**
+     * adds an {@link Entity} to {@link #entities}
+     */
     public void addEntity(Entity e) {
         entities.add(e);
     }
@@ -59,56 +96,87 @@ public class EntityManager {
     //Getters and Setters
 
     /**
-     * Gets player.
+     * Gets a {@link Handler} to the {@link tilegame.Game}.
      *
-     * @return Value of player.
-     */
-    public Player getPlayer() {
-        return player;
-    }
-
-    /**
-     * Gets entities.
-     *
-     * @return Value of entities.
-     */
-    public ArrayList<Entity> getEntities() {
-        return entities;
-    }
-
-    /**
-     * Gets handler.
-     *
-     * @return Value of handler.
+     * @return Value of a {@link Handler} to the {@link tilegame.Game}.
      */
     public Handler getHandler() {
         return handler;
     }
 
     /**
-     * Sets new handler.
+     * Sets new a comparator to render the {@link Entity Entities} in a strategy. It renders {@link
+     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code> behind
+     * every other {@link Entity} and everything else depending on their bottom left bound corner.
+     * If the value is smaller it's rendered before the other one..
      *
-     * @param handler New value of handler.
+     * @param renderSorter New value of a comparator to render the {@link Entity Entities} in a
+     *                     strategy. It renders {@link Entity Entities} that have set {@link
+     *                     Entity#alwaysInBack} equal to <code> true<code> behind every other {@link
+     *                     Entity} and everything else depending on their bottom left bound corner.
+     *                     If the value is smaller it's rendered before the other one..
+     */
+    public void setRenderSorter(Comparator<Entity> renderSorter) {
+        this.renderSorter = renderSorter;
+    }
+
+    /**
+     * Sets new the {@link Player} NOTE: only one player.
+     *
+     * @param player New value of the {@link Player} NOTE: only one player.
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
+     * Gets an ArrayList of all the {@link Entity Entities}.
+     *
+     * @return Value of an ArrayList of all the {@link Entity Entities}.
+     */
+    public ArrayList<Entity> getEntities() {
+        return entities;
+    }
+
+    /**
+     * Gets the {@link Player} NOTE: only one player.
+     *
+     * @return Value of the {@link Player} NOTE: only one player.
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Sets new a {@link Handler} to the {@link tilegame.Game}.
+     *
+     * @param handler New value of a {@link Handler} to the {@link tilegame.Game}.
      */
     public void setHandler(Handler handler) {
         this.handler = handler;
     }
 
     /**
-     * Sets new entities.
+     * Sets new an ArrayList of all the {@link Entity Entities}.
      *
-     * @param entities New value of entities.
+     * @param entities New value of an ArrayList of all the {@link Entity Entities}.
      */
     public void setEntities(ArrayList<Entity> entities) {
         this.entities = entities;
     }
 
     /**
-     * Sets new player.
+     * Gets a comparator to render the {@link Entity Entities} in a strategy. It renders {@link
+     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code> behind
+     * every other {@link Entity} and everything else depending on their bottom left bound corner.
+     * If the value is smaller it's rendered before the other one..
      *
-     * @param player New value of player.
+     * @return Value of a comparator to render the {@link Entity Entities} in a strategy. It renders
+     * {@link Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code>
+     * behind every other {@link Entity} and everything else depending on their bottom left bound
+     * corner. If the value is smaller it's rendered before the other one..
      */
-    public void setPlayer(Player player) {
-        this.player = player;
+    public Comparator<Entity> getRenderSorter() {
+        return renderSorter;
     }
 }

@@ -6,7 +6,8 @@ import messages.Message;
 import tilegame.Handler;
 
 /**
- * This interface defines that the {@link entities.creatures.Player} can interact with the {@link Entity}
+ * This interface defines that the {@link entities.creatures.Player} can interact with the {@link
+ * Entity}
  */
 public abstract class StaticInteractableEntity extends StaticEntity {
 
@@ -26,7 +27,7 @@ public abstract class StaticInteractableEntity extends StaticEntity {
      * @param y       the y-Position of the {@link Entity}
      * @param width   the width of the {@link Entity}
      * @param height  the height of the {@link Entity}
-     * @see {@Link StaticEntity}
+     * @see StaticEntity
      */
     public StaticInteractableEntity(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -35,7 +36,8 @@ public abstract class StaticInteractableEntity extends StaticEntity {
     //Methods
 
     /**
-     * defines what to do if the {@Link Player} wants to interact with this {@Link Entity}
+     * defines what to do if the {@link entities.creatures.Player} wants to interact with this
+     * {@link Entity}
      */
     public void interact() {
         if (!message.isActive()) {

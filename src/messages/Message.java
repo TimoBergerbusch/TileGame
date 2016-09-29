@@ -52,7 +52,7 @@ public class Message {
      */
     private MessageField messageField;
     /**
-     * the {@ink Font} the message should be written in.
+     * the {@link Font} the message should be written in.
      */
     private Font font = new Font("Arial", Font.ITALIC, 45);
     /**
@@ -89,7 +89,8 @@ public class Message {
     }
 
     /**
-     * creates a new {@link Message} and sets the {@ink MessageField#texture} and the {@link #font}
+     * creates a new {@link Message} and sets the {@link MessageField#texture} and the {@link
+     * #font}
      *
      * @param message           the message that should be displayed
      * @param messageBackground the {@link MessageField#texture}
@@ -109,8 +110,8 @@ public class Message {
     }
 
     /**
-     * draws the {@link Message} to the screen using {@link #messageField#render(Graphics)} and
-     * afterwords write the {@Link #lines}.
+     * draws the {@link Message} to the screen using {@link MessageField#render(Graphics)}  and
+     * afterwords write the {@link #lines}.
      *
      * @param g the {@link Graphics}-Object to draw with
      */
@@ -215,9 +216,9 @@ public class Message {
     }
 
     /**
-     * Gets the {@ink Font} the message should be written in..
+     * Gets the {@link Font} the message should be written in..
      *
-     * @return Value of the {@ink Font} the message should be written in..
+     * @return Value of the {@link Font} the message should be written in..
      */
     public Font getFont() {
         return font;
@@ -243,9 +244,9 @@ public class Message {
     }
 
     /**
-     * Sets new the {@ink Font} the message should be written in..
+     * Sets new the {@link Font} the message should be written in..
      *
-     * @param font New value of the {@ink Font} the message should be written in..
+     * @param font New value of the {@link Font} the message should be written in..
      */
     public void setFont(Font font) {
         this.font = font;
@@ -253,11 +254,9 @@ public class Message {
 
     /**
      * Sets new defines whether or not the message should be drawn or not <ul><li>true = should be
-     * drawn<li><li>false = should <em>not<em> be drawn<li><ul>.
+     * drawn</li><li>false = should <em>not</em> be drawn</li></ul>.
      *
-     * @param active New value of defines whether or not the message should be drawn or not
-     *               <ul><li>true = should be drawn<li><li>false = should <em>not<em> be
-     *               drawn<li><ul>.
+     * @param active New value of active
      */
     public void setActive(boolean active) {
         this.active = active;
@@ -286,10 +285,10 @@ public class Message {
     }
 
     /**
-     * Gets the currently Side, that is displayed. The <code>default<code>-Value is 0, so the first
+     * Gets the currently Side, that is displayed. The <code>default</code>-Value is 0, so the first
      * side is the first one to display.
      *
-     * @return Value of the currently Side, that is displayed. The <code>default<code>-Value is 0,
+     * @return Value of the currently Side, that is displayed. The <code>default</code>-Value is 0,
      * so the first side is the first one to display.
      */
     public int getCurrentSide() {
@@ -297,11 +296,11 @@ public class Message {
     }
 
     /**
-     * Sets new the message that should be displayed. Every entry in the <code>Array<code> defines
+     * Sets new the message that should be displayed. Every entry in the <code>Array</code> defines
      * it's own side to be displayed on. The sides get split into the different lines.
      *
      * @param message New value of the message that should be displayed. Every entry in the
-     *                <code>Array<code> defines it's own side to be displayed on. The sides get
+     *                <code>Array</code> defines it's own side to be displayed on. The sides get
      *                split into the different lines.
      */
     public void setMessage(String[] message) {
@@ -338,11 +337,11 @@ public class Message {
     }
 
     /**
-     * Sets new the currently Side, that is displayed. The <code>default<code>-Value is 0, so the
+     * Sets new the currently Side, that is displayed. The <code>default</code>-Value is 0, so the
      * first side is the first one to display.
      *
      * @param currentSide New value of the currently Side, that is displayed. The
-     *                    <code>default<code>-Value is 0, so the first side is the first one to
+     *                    <code>default</code>-Value is 0, so the first side is the first one to
      *                    display.
      */
     public void setCurrentSide(int currentSide) {

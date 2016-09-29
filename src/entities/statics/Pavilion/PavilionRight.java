@@ -8,8 +8,20 @@ import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
+/**
+ * defines the right side of a Pavilion
+ */
 public class PavilionRight extends StaticEntity {
 
+    //Constructors
+
+    /**
+     * creates a new {@link PavilionRight}
+     *
+     * @param handler the {@link Handler} to the {@link tilegame.Game}
+     * @param x       the x-position of the {@link entities.Entity}
+     * @param y       the y-position of the {@link entities.Entity}
+     */
     public PavilionRight(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);
         bounds.x = width - 15;
@@ -18,6 +30,7 @@ public class PavilionRight extends StaticEntity {
         bounds.height = (int) (0.75 * Tile.TILE_HEIGHT);
     }
 
+    //Implemented Methods
     @Override
     public void tick() {
 
