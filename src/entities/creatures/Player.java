@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import entities.StaticInteractableEntity;
 import entities.Entity;
 import gfx.Animation;
+import messages.Message;
 import tilegame.Handler;
 
 import gfx.Assets;
@@ -16,29 +17,95 @@ import static utils.Direction.LEFT;
 import static utils.Direction.RIGHT;
 import static utils.Direction.UP;
 
+/**
+ * defines a Player as a subclass of {@link Creature}
+ */
 public class Player extends Creature {
 
     //Animations Start
     //Walking
+    /**
+     * the walking down {@link Animation}
+     */
     private Animation animDown;
+    /**
+     * the walking up {@link Animation}
+     */
     private Animation animUp;
+    /**
+     * the walking left {@link Animation}
+     */
     private Animation animLeft;
+    /**
+     * the walking right {@link Animation}
+     */
     private Animation animRight;
     //Running
+    /**
+     * the running up {@link Animation}
+     */
     private Animation animRunningUp;
+    /**
+     * the running down {@link Animation}
+     */
     private Animation animRunningDown;
+    /**
+     * the running left {@link Animation}
+     */
     private Animation animRunningLeft;
+    /**
+     * the running right {@link Animation}
+     */
     private Animation animRunningRight;
     //Amimations End
 
     //Attack timer
-    private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
-    //Interact timer
-    private long lastInteractTimer, interactCooldown = 500, interactTimer = interactCooldown;
+    /**
+     * the time in milliseconds since the last attack
+     */
+    private long lastAttackTimer;
+    /**
+     * the time in milliseconds between to attacks
+     */
+    private long attackCooldown = 800;
+    /**
+     * the time between now and {@link #lastAttackTimer}
+     */
+    private long attackTimer = attackCooldown;
 
+    //Interact timer
+    /**
+     * the time in milliseconds since the last interaction
+     */
+    private long lastInteractTimer;
+    /**
+     * the time in milliseconds between to interactions
+     */
+    private long interactCooldown = 500;
+    /**
+     * the time between now and {@link #lastInteractTimer}
+     */
+    private long interactTimer = interactCooldown;
+
+    /**
+     * the {@link Direction} the player is facing
+     */
     private Direction direction;
+
+    /**
+     * the time in which the {@link Animation animations} switch images
+     */
     private int animationTime = 250;
 
+    //Constructors
+
+    /**
+     * creates a new {@link Player} at the given x/y-position
+     *
+     * @param handler the {@link Handler} to the {@link tilegame.Game}
+     * @param x       the x-position of the {@link entities.Entity}
+     * @param y       the y-position of the {@link entities.Entity}
+     */
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
 
@@ -62,6 +129,7 @@ public class Player extends Creature {
         //Animations End
     }
 
+    //implemented Methods
     @Override
     public void move() {
         if (!checkEntityCollision(xMove, 0)) {
@@ -75,20 +143,22 @@ public class Player extends Creature {
     @Override
     public void tick() {
 
-        //animation
-        animDown.tick();
-        animUp.tick();
-        animLeft.tick();
-        animRight.tick();
-        animRunningUp.tick();
-        animRunningDown.tick();
-        animRunningLeft.tick();
-        animRunningRight.tick();
+        if (!Message.isShown) {     // only move if no message is shown
+            //animation
+            animDown.tick();
+            animUp.tick();
+            animLeft.tick();
+            animRight.tick();
+            animRunningUp.tick();
+            animRunningDown.tick();
+            animRunningLeft.tick();
+            animRunningRight.tick();
 
-        //Movement
-        getInput();
-        move();
-        handler.getGameCamera().centerOnEntity(this);
+            //Movement
+            getInput();
+            move();
+            handler.getGameCamera().centerOnEntity(this);
+        }
 
         //Interact
         if (handler.getKeyManager().interact)
@@ -98,6 +168,10 @@ public class Player extends Creature {
             checkAttacks();
     }
 
+    /**
+     * checks if {@link Player} interacts with any {@link Entity} extending {@link
+     * StaticInteractableEntity}. It is only called if {@link input.KeyManager#interact} is set.
+     */
     private void checkInteract() {
         interactTimer += System.currentTimeMillis() - lastInteractTimer;
         lastInteractTimer = System.currentTimeMillis();
@@ -138,6 +212,10 @@ public class Player extends Creature {
         }
     }
 
+    /**
+     * checks if {@link Player} attacks any {@link Entity}. It is only called if {@link
+     * input.KeyManager#attack} is set.
+     */
     private void checkAttacks() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
         lastAttackTimer = System.currentTimeMillis();
@@ -179,6 +257,9 @@ public class Player extends Creature {
 
     }
 
+    /**
+     * updates the {@link #speed} and {@link #direction} according to the {@link input.KeyManager}
+     */
     private void getInput() {
         xMove = yMove = 0;
 
@@ -197,6 +278,7 @@ public class Player extends Creature {
             speed = DEFAULT_SPEED;
     }
 
+    @Override
     public void die() {
 
         System.out.println("You Lose");
@@ -210,6 +292,12 @@ public class Player extends Creature {
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
+    /**
+     * gets the current frame of the differnt {@link Animation animations} depending on {@link
+     * #direction} and if {@link input.KeyManager#running} is set
+     *
+     * @return the {@link BufferedImage} that fits the current situation
+     */
     private BufferedImage getCurrentAnimationFrame() {
         if (xMove < 0) {
             direction = LEFT;
@@ -244,6 +332,4 @@ public class Player extends Creature {
             }
         }
     }
-
-
 }

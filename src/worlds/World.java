@@ -14,6 +14,7 @@ import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
 import tiles.FarneTile;
+import tiles.MetalSignTile;
 import tiles.StaticTiles;
 import tiles.Tile;
 import tiles.TreeShadowLeftTile;
@@ -101,7 +102,7 @@ public class World {
 
     private void checkForEntites(int x, int y) {
         checkIfTree(x, y);
-        checkIfFarne(x, y);
+        checkIfEnviromentEntity(x, y);
     }
 
     private void checkIfTree(int x, int y) {
@@ -112,10 +113,11 @@ public class World {
         }
     }
 
-    private void checkIfFarne(int x, int y) {
+    private void checkIfEnviromentEntity(int x, int y) {
         if (getTile(x, y) instanceof FarneTile) {
             entityManager.addEntity(new Farne(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
-        }
+        } else if(getTile(x,y) instanceof MetalSignTile)
+            entityManager.addEntity(new MetalSign(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
     }
 
 

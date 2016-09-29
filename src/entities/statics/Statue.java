@@ -61,6 +61,4 @@ public class Statue extends StaticInteractableEntity {
 
         message.render(g);
     }
-
-
 }

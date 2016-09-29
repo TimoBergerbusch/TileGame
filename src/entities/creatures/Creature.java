@@ -4,20 +4,54 @@ import entities.Entity;
 import tilegame.Handler;
 import tiles.Tile;
 
+/**
+ * defines a creature as a subclass of {@link Entity}
+ */
 public abstract class Creature extends Entity {
 
+    /**
+     * the default speed a {@link Creature} moves with
+     */
     public static final float DEFAULT_SPEED = 3.0f;
+    /**
+     * the default width/height of a {@link Creature}
+     */
     public static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 96;
 
+    /**
+     * the speed the {@link Creature} moves with
+     */
     protected float speed;
+    /**
+     * the movement in the x/y-direction
+     */
     protected float xMove, yMove;
 
+    //Constructors
+
+    /**
+     * creates a new {@link Creature} at the given x/y-position with the given width and height
+     *
+     * @param handler the {@link Handler} to the {@link tilegame.Game}
+     * @param x       the x-position of the {@link Creature}
+     * @param y       the y-position of the {@link Creature}
+     * @param width   the width of the {@link Creature}
+     * @param height  the heigth of the {@link Creature}
+     */
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         speed = DEFAULT_SPEED;
         xMove = yMove = 0;
     }
 
+    //Implemented Methods
+
+    /**
+     * moving the {@link Creature} calling {@link #moveX()} and {@link #moveY()}
+     *
+     * @see #moveX()
+     * @see #moveY()
+     */
     public void move() {
         if (!checkEntityCollision(xMove, 0))
             moveX();
@@ -25,6 +59,9 @@ public abstract class Creature extends Entity {
             moveY();
     }
 
+    /**
+     * moving the {@link Creature} on the x-axis
+     */
     public void moveX() {
         if (xMove > 0) { // Move Right
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
@@ -45,6 +82,9 @@ public abstract class Creature extends Entity {
         }
     }
 
+    /**
+     * moving the {@link Creature} on the y-axis
+     */
     public void moveY() {
         if (yMove < 0) {//Move Up
 
@@ -67,6 +107,15 @@ public abstract class Creature extends Entity {
         }
     }
 
+    /**
+     * checks whether or not the {@link Tile} at the given position {@link Tile#isSolid()} equals
+     * <code>true</code>
+     *
+     * @param x the x-position
+     * @param y the y-position
+     * @return <ul><li>true = the {@link Tile} is solid </li><li> false = the {@link Tile} is
+     * <em>not</em> solid</li></ul>
+     */
     protected boolean collisionWithTile(int x, int y) {
         return handler.getWorld().getTile(x, y).isSolid();
     }
@@ -74,48 +123,39 @@ public abstract class Creature extends Entity {
     //Getters and Setters
 
     /**
-     * Gets health.
+     * Sets new yMove.
      *
-     * @return Value of health.
+     * @param yMove New value of yMove.
      */
-    public int getHealth() {
-        return health;
+    public void setYMove(float yMove) {
+        this.yMove = yMove;
     }
 
     /**
-     * Gets speed.
+     * Gets the speed the {@link Creature} moves with.
      *
-     * @return Value of speed.
+     * @return Value of the speed the {@link Creature} moves with.
      */
     public float getSpeed() {
         return speed;
     }
 
     /**
-     * Sets new speed.
+     * Gets the movement in the xy-direction.
      *
-     * @param speed New value of speed.
+     * @return Value of the movement in the xy-direction.
+     */
+    public float getXMove() {
+        return xMove;
+    }
+
+    /**
+     * Sets new the speed the {@link Creature} moves with.
+     *
+     * @param speed New value of the speed the {@link Creature} moves with.
      */
     public void setSpeed(float speed) {
         this.speed = speed;
-    }
-
-    /**
-     * Sets new health.
-     *
-     * @param health New value of health.
-     */
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    /**
-     * Sets new xMove.
-     *
-     * @param xMove New value of xMove.
-     */
-    public void setXMove(float xMove) {
-        this.xMove = xMove;
     }
 
     /**
@@ -128,20 +168,11 @@ public abstract class Creature extends Entity {
     }
 
     /**
-     * Sets new yMove.
+     * Sets new the movement in the xy-direction.
      *
-     * @param yMove New value of yMove.
+     * @param xMove New value of the movement in the xy-direction.
      */
-    public void setYMove(float yMove) {
-        this.yMove = yMove;
-    }
-
-    /**
-     * Gets xMove.
-     *
-     * @return Value of xMove.
-     */
-    public float getXMove() {
-        return xMove;
+    public void setXMove(float xMove) {
+        this.xMove = xMove;
     }
 }

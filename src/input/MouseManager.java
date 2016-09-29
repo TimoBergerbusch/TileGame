@@ -6,38 +6,42 @@ import java.awt.event.MouseMotionListener;
 
 import ui.UIManager;
 
+/**
+ * defines a manager to manage all mouse-input
+ */
 public class MouseManager implements MouseListener, MouseMotionListener {
 
-    private boolean leftPressed, rightPressed;
-    private int mouseX, mouseY;
+    /**
+     * defines if the left Mousebutton is pressed
+     */
+    private boolean leftPressed;
+    /**
+     * defines if the right Mousebutton is pressed
+     */
+    private boolean rightPressed;
+    /**
+     * defines the position of the mouse in x-axis
+     */
+    private int mouseX;
+    /**
+     * defines the position of the mouse in x-axis
+     */
+    private int mouseY;
+    /**
+     * a {@link UIManager}
+     */
     private UIManager uiManager;
 
+    //Constructors
+
+    /**
+     * creates a new {@link MouseManager}
+     */
     public MouseManager() {
     }
-    //Gettes
 
 
-    public void setUIManager(UIManager uiManager) {
-        this.uiManager = uiManager;
-    }
-
-    public boolean isLeftPressed() {
-        return leftPressed;
-    }
-
-    public boolean isRightPressed() {
-        return rightPressed;
-    }
-
-    public int getMouseX() {
-        return mouseX;
-    }
-
-    public int getMouseY() {
-        return mouseY;
-    }
-
-    //Implemented
+    //Implemented Methods
     @Override
     public void mouseClicked(MouseEvent e) {
 
@@ -86,7 +90,96 @@ public class MouseManager implements MouseListener, MouseMotionListener {
             uiManager.onMouseMove(e);
     }
 
-    public UIManager getUiManager() {
+    //Getter and Setters
+
+
+    /**
+     * Sets new defines if the right Mousebutton is pressed.
+     *
+     * @param rightPressed New value of defines if the right Mousebutton is pressed.
+     */
+    public void setRightPressed(boolean rightPressed) {
+        this.rightPressed = rightPressed;
+    }
+
+    /**
+     * Gets a {@link UIManager}.
+     *
+     * @return Value of a {@link UIManager}.
+     */
+    public UIManager getUIManager() {
         return uiManager;
+    }
+
+    /**
+     * Gets defines the position of the mouse in x-axis.
+     *
+     * @return Value of defines the position of the mouse in x-axis.
+     */
+    public int getMouseX() {
+        return mouseX;
+    }
+
+    /**
+     * Sets new a {@link UIManager}.
+     *
+     * @param uiManager New value of a {@link UIManager}.
+     */
+    public void setUIManager(UIManager uiManager) {
+        this.uiManager = uiManager;
+    }
+
+    /**
+     * Gets defines if the left Mousebutton is pressed.
+     *
+     * @return Value of defines if the left Mousebutton is pressed.
+     */
+    public boolean isLeftPressed() {
+        return leftPressed;
+    }
+
+    /**
+     * Sets new defines the position of the mouse in x-axis.
+     *
+     * @param mouseY New value of defines the position of the mouse in x-axis.
+     */
+    public void setMouseY(int mouseY) {
+        this.mouseY = mouseY;
+    }
+
+    /**
+     * Sets new defines if the left Mousebutton is pressed.
+     *
+     * @param leftPressed New value of defines if the left Mousebutton is pressed.
+     */
+    public void setLeftPressed(boolean leftPressed) {
+        this.leftPressed = leftPressed;
+    }
+
+    /**
+     * Sets new defines the position of the mouse in x-axis.
+     *
+     * @param mouseX New value of defines the position of the mouse in x-axis.
+     */
+    public void setMouseX(int mouseX) {
+        this.mouseX = mouseX;
+    }
+
+    /**
+     * Gets defines the position of the mouse in x-axis.
+     *
+     * @return Value of defines the position of the mouse in x-axis.
+     */
+    public int getMouseY() {
+        return mouseY;
+    }
+
+    /**
+     * Gets defines if the right Mousebutton is pressed.
+     *
+     * @return Value of defines if the right Mousebutton is pressed.
+     */
+    public boolean isRightPressed() {
+        return rightPressed;
     }
 }
