@@ -78,7 +78,7 @@ public class WorldEditorPanel {
         tiles = new UITileButton[width][height];
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
-                tiles[x][y] = new UITileButton(StaticTiles.getNumbersTile(Utils.parseInt(tokens[x + y * width + 4])), x * EDITOR_TILE_WIDTH,
+                tiles[x][y] = new UITileButton(handler, StaticTiles.getNumbersTile(Utils.parseInt(tokens[x + y * width + 4])), x * EDITOR_TILE_WIDTH,
                         y * EDITOR_TILE_HEIGHT, EDITOR_TILE_WIDTH, EDITOR_TILE_HEIGHT);
                 worldEditor.getUiManager().addObject(tiles[x][y]);
             }

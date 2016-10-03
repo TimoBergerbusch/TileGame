@@ -2,28 +2,31 @@ package ui;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Collections;
 
-import WorldEditor.WorldEditor;
 import WorldEditor.WorldEditorPanel;
 import tiles.StaticTiles;
 import tiles.Tile;
 
-import static tiles.StaticTiles.*;
+import tilegame.Handler;
 
 public class UITileButton extends UIObject {
 
     private Tile tile;
     private ClickListener clicker;
+    private Handler handler;
+    private Color normalColor = Color.lightGray, hoveringColor = Color.RED;
 
-    public UITileButton(Tile tile, float x, float y, int width, int height) {
+    public UITileButton(Handler handler, Tile tile, float x, float y, int width, int height) {
         super(x, y, width, height);
+        this.handler = handler;
         this.tile = tile;
         clicker = new ClickListener() {
             @Override
             public void onLeftClick() {
-                setTile(getNextTile());
+                if (handler.getKeyManager().delete)
+                    setTile(StaticTiles.grassTile);
+                else
+                    setTile(getNextTile());
             }
 
             @Override
@@ -38,6 +41,8 @@ public class UITileButton extends UIObject {
         boolean searching = true;
         while (searching) {
             currentIndex = (currentIndex - 1) % StaticTiles.tiles.length;
+            if (currentIndex < 0)
+                currentIndex += StaticTiles.tiles.length;
             if (StaticTiles.tiles[currentIndex] != null) {
                 searching = false;
             }
@@ -76,6 +81,14 @@ public class UITileButton extends UIObject {
 
     @Override
     public void render(Graphics g) {
+        if (normalColor != null) {
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setColor(normalColor);
+            if (hovering)
+                g2.setColor(hoveringColor);
+            g2.setStroke(new BasicStroke(5));
+            g2.drawRect((int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height);
+        }
         g.drawImage(tile.getTexture(), (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
     }
 

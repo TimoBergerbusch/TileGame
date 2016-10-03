@@ -90,10 +90,13 @@ public class WorldControls {
     }
 
     private void zoom(double zoomFactor) {
-        if ((int) worldEditorPanel.EDITOR_TILE_HEIGHT * zoomFactor > 10)
+        if ((int) worldEditorPanel.EDITOR_TILE_HEIGHT * zoomFactor > 10) {
             worldEditorPanel.EDITOR_TILE_HEIGHT *= zoomFactor;
-        if ((int) worldEditorPanel.EDITOR_TILE_WIDTH * zoomFactor > 10)
+            worldEditorPanel.yOffset *= zoomFactor;
+        }
+        if ((int) worldEditorPanel.EDITOR_TILE_WIDTH * zoomFactor > 10) {
             worldEditorPanel.EDITOR_TILE_WIDTH *= zoomFactor;
+            worldEditorPanel.xOffset *= zoomFactor;
+        }
     }
-
 }

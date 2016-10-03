@@ -21,8 +21,11 @@ public class UIManager {
     }
 
     public void tick() {
-        for (UIObject o : objects)
+        for (UIObject o : objects) {
+            if(o == null)
+                removeObject(o);
             o.tick();
+        }
     }
 
     public void render(Graphics g) {

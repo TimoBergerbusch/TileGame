@@ -1,13 +1,13 @@
 package gfx;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import gfx.Assets;
 import tiles.StaticTiles;
 import tiles.Tile;
 
 public class Sets {
-    public static String[] sets = {"Enviroment","Wood Fence","Fence"};
     public static BufferedImage[] enviroment = {Assets.grass, Assets.roundBush, Assets.metalSign, Assets.woodSign};
     public static Tile[] enviromentTiles = {StaticTiles.grassTile, StaticTiles.roundBushTile};
     //    public static BufferedImage[] town = {Assets.greenHouse, Assets.redHouse, Assets.metalSign, Assets.woodSign};

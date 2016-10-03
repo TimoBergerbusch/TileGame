@@ -41,7 +41,7 @@ public class Assets {
     public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
 
     //Menustate Buttons
-    public static BufferedImage[] startButton, endButton;
+    public static BufferedImage[] startButton, worldEditorButton, endButton;
 
     //WorldControls
     public static BufferedImage[] load, save, zoomIn, zoomOut;
@@ -114,9 +114,13 @@ public class Assets {
         startButton[0] = menuSheet.crop(0, 0, buttonWidth, buttonHeigth);
         startButton[1] = menuSheet.crop(0, buttonHeigth, buttonWidth, buttonHeigth);
 
+        worldEditorButton = new BufferedImage[2];
+        worldEditorButton[0] = menuSheet.crop(0, 2 * buttonHeigth, buttonWidth, buttonHeigth);
+        worldEditorButton[1] = menuSheet.crop(0, 3 * buttonHeigth, buttonWidth, buttonHeigth);
+
         endButton = new BufferedImage[2];
-        endButton[0] = menuSheet.crop(0, 2 * buttonHeigth, buttonWidth, buttonHeigth);
-        endButton[1] = menuSheet.crop(0, 3 * buttonHeigth, buttonWidth, buttonHeigth);
+        endButton[0] = menuSheet.crop(0, 4 * buttonHeigth, buttonWidth, buttonHeigth);
+        endButton[1] = menuSheet.crop(0, 5 * buttonHeigth, buttonWidth, buttonHeigth);
 
     }
 

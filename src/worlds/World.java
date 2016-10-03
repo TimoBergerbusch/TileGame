@@ -43,8 +43,10 @@ public class World {
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new Statue(handler, 39 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT, new Message(new String[]{"Hallo Frizzle aka. Da G-King", "Meinst das würde Nadine echt gefallen?", "Habe mir extra ganz viel mühe gegeben <3"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
         entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen", "Hier liegen die Stunden in denen ich hätte schlafen sollen. Mögen sie mehr Ruhe bekommen als ich. "}, Assets.metalSignBackground, new Font("Times New Roman", Font.BOLD, 45))));
         entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
+
 
         //TestEntitys
 

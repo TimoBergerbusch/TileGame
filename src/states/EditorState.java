@@ -10,7 +10,6 @@ public class EditorState extends State {
 
     private WorldEditor worldEditor;
 
-
     public EditorState(Handler handler) {
         super(handler);
         worldEditor = new WorldEditor(handler);
@@ -18,7 +17,10 @@ public class EditorState extends State {
 
     @Override
     public void tick() {
-
+        if (handler.getKeyManager().backToMenu) {
+            State.setState(handler.getGame().menuState);
+            handler.getMouseManager().setUIManager(null);
+        }
         worldEditor.tick();
     }
 

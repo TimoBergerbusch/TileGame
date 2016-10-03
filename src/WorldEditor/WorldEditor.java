@@ -2,11 +2,8 @@ package WorldEditor;
 
 import java.awt.*;
 
-import javax.swing.*;
-
-import gfx.GameCamera;
+import WorldEditor.tileChooser.TileChooser;
 import tilegame.Handler;
-import ui.*;
 import ui.UIManager;
 
 public class WorldEditor {
@@ -14,16 +11,20 @@ public class WorldEditor {
     private Handler handler;
     private WorldEditorPanel worldEditorPanel;
     private WorldControls worldControls;
+    private TileChooser tileChooser;
     public UIManager uiManager;
 
     public WorldEditor(Handler handler) {
         this.handler = handler;
         uiManager = new UIManager(handler);
-        worldEditorPanel = new WorldEditorPanel(handler, this, "res/worlds/world1.lvl");
+        worldEditorPanel = new WorldEditorPanel(handler, this, "res/worlds/world3.lvl");
         worldControls = new WorldControls(handler, this, worldEditorPanel);
+        tileChooser = new TileChooser(handler);
     }
 
     public void tick() {
+        if(handler.getKeyManager().showTileChooser && !tileChooser.getVisible())
+            tileChooser.setVisible(true);
         if (handler.getMouseManager().getUIManager() != this.uiManager)
             handler.getMouseManager().setUIManager(this.uiManager);
         uiManager.tick();

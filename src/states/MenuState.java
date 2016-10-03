@@ -32,11 +32,23 @@ public class MenuState extends State {
             }
         }));
 
-        uiManager.addObject(new UIImageButton(250, 275, 750, 52, Assets.endButton, new ClickListener() {
+        uiManager.addObject(new UIImageButton(250, 275, 750, 52, Assets.worldEditorButton, new ClickListener() {
             @Override
             public void onLeftClick() {
                 State.setState(handler.getGame().editorState);
                 handler.getMouseManager().setUIManager(null);
+            }
+
+            @Override
+            public void onRightClick() {
+
+            }
+        }));
+
+        uiManager.addObject(new UIImageButton(250, 350, 750, 52, Assets.endButton, new ClickListener() {
+            @Override
+            public void onLeftClick() {
+                System.exit(0);
             }
 
             @Override

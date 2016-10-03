@@ -59,6 +59,10 @@ public class KeyManager implements KeyListener {
 
     public boolean zoomOut;
 
+    public boolean delete;
+
+    public boolean showTileChooser;
+
     //Constructor
 
     /**
@@ -89,6 +93,10 @@ public class KeyManager implements KeyListener {
 
         zoomIn = keys[KeyEvent.VK_ADD];
         zoomOut = keys[109];
+
+        delete = keys[KeyEvent.VK_DELETE];
+
+        showTileChooser = keys[KeyEvent.VK_T] && keys[KeyEvent.VK_CONTROL];
     }
 
     @Override
