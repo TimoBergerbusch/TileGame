@@ -2,12 +2,11 @@ package ui;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class UIImageButton extends UIObject {
 
-    private BufferedImage[] images;
-    private ClickListener clicker;
+    protected BufferedImage[] images;
+    protected ClickListener clicker;
 
     public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
         super(x, y, width, height);
@@ -29,7 +28,12 @@ public class UIImageButton extends UIObject {
     }
 
     @Override
-    public void onClick() {
-        clicker.onClick();
+    public void onLeftClick() {
+        clicker.onLeftClick();
+    }
+
+    @Override
+    public void onRightClick() {
+        clicker.onRightClick();
     }
 }

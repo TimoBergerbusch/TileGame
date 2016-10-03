@@ -7,9 +7,6 @@ import gfx.Assets;
 import tilegame.Handler;
 import tiles.Tile;
 
-import static editor.WorldEditor.height;
-import static editor.WorldEditor.width;
-
 /**
  * defines a Farne as a subclass ob {@link StaticEntity}
  */

@@ -1,4 +1,4 @@
-package editor.choosePanel;
+package editorOLD.choosePanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,18 +7,18 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
-import editor.WorldEditor;
-import editor.mainPanel.EditorTile;
+import editorOLD.WorldEditorOLD;
+import editorOLD.mainPanel.EditorTileOLD;
 import gfx.Sets;
 import tiles.Tile;
 
-public class TileChoosePanel extends JPanel {
+public class TileChoosePanelOLD extends JPanel {
 
-    public static final int tileChooserWidth = 2 * WorldEditor.tileWidth, tileChooserHeight = 2 * WorldEditor.tileHeight;
+    public static final int tileChooserWidth = 2 * WorldEditorOLD.tileWidth, tileChooserHeight = 2 * WorldEditorOLD.tileHeight;
 
     private buttonListener buttonListener;
 
-    public TileChoosePanel() {
+    public TileChoosePanelOLD() {
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         buttonListener = new buttonListener();
         loadTiles("enviromentTiles");
@@ -74,9 +74,9 @@ public class TileChoosePanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            ImageIcon ico = new ImageIcon(((ImageIcon) ((JButton) (e.getSource())).getIcon()).getImage().getScaledInstance(WorldEditor.tileWidth, WorldEditor.tileHeight, Image.SCALE_SMOOTH));
-//            EditorTile.currentIcon = (ImageIcon) ((JButton) (e.getSource())).getIcon();
-            EditorTile.currentIcon = ico;
+            ImageIcon ico = new ImageIcon(((ImageIcon) ((JButton) (e.getSource())).getIcon()).getImage().getScaledInstance(WorldEditorOLD.tileWidth, WorldEditorOLD.tileHeight, Image.SCALE_SMOOTH));
+//            EditorTileOLD.currentIcon = (ImageIcon) ((JButton) (e.getSource())).getIcon();
+            EditorTileOLD.currentIcon = ico;
         }
     }
 

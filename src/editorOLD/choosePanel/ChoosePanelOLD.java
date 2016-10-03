@@ -1,20 +1,19 @@
-package editor.choosePanel;
+package editorOLD.choosePanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
-public class ChoosePanel extends JPanel {
+public class ChoosePanelOLD extends JPanel {
 
-    private TileChoosePanel tileChoosePanel;
+    private TileChoosePanelOLD tileChoosePanel;
     private JComboBox chooser;
 
-    public ChoosePanel() {
+    public ChoosePanelOLD() {
         initJComboBox();
-        tileChoosePanel = new TileChoosePanel();
+        tileChoosePanel = new TileChoosePanelOLD();
         this.setLayout(new BorderLayout());
         this.add(chooser, BorderLayout.NORTH);
         this.add(tileChoosePanel, BorderLayout.CENTER);

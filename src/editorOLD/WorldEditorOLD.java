@@ -1,28 +1,27 @@
-package editor;
+package editorOLD;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
-import editor.choosePanel.ChoosePanel;
-import editor.mainPanel.EditorPanel;
+import editorOLD.choosePanel.ChoosePanelOLD;
+import editorOLD.mainPanel.EditorPanelOLD;
 import gfx.Assets;
 
-public class WorldEditor {
+public class WorldEditorOLD {
 
     public static int width = 50, height = 20, tileWidth = 25, tileHeight = 25;
 
     private JFrame frame;
-    private ChoosePanel choosePanel;
+    private ChoosePanelOLD choosePanel;
     private JMenuBar menuBar;
     private JMenu datei;
     private JMenuItem load, save;
     private MenuListener menuListener;
 
-    public WorldEditor() {
+    public WorldEditorOLD() {
         Assets.init();
 
         frame = new JFrame("");
@@ -39,10 +38,10 @@ public class WorldEditor {
         save.addActionListener(menuListener);
         frame.add(menuBar, BorderLayout.NORTH);
 
-        choosePanel = new ChoosePanel();
+        choosePanel = new ChoosePanelOLD();
         frame.add(choosePanel, BorderLayout.EAST);
 
-        frame.add(new EditorPanel(choosePanel), BorderLayout.CENTER);
+        frame.add(new EditorPanelOLD(choosePanel), BorderLayout.CENTER);
 
         frame.pack();
         frame.setLocationRelativeTo(null);

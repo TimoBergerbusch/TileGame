@@ -2,6 +2,7 @@ package gfx;
 
 
 import java.awt.image.BufferedImage;
+import java.nio.Buffer;
 
 public class Assets {
 
@@ -21,7 +22,6 @@ public class Assets {
     //Water
     public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottumLeft, stillWaterEdgeBottum, stillWaterEdgeBottumRight;
     public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottumLeft, deepWaterEdgeBottum, deepWaterEdgeBottumRight, deepWaterOutsideEdgeTopLeft, deepWaterOutsideEdgeTopRight, deepWaterOutsideEdgeBottumLeft, deepWaterOutsideEdgeBottumRight;
-    //    public static BufferedImage[] deepWater;
 
     //Bridge
     public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlanksMid, bridgeStairsDownMid, bridgeStairsUpRight,
@@ -37,7 +37,12 @@ public class Assets {
     //Interaction Backgrounds
     public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
 
+    //Menustate Buttons
+    public static BufferedImage[] startButton, endButton;
+
     public static void init() {
+        initMenuStateButtons();
+
         SpriteSheet tileSheet = new SpriteSheet(ImageLoader.loadImage("/textures/spritesheet.png"));
 
         //Environment
@@ -74,6 +79,20 @@ public class Assets {
         initPlayer();
 
         initInteractionBackgrounds();
+    }
+
+    private static void initMenuStateButtons() {
+        SpriteSheet menuSheet = new SpriteSheet(ImageLoader.loadImage("/textures/MenustateButtons.png"));
+        int buttonWidth = 750, buttonHeigth = 52;
+
+        startButton = new BufferedImage[2];
+        startButton[0] = menuSheet.crop(0, 0, buttonWidth, buttonHeigth);
+        startButton[1] = menuSheet.crop(0, buttonHeigth, buttonWidth, buttonHeigth);
+
+        endButton = new BufferedImage[2];
+        endButton[0] = menuSheet.crop(0, 2 * buttonHeigth, buttonWidth, buttonHeigth);
+        endButton[1] = menuSheet.crop(0, 3 * buttonHeigth, buttonWidth, buttonHeigth);
+
     }
 
     private static void initInteractionBackgrounds() {
@@ -128,7 +147,6 @@ public class Assets {
         deepWaterOutsideEdgeTopRight = tileSheet.crop(7 * TileWidth, 12 * TileHeight);
         deepWaterOutsideEdgeBottumLeft = tileSheet.crop(8 * TileWidth, 11 * TileHeight);
         deepWaterOutsideEdgeBottumRight = tileSheet.crop(7 * TileWidth, 11 * TileHeight);
-
 //        deepWater = new BufferedImage[4];
 //        deepWater[0] = tileSheet.crop(2 * TileWidth, 11 * TileHeight);
 //        deepWater[1] = tileSheet.crop(3 * TileWidth, 11 * TileHeight);

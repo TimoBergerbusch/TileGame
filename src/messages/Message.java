@@ -20,7 +20,7 @@ public class Message {
      */
     private static int MESSAGE_LINE_LENGTH = 59;
 
-    public static boolean isShown=false;
+    public static boolean isShown = false;
     /**
      * the Offset of the x-Position relative to the {@link #messageField}
      */
@@ -262,7 +262,7 @@ public class Message {
      */
     public void setActive(boolean active) {
         this.active = active;
-        isShown=active;
+        isShown = active;
     }
 
     /**

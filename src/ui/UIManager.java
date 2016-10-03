@@ -33,7 +33,7 @@ public class UIManager {
 
     public void onMouseRelease(MouseEvent e) {
         for (UIObject o : objects)
-            o.onMouseRelese(e);
+            o.onMouseRelease(e);
     }
 
     public void addObject(UIObject o) {

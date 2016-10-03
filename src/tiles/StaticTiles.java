@@ -1,5 +1,8 @@
 package tiles;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import tiles.bushwalls.*;
 import tiles.fence.fence.*;
 import tiles.fence.woodFence.*;
@@ -74,4 +77,13 @@ public class StaticTiles {
     public static Tile woodFenceCornerBottumLeftTile = new WoodFenceCornerBottumLeftTile(65);
     public static Tile woodFenceCornerBottumRightTile = new WoodFenceCornerBottumRightTile(66);
 
+    public static int getTilesNumber(Tile t) {
+        ArrayList<Tile> list = new ArrayList<Tile>();
+        Collections.addAll(list, StaticTiles.tiles);
+        return list.indexOf(t);
+    }
+
+    public static Tile getNumbersTile(int i) {
+        return tiles[i];
+    }
 }

@@ -22,6 +22,8 @@ public class GameState extends State {
 
     @Override
     public void tick() {
+        if(handler.getKeyManager().backToMenu)
+            State.setState(handler.getGame().menuState);
         world.tick();
     }
 

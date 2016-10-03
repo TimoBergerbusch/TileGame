@@ -122,10 +122,10 @@ public class Player extends Creature {
         animLeft = new Animation(animationTime, Assets.player_walking_left);
         animRight = new Animation(animationTime, Assets.player_walking_right);
         //Running
-        animRunningUp = new Animation(animationTime, Assets.player_running_up);
-        animRunningDown = new Animation(animationTime, Assets.player_running_down);
-        animRunningLeft = new Animation(animationTime, Assets.player_running_left);
-        animRunningRight = new Animation(animationTime, Assets.player_running_right);
+        animRunningUp = new Animation((int) (animationTime * 0.5), Assets.player_running_up);
+        animRunningDown = new Animation((int) (animationTime * 0.5), Assets.player_running_down);
+        animRunningLeft = new Animation((int) (animationTime * 0.5), Assets.player_running_left);
+        animRunningRight = new Animation((int) (animationTime * 0.5), Assets.player_running_right);
         //Animations End
     }
 
@@ -138,6 +138,7 @@ public class Player extends Creature {
 //        if (!checkEntityCollision(0, yMove) && xMove == 0)
         if (!checkEntityCollision(0, yMove))
             moveY();
+
     }
 
     @Override

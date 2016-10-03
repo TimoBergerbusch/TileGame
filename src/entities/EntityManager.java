@@ -80,6 +80,8 @@ public class EntityManager {
 
     /**
      * calls {@link Entity#render(Graphics)} on every {@link Entity} within {@link #entities}
+     *
+     * @param g the {@link Graphics}-object to draw with
      */
     public void render(Graphics g) {
         for (Entity e : entities)
@@ -88,6 +90,8 @@ public class EntityManager {
 
     /**
      * adds an {@link Entity} to {@link #entities}
+     *
+     * @param e the {@link Entity} that should be added
      */
     public void addEntity(Entity e) {
         entities.add(e);
@@ -106,15 +110,11 @@ public class EntityManager {
 
     /**
      * Sets new a comparator to render the {@link Entity Entities} in a strategy. It renders {@link
-     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code> behind
+     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true</code> behind
      * every other {@link Entity} and everything else depending on their bottom left bound corner.
      * If the value is smaller it's rendered before the other one..
      *
-     * @param renderSorter New value of a comparator to render the {@link Entity Entities} in a
-     *                     strategy. It renders {@link Entity Entities} that have set {@link
-     *                     Entity#alwaysInBack} equal to <code> true<code> behind every other {@link
-     *                     Entity} and everything else depending on their bottom left bound corner.
-     *                     If the value is smaller it's rendered before the other one..
+     * @param renderSorter New value of {@link #renderSorter}
      */
     public void setRenderSorter(Comparator<Entity> renderSorter) {
         this.renderSorter = renderSorter;
@@ -167,14 +167,11 @@ public class EntityManager {
 
     /**
      * Gets a comparator to render the {@link Entity Entities} in a strategy. It renders {@link
-     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code> behind
+     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true</code> behind
      * every other {@link Entity} and everything else depending on their bottom left bound corner.
      * If the value is smaller it's rendered before the other one..
      *
-     * @return Value of a comparator to render the {@link Entity Entities} in a strategy. It renders
-     * {@link Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true<code>
-     * behind every other {@link Entity} and everything else depending on their bottom left bound
-     * corner. If the value is smaller it's rendered before the other one..
+     * @return Value of {@link #renderSorter}
      */
     public Comparator<Entity> getRenderSorter() {
         return renderSorter;

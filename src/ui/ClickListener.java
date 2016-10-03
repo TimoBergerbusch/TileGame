@@ -2,6 +2,8 @@ package ui;
 
 public interface ClickListener {
 
-    public void onClick();
+    public void onLeftClick();
+
+    public void onRightClick();
 
 }

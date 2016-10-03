@@ -45,6 +45,12 @@ public class KeyManager implements KeyListener {
      */
     public boolean interact;
 
+    /**
+     * a boolean to represent if the backtoMenu button is pressed. The interact button is {@link
+     * KeyEvent#VK_ESCAPE}
+     */
+    public boolean backToMenu;
+
     //Constructor
 
     /**
@@ -67,15 +73,19 @@ public class KeyManager implements KeyListener {
 
         attack = keys[KeyEvent.VK_SPACE];
         interact = keys[KeyEvent.VK_ENTER];
+
+        backToMenu = keys[KeyEvent.VK_ESCAPE];
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keys[e.getKeyCode()] = true;
+        if (e.getKeyCode() < keys.length)
+            keys[e.getKeyCode()] = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() < keys.length)
         keys[e.getKeyCode()] = false;
     }
 

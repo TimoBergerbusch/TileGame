@@ -1,24 +1,23 @@
-package editor.mainPanel;
+package editorOLD.mainPanel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
-import editor.choosePanel.ChoosePanel;
+import editorOLD.choosePanel.ChoosePanelOLD;
 import gfx.Assets;
 
-import static editor.WorldEditor.tileHeight;
-import static editor.WorldEditor.tileWidth;
-import static editor.mainPanel.EditorPanel.DEFAULT_BORDER;
+import static editorOLD.WorldEditorOLD.tileHeight;
+import static editorOLD.WorldEditorOLD.tileWidth;
+import static editorOLD.mainPanel.EditorPanelOLD.DEFAULT_BORDER;
 
-public class EditorTile extends JButton {
+public class EditorTileOLD extends JButton {
 
     public static ImageIcon currentIcon = new ImageIcon(Assets.metalSign.getScaledInstance(tileWidth, tileWidth, Image.SCALE_SMOOTH));
 
-    public EditorTile(ChoosePanel choosePanel) {
+    public EditorTileOLD(ChoosePanelOLD choosePanel) {
         super(new ImageIcon(Assets.grass.getScaledInstance(tileWidth, tileHeight, Image.SCALE_SMOOTH)));
         this.setPreferredSize(new Dimension(tileWidth, tileHeight));
         this.setMinimumSize(new Dimension(tileWidth, tileHeight));

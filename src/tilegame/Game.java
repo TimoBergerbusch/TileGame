@@ -13,6 +13,7 @@ import gfx.ImageLoader;
 import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
+import states.EditorState;
 import states.GameState;
 import states.MenuState;
 import states.State;
@@ -32,6 +33,7 @@ public class Game implements Runnable {
     //States
     public State gameState;
     public State menuState;
+    public State editorState;
 
     //Input
     private KeyManager keyManager;
@@ -65,8 +67,9 @@ public class Game implements Runnable {
         gameCamera = new GameCamera(handler, 0, 0);
 
         gameState = new GameState(handler);
+        editorState = new EditorState(handler);
         menuState = new MenuState(handler);
-        State.setState(gameState);
+        State.setState(menuState);
     }
 
     private void tick() {
@@ -173,5 +176,23 @@ public class Game implements Runnable {
 
     public int getHeight() {
         return height;
+    }
+
+    /**
+     * Gets display.
+     *
+     * @return Value of display.
+     */
+    public Display getDisplay() {
+        return display;
+    }
+
+    /**
+     * Sets new display.
+     *
+     * @param display New value of display.
+     */
+    public void setDisplay(Display display) {
+        this.display = display;
     }
 }

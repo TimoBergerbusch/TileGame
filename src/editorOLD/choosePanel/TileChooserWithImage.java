@@ -1,4 +1,4 @@
-package editor.choosePanel;
+package editorOLD.choosePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,7 +11,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 
-import editor.WorldEditor;
+import editorOLD.WorldEditorOLD;
 import gfx.Assets;
 
 public class TileChooserWithImage extends JPanel {
@@ -48,7 +48,7 @@ public class TileChooserWithImage extends JPanel {
                 break;
         }
 
-        return new ImageIcon(image.getScaledInstance(WorldEditor.width, WorldEditor.height, Image.SCALE_SMOOTH));
+        return new ImageIcon(image.getScaledInstance(WorldEditorOLD.width, WorldEditorOLD.height, Image.SCALE_SMOOTH));
     }
 
     public JComboBox getTileComboBox() {

@@ -19,6 +19,7 @@ import tiles.StaticTiles;
 import tiles.Tile;
 import tiles.TreeShadowLeftTile;
 import tiles.TreeShadowRightTile;
+import tiles.water.deepWater.DeepWaterTile;
 import utils.Utils;
 
 public class World {
@@ -27,12 +28,14 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
+    private String worldPath;
+
     //entites
     private EntityManager entityManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
+        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
 
         //TestEntitys
         entityManager.addEntity(new BridgeDown(handler, 6 * Tile.TILE_WIDTH, 12 * Tile.TILE_HEIGHT));
@@ -42,7 +45,7 @@ public class World {
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen"}, Assets.metalSignBackground)));
+        entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen", "Hier liegen die Stunden in denen ich hätte schlafen sollen. Mögen sie mehr Ruhe bekommen als ich. "}, Assets.metalSignBackground, new Font("Times New Roman", Font.BOLD, 45))));
         entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
 
         //TestEntitys
@@ -97,7 +100,7 @@ public class World {
                 tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
                 checkForEntites(x, y);
             }
-
+        worldPath = path;
     }
 
     private void checkForEntites(int x, int y) {
@@ -116,7 +119,7 @@ public class World {
     private void checkIfEnviromentEntity(int x, int y) {
         if (getTile(x, y) instanceof FarneTile) {
             entityManager.addEntity(new Farne(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
-        } else if(getTile(x,y) instanceof MetalSignTile)
+        } else if (getTile(x, y) instanceof MetalSignTile)
             entityManager.addEntity(new MetalSign(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
     }
 
@@ -161,5 +164,9 @@ public class World {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public String getWorldPath() {
+        return worldPath;
     }
 }
