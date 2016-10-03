@@ -16,6 +16,10 @@ public class UIManager {
         objects = new ArrayList<UIObject>();
     }
 
+    public boolean isEmpty(){
+        return objects.isEmpty();
+    }
+
     public void tick() {
         for (UIObject o : objects)
             o.tick();
@@ -43,4 +47,8 @@ public class UIManager {
     public void removeObject(UIObject o) {
         objects.remove(o);
     }
+//
+//    public void clear() {
+//        objects.clear();
+//    }
 }

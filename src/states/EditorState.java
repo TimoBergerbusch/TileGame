@@ -4,10 +4,12 @@ import java.awt.*;
 
 import WorldEditor.WorldEditor;
 import tilegame.Handler;
+import ui.UIManager;
 
 public class EditorState extends State {
 
     private WorldEditor worldEditor;
+
 
     public EditorState(Handler handler) {
         super(handler);
@@ -16,6 +18,7 @@ public class EditorState extends State {
 
     @Override
     public void tick() {
+
         worldEditor.tick();
     }
 

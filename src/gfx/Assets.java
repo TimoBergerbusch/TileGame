@@ -1,6 +1,7 @@
 package gfx;
 
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.nio.Buffer;
 
@@ -29,16 +30,21 @@ public class Assets {
 
     //Path
     public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight, pathTop, pathBottum, pathFull;
+
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
     public static BufferedImage[] player_walking_down, player_walking_up, player_walking_left, player_walking_right;
     public static BufferedImage[] player_running_down, player_running_up, player_running_left, player_running_right;
+    public static BufferedImage spawn;
 
     //Interaction Backgrounds
     public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
 
     //Menustate Buttons
     public static BufferedImage[] startButton, endButton;
+
+    //WorldControls
+    public static BufferedImage[] load, save, zoomIn, zoomOut;
 
     public static void init() {
         initMenuStateButtons();
@@ -79,6 +85,25 @@ public class Assets {
         initPlayer();
 
         initInteractionBackgrounds();
+
+        initWorldControls();
+    }
+
+    private static void initWorldControls() {
+        int width = 512, height = 35;
+        SpriteSheet worldControlsSheet = new SpriteSheet(ImageLoader.loadImage("/textures/WorldControls.png"));
+        load = new BufferedImage[2];
+        load[0] = worldControlsSheet.crop(0, 0, width, height);
+        load[1] = worldControlsSheet.crop(0, height, width, height);
+        save = new BufferedImage[2];
+        save[0] = worldControlsSheet.crop(0, 2 * height, width, height);
+        save[1] = worldControlsSheet.crop(0, 3 * height, width, height);
+        zoomIn = new BufferedImage[2];
+        zoomIn[0] = worldControlsSheet.crop(0, 4 * height, 35, height);
+        zoomIn[1] = worldControlsSheet.crop(35, 4 * height, 35, height);
+        zoomOut = new BufferedImage[2];
+        zoomOut[0] = worldControlsSheet.crop(2 * 35, 4 * height, 35, 35);
+        zoomOut[1] = worldControlsSheet.crop(3 * 35, 4 * height, 35, 35);
     }
 
     private static void initMenuStateButtons() {
@@ -172,6 +197,7 @@ public class Assets {
     private static void initPlayer() {
         int playerWidth = 20, playerHeight = 25;
         SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/PlayerWalking.png"));
+        spawn = PlayerSheet.crop(68, 85, 4, 4);
         initPlayerStanding(PlayerSheet, playerWidth, playerHeight);
         initPlayerWalking(PlayerSheet, playerWidth, playerHeight);
         initPlayerRunning(new SpriteSheet(ImageLoader.loadImage("/textures/PlayerRunningSprite.png")), playerWidth, playerHeight);

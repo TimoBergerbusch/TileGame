@@ -5,6 +5,6 @@ import gfx.Assets;
 public class FarneTile extends Tile {
 
     public FarneTile(int id){
-        super(Assets.grass, id);
+        super(Assets.farne, id);
     }
 }

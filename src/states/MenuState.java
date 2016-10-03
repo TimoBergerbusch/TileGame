@@ -35,9 +35,8 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(250, 275, 750, 52, Assets.endButton, new ClickListener() {
             @Override
             public void onLeftClick() {
-
                 State.setState(handler.getGame().editorState);
-//                System.exit(0);
+                handler.getMouseManager().setUIManager(null);
             }
 
             @Override
@@ -45,12 +44,15 @@ public class MenuState extends State {
 
             }
         }));
+
     }
 
     @Override
     public void tick() {
-        if (handler.getMouseManager().getUIManager() == null)
+        if (handler.getMouseManager().getUIManager() != this.uiManager)
             handler.getMouseManager().setUIManager(uiManager);
+//        if (!handler.getMouseManager().containsUIManager(uiManager))
+//            handler.getMouseManager().addUIManager(uiManager);
         uiManager.tick();
     }
 

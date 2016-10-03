@@ -3,6 +3,7 @@ package input;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.ArrayList;
 
 import ui.UIManager;
 
@@ -31,6 +32,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
      * a {@link UIManager}
      */
     private UIManager uiManager;
+//    private ArrayList<UIManager> uiManagers;
 
     //Constructors
 
@@ -38,6 +40,7 @@ public class MouseManager implements MouseListener, MouseMotionListener {
      * creates a new {@link MouseManager}
      */
     public MouseManager() {
+//        uiManagers = new ArrayList<UIManager>();
     }
 
 
@@ -64,6 +67,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
         if (uiManager != null)
             uiManager.onMouseRelease(e);
+//        if (!uiManagers.isEmpty())
+//            for (UIManager manager : uiManagers)
+//                manager.onMouseRelease(e);
     }
 
     @Override
@@ -92,7 +98,6 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 
     //Getter and Setters
 
-
     /**
      * Sets new defines if the right Mousebutton is pressed.
      *
@@ -102,14 +107,14 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         this.rightPressed = rightPressed;
     }
 
-    /**
-     * Gets a {@link UIManager}.
-     *
-     * @return Value of a {@link UIManager}.
-     */
-    public UIManager getUIManager() {
-        return uiManager;
-    }
+//    /**
+//     * Gets a {@link UIManager}.
+//     *
+//     * @return Value of a {@link UIManager}.
+//     */
+//    public UIManager getUIManager() {
+//        return uiManager;
+//    }
 
     /**
      * Gets defines the position of the mouse in x-axis.
@@ -120,14 +125,22 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         return mouseX;
     }
 
-    /**
-     * Sets new a {@link UIManager}.
-     *
-     * @param uiManager New value of a {@link UIManager}.
-     */
-    public void setUIManager(UIManager uiManager) {
-        this.uiManager = uiManager;
-    }
+//    /**
+//     * Sets new a {@link UIManager}.
+//     *
+//     * @param uiManager New value of a {@link UIManager}.
+//     */
+//    public void setUIManager(UIManager uiManager) {
+//        this.uiManager = uiManager;
+//    }
+
+//    public void addUIManager(UIManager uiManager) {
+//        uiManagers.add(uiManager);
+//    }
+//
+//    public void removeUIManager(UIManager uiManager) {
+//        uiManagers.remove(uiManager);
+//    }
 
     /**
      * Gets defines if the left Mousebutton is pressed.
@@ -182,4 +195,20 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     public boolean isRightPressed() {
         return rightPressed;
     }
+
+    public void setUIManager(UIManager UIManager) {
+        this.uiManager = UIManager;
+    }
+
+    public UIManager getUIManager() {
+        return uiManager;
+    }
+
+//    public boolean containsUIManager(UIManager uiManager) {
+//        return uiManagers.contains(uiManager);
+//    }
+//
+//    public void clearUIManager() {
+//        uiManagers.clear();
+//    }
 }

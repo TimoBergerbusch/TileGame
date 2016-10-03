@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import gfx.GameCamera;
 import tilegame.Handler;
 import ui.*;
 import ui.UIManager;
@@ -18,8 +19,8 @@ public class WorldEditor {
     public WorldEditor(Handler handler) {
         this.handler = handler;
         uiManager = new UIManager(handler);
-        worldEditorPanel = new WorldEditorPanel(handler,this, "res/worlds/world1.lvl");
-        worldControls = new WorldControls(handler,this, worldEditorPanel);
+        worldEditorPanel = new WorldEditorPanel(handler, this, "res/worlds/world1.lvl");
+        worldControls = new WorldControls(handler, this, worldEditorPanel);
     }
 
     public void tick() {

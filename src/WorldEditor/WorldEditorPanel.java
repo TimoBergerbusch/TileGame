@@ -24,6 +24,7 @@ public class WorldEditorPanel {
 
     public static int width, height, spawnX, spawnY;
     public static int EDITOR_TILE_WIDTH = 32, EDITOR_TILE_HEIGHT = 32;
+    public static int xOffset = 0, yOffset = 0;
 
     private Handler handler;
     private UITileButton[][] tiles;
@@ -38,6 +39,28 @@ public class WorldEditorPanel {
     }
 
     public void tick() {
+        double factor = 0.1;
+        if (handler.getKeyManager().left)
+            xOffset -= EDITOR_TILE_WIDTH * factor;
+        if (handler.getKeyManager().right)
+            xOffset += EDITOR_TILE_WIDTH * factor;
+        if (handler.getKeyManager().up)
+            yOffset -= EDITOR_TILE_HEIGHT * factor;
+        if (handler.getKeyManager().down)
+            yOffset += EDITOR_TILE_HEIGHT * factor;
+
+        fixOffsets();
+    }
+
+    private void fixOffsets() {
+        if (xOffset > width * EDITOR_TILE_WIDTH - EDITOR_TILE_WIDTH)
+            xOffset = width * EDITOR_TILE_WIDTH - EDITOR_TILE_WIDTH;
+        if (xOffset < 0)
+            xOffset = 0;
+        if (yOffset > (height * EDITOR_TILE_HEIGHT) - EDITOR_TILE_HEIGHT)
+            yOffset = height * EDITOR_TILE_HEIGHT - EDITOR_TILE_HEIGHT;
+        if (yOffset < 0)
+            yOffset = 0;
     }
 
     public void render(Graphics g) {
@@ -69,7 +92,7 @@ public class WorldEditorPanel {
             public void onRightClick() {
                 System.out.println("Spawn right click");
             }
-        });
+        }, true);
         worldEditor.getUiManager().addObject(spawn);
     }
 
@@ -88,6 +111,10 @@ public class WorldEditorPanel {
 
     public void loadWorld() {
         String s = Utils.loadWorld();
+        for (int y = 0; y < height; y++)
+            for (int x = 0; x < width; x++)
+                worldEditor.uiManager.removeObject(tiles[x][y]);
+        worldEditor.uiManager.removeObject(spawn);
         loadWorld(s);
     }
 }

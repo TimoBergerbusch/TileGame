@@ -51,13 +51,21 @@ public class KeyManager implements KeyListener {
      */
     public boolean backToMenu;
 
+    public boolean load;
+
+    public boolean save;
+
+    public boolean zoomIn;
+
+    public boolean zoomOut;
+
     //Constructor
 
     /**
      * creates a new {@link KeyManager}
      */
     public KeyManager() {
-        keys = new boolean[256];
+        keys = new boolean[522];
     }
 
 
@@ -65,28 +73,35 @@ public class KeyManager implements KeyListener {
      * updates the up, down, left, right, running, attack and interact booleans
      */
     public void tick() {
-        up = keys[KeyEvent.VK_W];
-        down = keys[KeyEvent.VK_S];
-        left = keys[KeyEvent.VK_A];
-        right = keys[KeyEvent.VK_D];
+        up = keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP];
+        down = keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN];
+        left = keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT];
+        right = keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT];
         running = keys[KeyEvent.VK_SHIFT];
 
         attack = keys[KeyEvent.VK_SPACE];
         interact = keys[KeyEvent.VK_ENTER];
 
         backToMenu = keys[KeyEvent.VK_ESCAPE];
+
+        load = keys[KeyEvent.VK_O] && keys[KeyEvent.VK_CONTROL];
+        save = keys[KeyEvent.VK_S] && keys[KeyEvent.VK_CONTROL];
+
+        zoomIn = keys[KeyEvent.VK_ADD];
+        zoomOut = keys[109];
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
+//        System.out.println(e.getKeyCode());
         if (e.getKeyCode() < keys.length)
             keys[e.getKeyCode()] = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() < keys.length)
-        keys[e.getKeyCode()] = false;
+        if (e.getKeyCode() < keys.length)
+            keys[e.getKeyCode()] = false;
     }
 
     @Override
