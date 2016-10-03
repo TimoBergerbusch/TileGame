@@ -2,28 +2,41 @@ package WorldEditor;
 
 import java.awt.*;
 
+import javax.swing.*;
+
 import tilegame.Handler;
-import ui.UIEditorTile;
+import ui.*;
 import ui.UIManager;
-import utils.Utils;
-import worlds.World;
 
 public class WorldEditor {
 
     private Handler handler;
     private WorldEditorPanel worldEditorPanel;
-    private World world;
+    private WorldControls worldControls;
+    public UIManager uiManager;
 
     public WorldEditor(Handler handler) {
-        worldEditorPanel = new WorldEditorPanel(handler);
+        this.handler = handler;
+        uiManager = new UIManager(handler);
+        worldEditorPanel = new WorldEditorPanel(handler,this, "res/worlds/world1.lvl");
+        worldControls = new WorldControls(handler,this, worldEditorPanel);
     }
 
     public void tick() {
+        if (handler.getMouseManager().getUIManager() != this.uiManager)
+            handler.getMouseManager().setUIManager(this.uiManager);
+        uiManager.tick();
+        worldControls.tick();
         worldEditorPanel.tick();
     }
 
     public void render(Graphics g) {
+        uiManager.render(g);
         worldEditorPanel.render(g);
+        worldControls.render(g);
     }
 
+    public UIManager getUiManager() {
+        return uiManager;
+    }
 }

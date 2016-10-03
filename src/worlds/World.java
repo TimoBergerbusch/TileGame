@@ -28,14 +28,12 @@ public class World {
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
-    private String worldPath;
-
     //entites
     private EntityManager entityManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
-        entityManager = new EntityManager(handler, new Player(handler, 0, 0));
+        entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 
         //TestEntitys
         entityManager.addEntity(new BridgeDown(handler, 6 * Tile.TILE_WIDTH, 12 * Tile.TILE_HEIGHT));
@@ -100,7 +98,7 @@ public class World {
                 tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
                 checkForEntites(x, y);
             }
-        worldPath = path;
+
     }
 
     private void checkForEntites(int x, int y) {
@@ -164,9 +162,5 @@ public class World {
 
     public EntityManager getEntityManager() {
         return entityManager;
-    }
-
-    public String getWorldPath() {
-        return worldPath;
     }
 }
