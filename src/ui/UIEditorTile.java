@@ -2,14 +2,14 @@ package ui;
 
 import java.awt.*;
 
-import gfx.Sets;
+import sets.Sets;
 
 public class UIEditorTile extends UIImageButton {
 
     private int index = 0;
 
     public UIEditorTile(float x, float y, int width, int height) {
-        super(x, y, width, height, Sets.enviroment, null);
+        super(x, y, width, height, Sets.getBufferdImages(), null);
         clicker = new ClickListener() {
             @Override
             public void onLeftClick() {

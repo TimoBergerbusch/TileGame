@@ -8,6 +8,9 @@ public class GrassTile extends Tile {
         super(Assets.grass, id);
     }
 
-
+    @Override
+    public String toString() {
+        return "Grass";
+    }
 
 }

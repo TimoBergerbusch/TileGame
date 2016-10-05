@@ -11,4 +11,9 @@ public class RoundBushTile extends Tile {
     public boolean isSolid() {
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Round Bush";
+    }
 }
