@@ -1,5 +1,6 @@
 package tilegame;
 
+import WorldEditor.tileChooser.TileChooser;
 import gfx.GameCamera;
 import input.KeyManager;
 import input.MouseManager;
@@ -78,5 +79,7 @@ public class Handler {
 //        return null;
     }
 
-
+    public TileChooser getTileChooser(){
+         return getGame().getEditorState().getWorldEditor().getTileChooser();
+    }
 }

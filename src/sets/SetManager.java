@@ -18,6 +18,17 @@ public class SetManager {
         set.add(new Set(name, tiles));
     }
 
+    public void addSetFirst(String name, Tile[] tiles) {
+        this.addSet(new Set(name, tiles));
+    }
+
+    public void addSetFirst(Set combo) {
+        ArrayList<Set> tmp = new ArrayList<Set>();
+        tmp.add(combo);
+        tmp.addAll(set);
+        set = tmp;
+    }
+
     public void addSet(Set combo) {
         set.add(combo);
     }
@@ -53,5 +64,10 @@ public class SetManager {
         for (Set sb : set)
             Collections.addAll(list, sb.getTiles());
         return list.toArray(new Tile[list.size()]);
+    }
+
+    public void setAllTiles() {
+        StaticSets.allTiles = getAllTiles();
+        this.addSetFirst("All Tiles", getAllTiles());
     }
 }

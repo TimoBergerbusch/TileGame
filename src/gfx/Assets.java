@@ -27,8 +27,8 @@ public class Assets {
     public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlanksMid, bridgeStairsDownMid, bridgeStairsUpRight,
             bridgePlanksEndRight, bridgeStairsDownRight, bridgeUpRight, bridgeHandrailRight, bridgePostRight, bridgeDownRight;
 
-    //Path
-    public static BufferedImage lightStonePathEndTopLeft, lightStonePathEndTopRight, lightStonePathLeft, lightStonePathRight, lightStonePathEndBottomLeft, lightStonePathEndBottomRight, lightStonePathTop, lightStonePathBottom, lightStonePathFull;
+    //SimplePath
+    public static BufferedImage[] brownStonePath, lightGreyStonePath, darkGreyStonePath;
 
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
@@ -77,7 +77,7 @@ public class Assets {
 
         initWater(tileSheet);
 
-        initPath(tileSheet);
+        initSimplePath();
 
         initBridge(tileSheet);
 
@@ -143,17 +143,33 @@ public class Assets {
         redHouse = tileSheet.crop(11 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
     }
 
-    private static void initPath(SpriteSheet tileSheet) {
+    /**
+     * Returns a simple Path with the following pattern: <ul> <li> 0 = Full Tile</li> <li> 1 = Top
+     * Edge</li> <li> 2 = Bottom Edge</li> <li> 3 = Left Edge</li> <li> 4 = Right Edge</li> <li> 5 =
+     * Top Left Edge</li> <li> 6 = Top Right Edge</li> <li> 7 = Bottom Left Edge</li> <li> 8 =
+     * Bottom Right Edge</li> </ul>
+     */
+    private static BufferedImage[] initSimplePath(SpriteSheet tileSheet, int x, int y) {
+        BufferedImage[] simplePath = new BufferedImage[9];
+        int xOffset = 4 * x * TileWidth, yOffset = 2 * y * TileHeight;
+        simplePath[0] = tileSheet.crop(x * TileWidth, y * TileHeight);
+        simplePath[1] = tileSheet.crop(xOffset + 2 * TileWidth, yOffset);
+        simplePath[2] = tileSheet.crop(xOffset + 3 * TileWidth, yOffset);
+        simplePath[3] = tileSheet.crop(xOffset, yOffset);
+        simplePath[4] = tileSheet.crop(xOffset + TileWidth, yOffset);
+        simplePath[5] = tileSheet.crop(xOffset + 2 * TileWidth, yOffset + TileHeight);
+        simplePath[6] = tileSheet.crop(xOffset + 3 * TileWidth, yOffset + TileHeight);
+        simplePath[7] = tileSheet.crop(xOffset, yOffset + TileHeight);
+        simplePath[8] = tileSheet.crop(xOffset + TileWidth, yOffset + TileHeight);
+        return simplePath;
+    }
+
+    private static void initSimplePath() {
+        SpriteSheet simplePathSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Pathes/SimplePathes.png"));
         //Path
-        lightStonePathEndTopLeft = tileSheet.crop(3 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        lightStonePathEndTopRight = tileSheet.crop(4 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        lightStonePathLeft = tileSheet.crop(3 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        lightStonePathRight = tileSheet.crop(4 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        lightStonePathEndBottomLeft = tileSheet.crop(3 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
-        lightStonePathEndBottomRight = tileSheet.crop(4 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
-        lightStonePathTop = tileSheet.crop(5 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        lightStonePathBottom = tileSheet.crop(5 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        lightStonePathFull = tileSheet.crop(5 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
+        brownStonePath = initSimplePath(simplePathSheet, 1, 0);
+        lightGreyStonePath = initSimplePath(simplePathSheet, 0, 1);
+        darkGreyStonePath = initSimplePath(simplePathSheet, 1, 1);
     }
 
     private static void initWater(SpriteSheet tileSheet) {

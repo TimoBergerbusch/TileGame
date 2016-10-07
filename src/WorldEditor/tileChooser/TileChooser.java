@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import WorldEditor.WorldEditorPanel;
 import sets.StaticSets;
 import tilegame.Handler;
 
@@ -13,6 +14,7 @@ public class TileChooser {
 
     private JFrame frame;
     private JComboBox tileSetChooser;
+    private JLabel currentTileInformation;
     private TileGrid tileGrid;
     private Handler handler;
 
@@ -36,8 +38,12 @@ public class TileChooser {
 
         this.tileGrid = new TileGrid(handler);
         this.tileGrid.loadGrid(StaticSets.allTiles);
-        frame.add(new JScrollPane(tileGrid), BorderLayout.CENTER);
+        JScrollPane sp = new JScrollPane(tileGrid);
+        sp.getVerticalScrollBar().setUnitIncrement(15);
+        frame.add(sp, BorderLayout.CENTER);
 
+        currentTileInformation = new JLabel("none");
+        this.frame.add(currentTileInformation, BorderLayout.SOUTH);
 //        frame.setVisible(true);
     }
 
@@ -49,14 +55,18 @@ public class TileChooser {
         frame.setVisible(b);
     }
 
+    public void setCurrentTileInformation() {
+        currentTileInformation.setText(WorldEditorPanel.currentTile.toString());
+    }
+
     public class tileSetChosserActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             JComboBox box = (JComboBox) e.getSource();
 
-//            System.out.println(box.getSelectedItem());
-
             tileGrid.loadGrid(StaticSets.setManager.getSetCombination(((JComboBox) e.getSource()).getSelectedItem().toString()).getTiles());
         }
     }
+
+
 }

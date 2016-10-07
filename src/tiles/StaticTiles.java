@@ -42,6 +42,33 @@ import tiles.fence.woodFence.WoodFenceCornerTopRightTile;
 import tiles.fence.woodFence.WoodFenceLeftTile;
 import tiles.fence.woodFence.WoodFenceRightTile;
 import tiles.fence.woodFence.WoodFenceTopTile;
+import tiles.pathes.brownStonePath.BrownStonePathBottomTile;
+import tiles.pathes.brownStonePath.BrownStonePathEndBottomLeftTile;
+import tiles.pathes.brownStonePath.BrownStonePathEndBottomRightTile;
+import tiles.pathes.brownStonePath.BrownStonePathEndTopLeftTile;
+import tiles.pathes.brownStonePath.BrownStonePathEndTopRightTile;
+import tiles.pathes.brownStonePath.BrownStonePathFullTile;
+import tiles.pathes.brownStonePath.BrownStonePathLeftTile;
+import tiles.pathes.brownStonePath.BrownStonePathRightTile;
+import tiles.pathes.brownStonePath.BrownStonePathTopTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathBottomTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathEndBottomLeftTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathEndBottomRightTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathEndTopLeftTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathEndTopRightTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathFullTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathLeftTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathRightTile;
+import tiles.pathes.darkGreyStonePath.DarkGreyStonePathTopTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathBottomTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomLeftTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomRightTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopLeftTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopRightTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathFullTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathLeftTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathRightTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathTopTile;
 import tiles.water.deepWater.DeepWaterEdgeBottomLeftTile;
 import tiles.water.deepWater.DeepWaterEdgeBottomRightTile;
 import tiles.water.deepWater.DeepWaterEdgeBottomTile;
@@ -134,7 +161,7 @@ public class StaticTiles {
     public static Tile woodFenceCornerBottomRightTile = new WoodFenceCornerBottomRightTile(66);
 
     //BeachTiles
-    public static Tile beachTile = new BeachTile(70, "Beach Tile");
+    public static Tile beachTile = new BeachTile(70, "Beach");
     public static Tile beachEdgeTopTile = new BeachEdgeTopTile(71, "Beach Top Edge");
     public static Tile beachEdgeBottomTile = new BeachEdgeBottomTile(72, "Beach Bottom Edge");
     public static Tile beachEdgeLeftTile = new BeachEdgeLeftTile(73, "Beach Left Edge");
@@ -147,6 +174,40 @@ public class StaticTiles {
     public static Tile beachOutsideEdgeTopRightTile = new BeachOutsideEdgeTopRightTile(80, "Beach Top Right Outside Edge");
     public static Tile beachOutsideEdgeBottomLeftTile = new BeachOutsideEdgeBottomLeftTile(81, "Beach Bottom Left Outside Edge");
     public static Tile beachOutsideEdgeBottomRightTile = new BeachOutsideEdgeBottomRightTile(82, "Beach Bottom Right Outside Edge");
+
+    //brownStonePath
+    public static Tile brownStonePathTile = new BrownStonePathFullTile(200, "Full Brown Stonepath");
+    public static Tile brownStonePathTopTile = new BrownStonePathTopTile(201, "Brown Stonepath Top");
+    public static Tile brownStonePathBottomTile = new BrownStonePathBottomTile(202, "Brown Stonepath Bottom");
+    public static Tile brownStonePathLeftTile = new BrownStonePathLeftTile(203, "Brown Stonepath Left");
+    public static Tile brownStonePathRightTile = new BrownStonePathRightTile(204, "Brown Stonepath Right");
+    public static Tile brownStonePathTopLeftTile = new BrownStonePathEndTopLeftTile(205, "Brown Stonepath End Top Left");
+    public static Tile brownStonePathTopRightTile = new BrownStonePathEndTopRightTile(206, "Brown Stonepath End Top Right");
+    public static Tile brownStonePathBottomLeftTile = new BrownStonePathEndBottomLeftTile(207, "Brown Stonepath End Bottom Left");
+    public static Tile brownStonePathBottomRightTile = new BrownStonePathEndBottomRightTile(208, "Brown Stonepath End Bottom Right");
+
+    //lightGreyStonePath
+    public static Tile lightGreyStonePathTile = new LightGreyStonePathFullTile(200, "Full Light Grey Stonepath");
+    public static Tile lightGreyStonePathTopTile = new LightGreyStonePathTopTile(201, "Light Grey Stonepath Top");
+    public static Tile lightGreyStonePathBottomTile = new LightGreyStonePathBottomTile(202, "Light Grey Stonepath Bottom");
+    public static Tile lightGreyStonePathLeftTile = new LightGreyStonePathLeftTile(203, "Light Grey Stonepath Left");
+    public static Tile lightGreyStonePathRightTile = new LightGreyStonePathRightTile(204, "Light Grey Stonepath Right");
+    public static Tile lightGreyStonePathTopLeftTile = new LightGreyStonePathEndTopLeftTile(205, "Light Grey Stonepath End Top Left");
+    public static Tile lightGreyStonePathTopRightTile = new LightGreyStonePathEndTopRightTile(206, "Light Grey Stonepath End Top Right");
+    public static Tile lightGreyStonePathBottomLeftTile = new LightGreyStonePathEndBottomLeftTile(207, "Light Grey Stonepath End Bottom Left");
+    public static Tile lightGreyStonePathBottomRightTile = new LightGreyStonePathEndBottomRightTile(208, "Light Grey Stonepath End Bottom Right");
+
+    //darkGreyStonePath
+    public static Tile darkGreyStonePathTile = new DarkGreyStonePathFullTile(200, "Full Dark Grey Stonepath");
+    public static Tile darkGreyStonePathTopTile = new DarkGreyStonePathTopTile(201, "Dark Grey Stonepath Top");
+    public static Tile darkGreyStonePathBottomTile = new DarkGreyStonePathBottomTile(202, "Dark Grey Stonepath Bottom");
+    public static Tile darkGreyStonePathLeftTile = new DarkGreyStonePathLeftTile(203, "Dark Grey Stonepath Left");
+    public static Tile darkGreyStonePathRightTile = new DarkGreyStonePathRightTile(204, "Dark Grey Stonepath Right");
+    public static Tile darkGreyStonePathTopLeftTile = new DarkGreyStonePathEndTopLeftTile(205, "Dark Grey Stonepath End Top Left");
+    public static Tile darkGreyStonePathTopRightTile = new DarkGreyStonePathEndTopRightTile(206, "Dark Grey Stonepath End Top Right");
+    public static Tile darkGreyStonePathBottomLeftTile = new DarkGreyStonePathEndBottomLeftTile(207, "Dark Grey Stonepath End Bottom Left");
+    public static Tile darkGreyStonePathBottomRightTile = new DarkGreyStonePathEndBottomRightTile(208, "Dark Grey Stonepath End Bottom Right");
+
 
     public static int getTilesNumber(Tile t) {
         ArrayList<Tile> list = new ArrayList<Tile>();

@@ -42,15 +42,11 @@ public class TileGrid extends JPanel {
 
         for (Tile t : tiles) {
             JButton b;
-//            System.out.println(t.toString());
-//            this.add(b = new JButton(new ImageIcon(t.getTexture().getScaledInstance(50, 50, Image.SCALE_SMOOTH))), gbc);
             this.add(b = new JButton(t.getTextureIcon()), gbc);
             b.addActionListener(gridButtonListener);
             b.setToolTipText(t.toString());
             b.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//            b.setMinimumSize(new Dimension(this.getWidth(), 50));
             b.setPreferredSize(new Dimension(50, 50));
-//            b.setMaximumSize(new Dimension(this.getWidth(), 50));
 
             gbc.gridx++;
             if (gbc.gridx == gridWidth) {
@@ -66,20 +62,12 @@ public class TileGrid extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-//            System.out.println(((JButton) e.getSource()).getText());
-//            System.out.println(WorldEditorPanel.currentTile.toString());
-            WorldEditorPanel.currentTile = StaticSets.setManager.getTileByName(((JButton) e.getSource()).getToolTipText());
             WorldEditorPanel.currentTile = StaticSets.setManager.getTileByName(((JButton) e.getSource()).getToolTipText());
 
             if (currentTile != null)
-//            {
-//                System.out.println(((CompoundBorder) currentTile.getBorder()).getInsideBorder());
-//                System.out.println(((CompoundBorder) currentTile.getBorder()).getOutsideBorder());
-//            }
                 currentTile.setBorder(defaultBorder);
             (currentTile = (JButton) e.getSource()).setBorder(currentTileBorder);
-//            currentTile = (JButton) e.getSource();
-//            System.out.println(currentTile.getToolTipText());
+            handler.getTileChooser().setCurrentTileInformation();
         }
     }
 }

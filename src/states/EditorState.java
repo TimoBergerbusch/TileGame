@@ -27,4 +27,8 @@ public class EditorState extends State {
     public void render(Graphics g) {
         worldEditor.render(g);
     }
+
+    public WorldEditor getWorldEditor() {
+        return worldEditor;
+    }
 }

@@ -26,7 +26,6 @@ public class UITileButton extends UIObject {
                     setTile(StaticTiles.grassTile);
                 else
                     setTile(WorldEditorPanel.currentTile);
-//                    setTile(getNextTile());
             }
 
             @Override

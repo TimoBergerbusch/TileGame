@@ -186,4 +186,8 @@ public class Game implements Runnable {
     public void setDisplay(Display display) {
         this.display = display;
     }
+
+    public EditorState getEditorState() {
+        return (EditorState) editorState;
+    }
 }

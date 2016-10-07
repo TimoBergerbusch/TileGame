@@ -42,4 +42,8 @@ public class WorldEditor {
     public UIManager getUiManager() {
         return uiManager;
     }
+
+    public TileChooser getTileChooser() {
+        return tileChooser;
+    }
 }
