@@ -73,7 +73,7 @@ import tiles.pathes.lightGreyStonePath.LightGreyStonePathBottomTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomLeftTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomRightTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopLeftTile;
-import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopRightTileTEST;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopRightTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathFullTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathLeftTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathRightTile;
@@ -202,7 +202,7 @@ public class StaticTiles {
     public static Tile lightGreyStonePathLeftTile = new LightGreyStonePathLeftTile(203, "Light Grey Stonepath Left");
     public static Tile lightGreyStonePathRightTile = new LightGreyStonePathRightTile(204, "Light Grey Stonepath Right");
     public static Tile lightGreyStonePathTopLeftTile = new LightGreyStonePathEndTopLeftTile(205, "Light Grey Stonepath End Top Left");
-    public static Tile lightGreyStonePathTopRightTile = new LightGreyStonePathEndTopRightTileTEST(206, "Light Grey Stonepath End Top Right");
+    public static Tile lightGreyStonePathTopRightTile = new LightGreyStonePathEndTopRightTile(206, "Light Grey Stonepath End Top Right");
     public static Tile lightGreyStonePathBottomLeftTile = new LightGreyStonePathEndBottomLeftTile(207, "Light Grey Stonepath End Bottom Left");
     public static Tile lightGreyStonePathBottomRightTile = new LightGreyStonePathEndBottomRightTile(208, "Light Grey Stonepath End Bottom Right");
 
