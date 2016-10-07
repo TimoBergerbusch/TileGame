@@ -8,4 +8,8 @@ public class DeepWaterTile extends WaterTile {
     public DeepWaterTile(int id) {
         super(Assets.deepWater, id);
     }
+
+    public DeepWaterTile(int id, String name) {
+        super(Assets.deepWater ,id,name);
+    }
 }

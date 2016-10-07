@@ -4,21 +4,32 @@ package tiles;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import states.State;
+import javax.swing.*;
 
 public abstract class Tile {
 
     //Class
     public static final int TILE_WIDTH = 64, TILE_HEIGHT = 64;
-
-    protected BufferedImage texture;
     protected final int id;
+    protected BufferedImage texture;
+    protected ImageIcon textureIcon;
+    protected String name;
 
     public Tile(BufferedImage texture, int id) {
         this.texture = texture;
         this.id = id;
 
+        name = "Untitled(" + id + ")";
+
+        textureIcon = new ImageIcon(texture.getScaledInstance(50,50,Image.SCALE_SMOOTH));
+
         StaticTiles.tiles[id] = this;
+    }
+
+    public Tile(BufferedImage texture, int id, String name) {
+        this(texture, id);
+
+        this.name = name;
     }
 
     public void tick() {
@@ -33,11 +44,20 @@ public abstract class Tile {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public int getId() {
         return id;
     }
 
-    public BufferedImage getTexture(){
+    public BufferedImage getTexture() {
         return texture;
+    }
+
+    public ImageIcon getTextureIcon() {
+        return textureIcon;
     }
 }

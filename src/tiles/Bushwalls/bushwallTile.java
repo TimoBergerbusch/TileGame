@@ -11,7 +11,11 @@ public abstract class BushwallTile extends Tile {
         super(texture, id);
     }
 
-    public boolean isSolid(){
+    public BushwallTile(BufferedImage texture, int id, String name) {
+        super(texture, id, name);
+    }
+
+    public boolean isSolid() {
         return true;
     }
 }

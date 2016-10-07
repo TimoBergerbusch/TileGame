@@ -2,26 +2,19 @@ package WorldEditor;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import gfx.Assets;
+import tilegame.Handler;
 import tiles.StaticTiles;
 import tiles.Tile;
 import ui.ClickListener;
-import ui.UIEditorTile;
-import tilegame.Handler;
 import ui.UIImageButton;
-import ui.UIManager;
 import ui.UITileButton;
 import utils.Utils;
 
 public class WorldEditorPanel {
 
+    public static Tile currentTile = StaticTiles.grassTile;
     public static int width, height, spawnX, spawnY;
     public static int EDITOR_TILE_WIDTH = 32, EDITOR_TILE_HEIGHT = 32;
     public static int xOffset = 0, yOffset = 0;
@@ -112,9 +105,14 @@ public class WorldEditorPanel {
     public void loadWorld() {
         String s = Utils.loadWorld();
         for (int y = 0; y < height; y++)
-            for (int x = 0; x < width; x++)
+            for (int x = 0; x < width; x++) {
                 worldEditor.uiManager.removeObject(tiles[x][y]);
+//                tiles[x][y] = null;
+            }
         worldEditor.uiManager.removeObject(spawn);
+        handler.getGame().getDisplay().getFrame().revalidate();
+        handler.getGame().getDisplay().getFrame().repaint();
+
         loadWorld(s);
     }
 }

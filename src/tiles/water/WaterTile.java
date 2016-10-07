@@ -9,6 +9,10 @@ public abstract class WaterTile extends Tile {
         super(texture, id);
     }
 
+    public WaterTile(BufferedImage texture, int id, String name) {
+        super(texture, id, name);
+    }
+
     public boolean isSolid() {
         return true;
     }

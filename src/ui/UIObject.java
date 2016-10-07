@@ -51,25 +51,7 @@ public abstract class UIObject {
     }
 
     /**
-     * Sets new height.
-     *
-     * @param height New value of height.
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * Sets new x.
-     *
-     * @param x New value of x.
-     */
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    /**
-     * Sets new width.
+     * StaticSets new width.
      *
      * @param width New value of width.
      */
@@ -87,12 +69,30 @@ public abstract class UIObject {
     }
 
     /**
+     * StaticSets new y.
+     *
+     * @param y New value of y.
+     */
+    public void setY(float y) {
+        this.y = y;
+    }
+
+    /**
      * Gets height.
      *
      * @return Value of height.
      */
     public int getHeight() {
         return height;
+    }
+
+    /**
+     * StaticSets new height.
+     *
+     * @param height New value of height.
+     */
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     /**
@@ -105,11 +105,11 @@ public abstract class UIObject {
     }
 
     /**
-     * Sets new y.
+     * StaticSets new x.
      *
-     * @param y New value of y.
+     * @param x New value of x.
      */
-    public void setY(float y) {
-        this.y = y;
+    public void setX(float x) {
+        this.x = x;
     }
 }

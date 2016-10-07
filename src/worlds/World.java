@@ -5,11 +5,16 @@ import java.awt.*;
 import entities.EntityManager;
 import entities.Farne;
 import entities.creatures.Player;
-import entities.statics.Bridge.*;
+import entities.statics.Bridge.BridgeDown;
+import entities.statics.Bridge.BridgeHandrail;
+import entities.statics.Bridge.BridgePost;
+import entities.statics.Bridge.BridgeUp;
 import entities.statics.MetalSign;
+import entities.statics.Pavilion.Pavilion;
 import entities.statics.Statue;
 import entities.statics.Tree;
 import entities.statics.WoodSign;
+import entities.statics.houses.GreenHouse;
 import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
@@ -19,7 +24,6 @@ import tiles.StaticTiles;
 import tiles.Tile;
 import tiles.TreeShadowLeftTile;
 import tiles.TreeShadowRightTile;
-import tiles.water.deepWater.DeepWaterTile;
 import utils.Utils;
 
 public class World {
@@ -43,11 +47,11 @@ public class World {
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
 
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new Statue(handler, 39 * Tile.TILE_WIDTH, 5 * Tile.TILE_HEIGHT, new Message(new String[]{"Hallo Frizzle aka. Da G-King", "Meinst das würde Nadine echt gefallen?", "Habe mir extra ganz viel mühe gegeben <3"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
         entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen", "Hier liegen die Stunden in denen ich hätte schlafen sollen. Mögen sie mehr Ruhe bekommen als ich. "}, Assets.metalSignBackground, new Font("Times New Roman", Font.BOLD, 45))));
         entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
 
-
+        entityManager.addEntity(new Pavilion(handler, 39 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new GreenHouse(handler, 30 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
         //TestEntitys
 
         loadWorld(path);
@@ -123,17 +127,7 @@ public class World {
             entityManager.addEntity(new MetalSign(handler, x * Tile.TILE_WIDTH, y * Tile.TILE_HEIGHT));
     }
 
-
     //Getters and Setters
-
-    /**
-     * Sets new width.
-     *
-     * @param width New value of width.
-     */
-    public void setWidth(int width) {
-        this.width = width;
-    }
 
     /**
      * Gets width.
@@ -142,6 +136,15 @@ public class World {
      */
     public int getWidth() {
         return width;
+    }
+
+    /**
+     * StaticSets new width.
+     *
+     * @param width New value of width.
+     */
+    public void setWidth(int width) {
+        this.width = width;
     }
 
     /**
@@ -154,7 +157,7 @@ public class World {
     }
 
     /**
-     * Sets new height.
+     * StaticSets new height.
      *
      * @param height New value of height.
      */

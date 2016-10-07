@@ -26,7 +26,7 @@ public class BridgeHandrailLeft extends StaticEntity {
     }
 
     //Implemented Methods
-    
+
     @Override
     public void tick() {
 

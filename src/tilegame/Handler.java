@@ -14,23 +14,23 @@ public class Handler {
         this.game = game;
     }
 
-    public int getWidth(){
+    public int getWidth() {
         return game.getWidth();
     }
 
-    public int getHeight(){
+    public int getHeight() {
         return game.getHeight();
     }
 
-    public KeyManager getKeyManager(){
+    public KeyManager getKeyManager() {
         return game.getKeyManager();
     }
 
-    public MouseManager getMouseManager(){
+    public MouseManager getMouseManager() {
         return game.getMouseManager();
     }
 
-    public GameCamera getGameCamera(){
+    public GameCamera getGameCamera() {
         return game.getGameCamera();
     }
 
@@ -44,6 +44,15 @@ public class Handler {
     }
 
     /**
+     * StaticSets new handler.
+     *
+     * @param game New value of handler.
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    /**
      * Gets world.
      *
      * @return Value of world.
@@ -53,21 +62,12 @@ public class Handler {
     }
 
     /**
-     * Sets new world.
+     * StaticSets new world.
      *
      * @param world New value of world.
      */
     public void setWorld(World world) {
         this.world = world;
-    }
-
-    /**
-     * Sets new handler.
-     *
-     * @param game New value of handler.
-     */
-    public void setGame(Game game) {
-        this.game = game;
     }
 
 

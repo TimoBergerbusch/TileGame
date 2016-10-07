@@ -1,10 +1,8 @@
 package states;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 import gfx.Assets;
-import tilegame.Game;
 import tilegame.Handler;
 import ui.ClickListener;
 import ui.UIImageButton;

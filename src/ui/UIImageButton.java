@@ -3,8 +3,6 @@ package ui;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import javax.rmi.CORBA.Util;
-
 import WorldEditor.WorldEditorPanel;
 import utils.Utils;
 
@@ -14,13 +12,13 @@ public class UIImageButton extends UIObject {
     protected ClickListener clicker;
     protected boolean noticeOffset = false;
 
-    public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
+    public UIImageButton(int x, int y, int width, int height, BufferedImage[] images, ClickListener clicker) {
         super(x, y, width, height);
         this.images = images;
         this.clicker = clicker;
     }
 
-    public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker, boolean noticeOffset) {
+    public UIImageButton(int x, int y, int width, int height, BufferedImage[] images, ClickListener clicker, boolean noticeOffset) {
         this(x, y, width, height, images, clicker);
         this.noticeOffset = noticeOffset;
 

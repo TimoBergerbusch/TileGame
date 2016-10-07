@@ -4,7 +4,6 @@ import java.awt.*;
 
 import WorldEditor.WorldEditor;
 import tilegame.Handler;
-import ui.UIManager;
 
 public class EditorState extends State {
 

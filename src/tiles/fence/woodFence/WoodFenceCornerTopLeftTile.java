@@ -5,7 +5,7 @@ import tiles.fence.FenceTile;
 
 public class WoodFenceCornerTopLeftTile extends FenceTile {
 
-    public WoodFenceCornerTopLeftTile(int id){
-        super(Assets.woodFenceCornerTopLeft,id);
+    public WoodFenceCornerTopLeftTile(int id) {
+        super(Assets.woodFenceCornerTopLeft, id);
     }
 }

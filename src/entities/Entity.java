@@ -32,15 +32,15 @@ public abstract class Entity {
      */
     protected int health;
     /**
-     * defines whether or not the {@link Entity} should be remove from the game or not. <ul><li>true
-     * = should<em>not</em> removed</li><li>false = should be removed</li></ul>
-     */
-    private boolean active = true;
-    /**
      * defines the bounds to detect collision of this {@link Entity} with a {@link
      * entities.creatures.Player}
      */
     protected Rectangle bounds;
+    /**
+     * defines whether or not the {@link Entity} should be remove from the game or not. <ul><li>true
+     * = should<em>not</em> removed</li><li>false = should be removed</li></ul>
+     */
+    private boolean active = true;
 
     //Constructors
 
@@ -162,12 +162,32 @@ public abstract class Entity {
     }
 
     /**
+     * StaticSets new defines the bounds to detect collision of this {@link Entity} with a {@link
+     * entities.creatures.Player}.
+     *
+     * @param bounds New value of defines the bounds to detect collision of this {@link Entity} with
+     *               a {@link entities.creatures.Player}.
+     */
+    public void setBounds(Rectangle bounds) {
+        this.bounds = bounds;
+    }
+
+    /**
      * Gets the health an {@link Entity} has.
      *
      * @return Value of the health an {@link Entity} has.
      */
     public int getHealth() {
         return health;
+    }
+
+    /**
+     * StaticSets new the health an {@link Entity} has.
+     *
+     * @param health New value of the health an {@link Entity} has.
+     */
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     /**
@@ -181,41 +201,13 @@ public abstract class Entity {
     }
 
     /**
-     * Sets new height.
+     * StaticSets new defines whether or not the {@link Entity} should be remove from the game or
+     * not. <ul><li>true = should<em>not</em> removed</li><li>false = should be removed</li></ul>.
      *
-     * @param height New value of height.
+     * @param active New value of {@link #active}
      */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * Sets new y.
-     *
-     * @param y New value of y.
-     */
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    /**
-     * Sets new the x/y-position of the {@link Entity}.
-     *
-     * @param x New value of the x/y-position of the {@link Entity}.
-     */
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    /**
-     * Sets new defines the bounds to detect collision of this {@link Entity} with a {@link
-     * entities.creatures.Player}.
-     *
-     * @param bounds New value of defines the bounds to detect collision of this {@link Entity} with
-     *               a {@link entities.creatures.Player}.
-     */
-    public void setBounds(Rectangle bounds) {
-        this.bounds = bounds;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     /**
@@ -228,6 +220,15 @@ public abstract class Entity {
     }
 
     /**
+     * StaticSets new height.
+     *
+     * @param height New value of height.
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
      * Gets y.
      *
      * @return Value of y.
@@ -237,31 +238,12 @@ public abstract class Entity {
     }
 
     /**
-     * Sets new the health an {@link Entity} has.
+     * StaticSets new y.
      *
-     * @param health New value of the health an {@link Entity} has.
+     * @param y New value of y.
      */
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    /**
-     * Sets new the {@link Handler} to the {@link tilegame.Game}.
-     *
-     * @param handler New value of the {@link Handler} to the {@link tilegame.Game}.
-     */
-    public void setHandler(Handler handler) {
-        this.handler = handler;
-    }
-
-    /**
-     * Sets new defines whether or not the {@link Entity} should be remove from the game or not.
-     * <ul><li>true = should<em>not</em> removed</li><li>false = should be removed</li></ul>.
-     *
-     * @param active New value of {@link #active}
-     */
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setY(float y) {
+        this.y = y;
     }
 
     /**
@@ -274,12 +256,30 @@ public abstract class Entity {
     }
 
     /**
+     * StaticSets new the width/height of the {@link Entity}.
+     *
+     * @param width New value of the width/height of the {@link Entity}.
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    /**
      * Gets the {@link Handler} to the {@link tilegame.Game}.
      *
      * @return Value of the {@link Handler} to the {@link tilegame.Game}.
      */
     public Handler getHandler() {
         return handler;
+    }
+
+    /**
+     * StaticSets new the {@link Handler} to the {@link tilegame.Game}.
+     *
+     * @param handler New value of the {@link Handler} to the {@link tilegame.Game}.
+     */
+    public void setHandler(Handler handler) {
+        this.handler = handler;
     }
 
     /**
@@ -292,11 +292,11 @@ public abstract class Entity {
     }
 
     /**
-     * Sets new the width/height of the {@link Entity}.
+     * StaticSets new the x/y-position of the {@link Entity}.
      *
-     * @param width New value of the width/height of the {@link Entity}.
+     * @param x New value of the x/y-position of the {@link Entity}.
      */
-    public void setWidth(int width) {
-        this.width = width;
+    public void setX(float x) {
+        this.x = x;
     }
 }

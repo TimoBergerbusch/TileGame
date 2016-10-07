@@ -14,13 +14,12 @@ import entities.StaticInteractableEntity;
  */
 public class Message {
 
+    public static boolean isShown = false;
     /**
      * the length of a line measured in {@link Character Characters}. The <code>default</code>-Value
      * is 59;
      */
     private static int MESSAGE_LINE_LENGTH = 59;
-
-    public static boolean isShown = false;
     /**
      * the Offset of the x-Position relative to the {@link #messageField}
      */
@@ -106,6 +105,44 @@ public class Message {
     //Methods
 
     /**
+     * Gets the Offset of the x-Position relative to the {@link #messageField}.
+     *
+     * @return Value of the Offset of the x-Position relative to the {@link #messageField}.
+     */
+    public static int getXOffset() {
+        return xOffset;
+    }
+
+    /**
+     * StaticSets new the Offset of the x-Position relative to the {@link #messageField}.
+     *
+     * @param xOffset New value of the Offset of the x-Position relative to the {@link
+     *                #messageField}.
+     */
+    public static void setXOffset(int xOffset) {
+        Message.xOffset = xOffset;
+    }
+
+    /**
+     * Gets the Offset of the y-Positon relative to the {@link #messageField}.
+     *
+     * @return Value of the Offset of the y-Positon relative to the {@link #messageField}.
+     */
+    public static int getYOffset() {
+        return yOffset;
+    }
+
+    /**
+     * StaticSets new the Offset of the y-Positon relative to the {@link #messageField}.
+     *
+     * @param yOffset New value of the Offset of the y-Positon relative to the {@link
+     *                #messageField}.
+     */
+    public static void setYOffset(int yOffset) {
+        Message.yOffset = yOffset;
+    }
+
+    /**
      * the tick-Method NOTE: empty and unused
      */
     public void tick() {
@@ -129,6 +166,8 @@ public class Message {
         }
 
     }
+
+    //Getters and Setters
 
     /**
      * Splits a given String into the number of lines, with every line having a maximum of {@link
@@ -196,8 +235,6 @@ public class Message {
         lines = this.getSplittedText(message[currentSide], (int) (Math.floor(message[currentSide].length() / MESSAGE_LINE_LENGTH) + 1));
     }
 
-    //Getters and Setters
-
     /**
      * Gets defines whether or not the message should be drawn or not <ul><li>true = should be
      * drawn</li><li>false = should <em>not</em> be drawn</li></ul>.
@@ -206,6 +243,17 @@ public class Message {
      */
     public boolean isActive() {
         return active;
+    }
+
+    /**
+     * StaticSets new defines whether or not the message should be drawn or not <ul><li>true =
+     * should be drawn</li><li>false = should <em>not</em> be drawn</li></ul>.
+     *
+     * @param active New value of active
+     */
+    public void setActive(boolean active) {
+        this.active = active;
+        isShown = active;
     }
 
     /**
@@ -218,12 +266,30 @@ public class Message {
     }
 
     /**
+     * StaticSets new the {@link MessageField} that this message is displayed on.
+     *
+     * @param messageField New value of the {@link MessageField} that this message is displayed on.
+     */
+    public void setMessageField(MessageField messageField) {
+        this.messageField = messageField;
+    }
+
+    /**
      * Gets the {@link Font} the message should be written in..
      *
      * @return Value of the {@link Font} the message should be written in..
      */
     public Font getFont() {
         return font;
+    }
+
+    /**
+     * StaticSets new the {@link Font} the message should be written in..
+     *
+     * @param font New value of the {@link Font} the message should be written in..
+     */
+    public void setFont(Font font) {
+        this.font = font;
     }
 
     /**
@@ -237,32 +303,15 @@ public class Message {
     }
 
     /**
-     * Gets the Offset of the x-Position relative to the {@link #messageField}.
+     * StaticSets new the message that should be displayed. Every entry in the <code>Array</code>
+     * defines it's own side to be displayed on. The sides get split into the different lines.
      *
-     * @return Value of the Offset of the x-Position relative to the {@link #messageField}.
+     * @param message New value of the message that should be displayed. Every entry in the
+     *                <code>Array</code> defines it's own side to be displayed on. The sides get
+     *                split into the different lines.
      */
-    public static int getXOffset() {
-        return xOffset;
-    }
-
-    /**
-     * Sets new the {@link Font} the message should be written in..
-     *
-     * @param font New value of the {@link Font} the message should be written in..
-     */
-    public void setFont(Font font) {
-        this.font = font;
-    }
-
-    /**
-     * Sets new defines whether or not the message should be drawn or not <ul><li>true = should be
-     * drawn</li><li>false = should <em>not</em> be drawn</li></ul>.
-     *
-     * @param active New value of active
-     */
-    public void setActive(boolean active) {
-        this.active = active;
-        isShown = active;
+    public void setMessage(String[] message) {
+        this.message = message;
     }
 
     /**
@@ -277,7 +326,7 @@ public class Message {
     }
 
     /**
-     * Sets new the lines that are written on the screen representing one entry of the {@link
+     * StaticSets new the lines that are written on the screen representing one entry of the {@link
      * #message}.
      *
      * @param lines New value of the lines that are written on the screen representing one entry of
@@ -299,49 +348,8 @@ public class Message {
     }
 
     /**
-     * Sets new the message that should be displayed. Every entry in the <code>Array</code> defines
-     * it's own side to be displayed on. The sides get split into the different lines.
-     *
-     * @param message New value of the message that should be displayed. Every entry in the
-     *                <code>Array</code> defines it's own side to be displayed on. The sides get
-     *                split into the different lines.
-     */
-    public void setMessage(String[] message) {
-        this.message = message;
-    }
-
-    /**
-     * Sets new the Offset of the x-Position relative to the {@link #messageField}.
-     *
-     * @param xOffset New value of the Offset of the x-Position relative to the {@link
-     *                #messageField}.
-     */
-    public static void setXOffset(int xOffset) {
-        Message.xOffset = xOffset;
-    }
-
-    /**
-     * Sets new the Offset of the y-Positon relative to the {@link #messageField}.
-     *
-     * @param yOffset New value of the Offset of the y-Positon relative to the {@link
-     *                #messageField}.
-     */
-    public static void setYOffset(int yOffset) {
-        Message.yOffset = yOffset;
-    }
-
-    /**
-     * Sets new the {@link MessageField} that this message is displayed on.
-     *
-     * @param messageField New value of the {@link MessageField} that this message is displayed on.
-     */
-    public void setMessageField(MessageField messageField) {
-        this.messageField = messageField;
-    }
-
-    /**
-     * Sets new the currently Side, that is displayed. The <code>default</code>-Value is 0, so the
-     * first side is the first one to display.
+     * StaticSets new the currently Side, that is displayed. The <code>default</code>-Value is 0, so
+     * the first side is the first one to display.
      *
      * @param currentSide New value of the currently Side, that is displayed. The
      *                    <code>default</code>-Value is 0, so the first side is the first one to
@@ -350,15 +358,6 @@ public class Message {
     public void setCurrentSide(int currentSide) {
         this.currentSide = currentSide;
         loadLines();
-    }
-
-    /**
-     * Gets the Offset of the y-Positon relative to the {@link #messageField}.
-     *
-     * @return Value of the Offset of the y-Positon relative to the {@link #messageField}.
-     */
-    public static int getYOffset() {
-        return yOffset;
     }
 
     /**

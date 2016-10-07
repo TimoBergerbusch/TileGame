@@ -1,16 +1,11 @@
 package tilegame;
 
-import org.omg.PortableInterceptor.DISCARDING;
-
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import Display.Display;
 import gfx.Assets;
 import gfx.GameCamera;
-import gfx.ImageLoader;
-import gfx.SpriteSheet;
 import input.KeyManager;
 import input.MouseManager;
 import states.EditorState;
@@ -20,21 +15,17 @@ import states.State;
 
 public class Game implements Runnable {
 
-    private Display display;
-    private int width, height;
-    private String title;
-
-    private boolean running = false;
-    private Thread thread;
-
-    private BufferStrategy bs;
-    private Graphics g;
-
     //States
     public State gameState;
     public State menuState;
     public State editorState;
-
+    private Display display;
+    private int width, height;
+    private String title;
+    private boolean running = false;
+    private Thread thread;
+    private BufferStrategy bs;
+    private Graphics g;
     //Input
     private KeyManager keyManager;
     private MouseManager mouseManager;
@@ -69,7 +60,7 @@ public class Game implements Runnable {
         gameState = new GameState(handler);
         editorState = new EditorState(handler);
         menuState = new MenuState(handler);
-        State.setState(editorState);
+        State.setState(menuState);
     }
 
     private void tick() {
@@ -188,7 +179,7 @@ public class Game implements Runnable {
     }
 
     /**
-     * Sets new display.
+     * StaticSets new display.
      *
      * @param display New value of display.
      */

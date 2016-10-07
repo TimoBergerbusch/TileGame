@@ -25,7 +25,7 @@ public class PavilionRight extends StaticEntity {
     public PavilionRight(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);
         bounds.x = width - 15;
-        bounds.y = Tile.TILE_HEIGHT;
+        bounds.y = 2 * Tile.TILE_HEIGHT;
         bounds.width = 10;
         bounds.height = (int) (0.75 * Tile.TILE_HEIGHT);
     }
@@ -40,7 +40,7 @@ public class PavilionRight extends StaticEntity {
     public void render(Graphics g) {
         g.drawImage(Assets.pavilionRight, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-        g.setColor(Color.red);
-        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+//        g.setColor(Color.red);
+//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 }

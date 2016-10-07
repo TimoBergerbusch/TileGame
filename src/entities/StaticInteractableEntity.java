@@ -53,20 +53,20 @@ public abstract class StaticInteractableEntity extends StaticEntity {
     //Getters and Setters
 
     /**
-     * Sets new the default {@link Message} this {@link Statue} shows.
-     *
-     * @param message New value of the default {@link Message} this {@link Statue} shows.
-     */
-    public void setMessage(Message message) {
-        this.message = message;
-    }
-
-    /**
      * Gets the default {@link Message} this {@link Statue} shows.
      *
      * @return Value of the default {@link Message} this {@link Statue} shows.
      */
     public Message getMessage() {
         return message;
+    }
+
+    /**
+     * StaticSets new the default {@link Message} this {@link Statue} shows.
+     *
+     * @param message New value of the default {@link Message} this {@link Statue} shows.
+     */
+    public void setMessage(Message message) {
+        this.message = message;
     }
 }

@@ -4,10 +4,9 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 import WorldEditor.WorldEditorPanel;
+import tilegame.Handler;
 import tiles.StaticTiles;
 import tiles.Tile;
-
-import tilegame.Handler;
 
 public class UITileButton extends UIObject {
 
@@ -16,7 +15,7 @@ public class UITileButton extends UIObject {
     private Handler handler;
     private Color normalColor = Color.lightGray, hoveringColor = Color.RED;
 
-    public UITileButton(Handler handler, Tile tile, float x, float y, int width, int height) {
+    public UITileButton(Handler handler, Tile tile, int x, int y, int width, int height) {
         super(x, y, width, height);
         this.handler = handler;
         this.tile = tile;
@@ -26,7 +25,8 @@ public class UITileButton extends UIObject {
                 if (handler.getKeyManager().delete)
                     setTile(StaticTiles.grassTile);
                 else
-                    setTile(getNextTile());
+                    setTile(WorldEditorPanel.currentTile);
+//                    setTile(getNextTile());
             }
 
             @Override
@@ -86,7 +86,7 @@ public class UITileButton extends UIObject {
             g2.setColor(normalColor);
             if (hovering)
                 g2.setColor(hoveringColor);
-            g2.setStroke(new BasicStroke(5));
+            g2.setStroke(new BasicStroke(2));
             g2.drawRect((int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height);
         }
         g.drawImage(tile.getTexture(), (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
@@ -102,11 +102,11 @@ public class UITileButton extends UIObject {
         clicker.onRightClick();
     }
 
-    public void setTile(Tile tile) {
-        this.tile = tile;
-    }
-
     public Tile getTile() {
         return tile;
+    }
+
+    public void setTile(Tile tile) {
+        this.tile = tile;
     }
 }

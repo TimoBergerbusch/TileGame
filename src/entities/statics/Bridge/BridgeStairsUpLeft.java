@@ -27,7 +27,7 @@ public class BridgeStairsUpLeft extends StaticEntity {
     }
 
     //Implemented Methods
-    
+
     @Override
     public void tick() {
 

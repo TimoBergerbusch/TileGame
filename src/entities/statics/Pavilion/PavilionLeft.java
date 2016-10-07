@@ -14,6 +14,7 @@ import tiles.Tile;
 public class PavilionLeft extends StaticEntity {
 
     //Constructors
+
     /**
      * creates a new {@link PavilionLeft}
      *
@@ -24,7 +25,7 @@ public class PavilionLeft extends StaticEntity {
     public PavilionLeft(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);
         bounds.x = 5;
-        bounds.y = Tile.TILE_HEIGHT;
+        bounds.y = 2 * Tile.TILE_HEIGHT;
         bounds.width = 10;
         bounds.height = (int) (0.75 * Tile.TILE_HEIGHT);
     }

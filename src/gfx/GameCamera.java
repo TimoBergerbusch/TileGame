@@ -83,15 +83,6 @@ public class GameCamera {
     //Getters and Setters
 
     /**
-     * Sets new defines the amout the world should be drawn down.
-     *
-     * @param yOffset New value of defines the amout the world should be drawn down.
-     */
-    public void setYOffset(float yOffset) {
-        this.yOffset = yOffset;
-    }
-
-    /**
      * Gets defines the amout the world should be drawn down.
      *
      * @return Value of defines the amout the world should be drawn down.
@@ -101,12 +92,12 @@ public class GameCamera {
     }
 
     /**
-     * Sets new defines the amount the world should be drawn to the left.
+     * StaticSets new defines the amout the world should be drawn down.
      *
-     * @param xOffset New value of defines the amount the world should be drawn to the left.
+     * @param yOffset New value of defines the amout the world should be drawn down.
      */
-    public void setXOffset(float xOffset) {
-        this.xOffset = xOffset;
+    public void setYOffset(float yOffset) {
+        this.yOffset = yOffset;
     }
 
     /**
@@ -116,5 +107,14 @@ public class GameCamera {
      */
     public float getXOffset() {
         return xOffset;
+    }
+
+    /**
+     * StaticSets new defines the amount the world should be drawn to the left.
+     *
+     * @param xOffset New value of defines the amount the world should be drawn to the left.
+     */
+    public void setXOffset(float xOffset) {
+        this.xOffset = xOffset;
     }
 }

@@ -16,13 +16,13 @@ public class UIManager {
         objects = new ArrayList<UIObject>();
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return objects.isEmpty();
     }
 
     public void tick() {
         for (UIObject o : objects) {
-            if(o == null)
+            if (o == null)
                 removeObject(o);
             o.tick();
         }

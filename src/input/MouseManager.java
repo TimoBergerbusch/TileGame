@@ -3,7 +3,6 @@ package input;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
 
 import ui.UIManager;
 
@@ -99,12 +98,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     //Getter and Setters
 
     /**
-     * Sets new defines if the right Mousebutton is pressed.
+     * Gets defines the position of the mouse in x-axis.
      *
-     * @param rightPressed New value of defines if the right Mousebutton is pressed.
+     * @return Value of defines the position of the mouse in x-axis.
      */
-    public void setRightPressed(boolean rightPressed) {
-        this.rightPressed = rightPressed;
+    public int getMouseX() {
+        return mouseX;
     }
 
 //    /**
@@ -117,16 +116,16 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 //    }
 
     /**
-     * Gets defines the position of the mouse in x-axis.
+     * StaticSets new defines the position of the mouse in x-axis.
      *
-     * @return Value of defines the position of the mouse in x-axis.
+     * @param mouseX New value of defines the position of the mouse in x-axis.
      */
-    public int getMouseX() {
-        return mouseX;
+    public void setMouseX(int mouseX) {
+        this.mouseX = mouseX;
     }
 
 //    /**
-//     * Sets new a {@link UIManager}.
+//     * StaticSets new a {@link UIManager}.
 //     *
 //     * @param uiManager New value of a {@link UIManager}.
 //     */
@@ -152,30 +151,12 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * Sets new defines the position of the mouse in x-axis.
-     *
-     * @param mouseY New value of defines the position of the mouse in x-axis.
-     */
-    public void setMouseY(int mouseY) {
-        this.mouseY = mouseY;
-    }
-
-    /**
-     * Sets new defines if the left Mousebutton is pressed.
+     * StaticSets new defines if the left Mousebutton is pressed.
      *
      * @param leftPressed New value of defines if the left Mousebutton is pressed.
      */
     public void setLeftPressed(boolean leftPressed) {
         this.leftPressed = leftPressed;
-    }
-
-    /**
-     * Sets new defines the position of the mouse in x-axis.
-     *
-     * @param mouseX New value of defines the position of the mouse in x-axis.
-     */
-    public void setMouseX(int mouseX) {
-        this.mouseX = mouseX;
     }
 
     /**
@@ -188,6 +169,15 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     }
 
     /**
+     * StaticSets new defines the position of the mouse in x-axis.
+     *
+     * @param mouseY New value of defines the position of the mouse in x-axis.
+     */
+    public void setMouseY(int mouseY) {
+        this.mouseY = mouseY;
+    }
+
+    /**
      * Gets defines if the right Mousebutton is pressed.
      *
      * @return Value of defines if the right Mousebutton is pressed.
@@ -196,12 +186,21 @@ public class MouseManager implements MouseListener, MouseMotionListener {
         return rightPressed;
     }
 
-    public void setUIManager(UIManager UIManager) {
-        this.uiManager = UIManager;
+    /**
+     * StaticSets new defines if the right Mousebutton is pressed.
+     *
+     * @param rightPressed New value of defines if the right Mousebutton is pressed.
+     */
+    public void setRightPressed(boolean rightPressed) {
+        this.rightPressed = rightPressed;
     }
 
     public UIManager getUIManager() {
         return uiManager;
+    }
+
+    public void setUIManager(UIManager UIManager) {
+        this.uiManager = UIManager;
     }
 
 //    public boolean containsUIManager(UIManager uiManager) {

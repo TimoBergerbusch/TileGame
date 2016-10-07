@@ -2,8 +2,6 @@ package gfx;
 
 import java.awt.image.BufferedImage;
 
-import entities.Entity;
-
 /**
  * defines an animation an {@link entities.Entity} could have
  */

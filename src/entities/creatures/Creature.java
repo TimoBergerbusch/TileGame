@@ -123,21 +123,21 @@ public abstract class Creature extends Entity {
     //Getters and Setters
 
     /**
-     * Sets new yMove.
-     *
-     * @param yMove New value of yMove.
-     */
-    public void setYMove(float yMove) {
-        this.yMove = yMove;
-    }
-
-    /**
      * Gets the speed the {@link Creature} moves with.
      *
      * @return Value of the speed the {@link Creature} moves with.
      */
     public float getSpeed() {
         return speed;
+    }
+
+    /**
+     * StaticSets new the speed the {@link Creature} moves with.
+     *
+     * @param speed New value of the speed the {@link Creature} moves with.
+     */
+    public void setSpeed(float speed) {
+        this.speed = speed;
     }
 
     /**
@@ -150,12 +150,12 @@ public abstract class Creature extends Entity {
     }
 
     /**
-     * Sets new the speed the {@link Creature} moves with.
+     * StaticSets new the movement in the xy-direction.
      *
-     * @param speed New value of the speed the {@link Creature} moves with.
+     * @param xMove New value of the movement in the xy-direction.
      */
-    public void setSpeed(float speed) {
-        this.speed = speed;
+    public void setXMove(float xMove) {
+        this.xMove = xMove;
     }
 
     /**
@@ -168,11 +168,11 @@ public abstract class Creature extends Entity {
     }
 
     /**
-     * Sets new the movement in the xy-direction.
+     * StaticSets new yMove.
      *
-     * @param xMove New value of the movement in the xy-direction.
+     * @param yMove New value of yMove.
      */
-    public void setXMove(float xMove) {
-        this.xMove = xMove;
+    public void setYMove(float yMove) {
+        this.yMove = yMove;
     }
 }

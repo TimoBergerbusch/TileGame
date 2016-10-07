@@ -8,9 +8,7 @@ public class GrassTile extends Tile {
         super(Assets.grass, id);
     }
 
-    @Override
-    public String toString() {
-        return "Grass";
+    public GrassTile(int id, String name) {
+        super(Assets.grass, id, name);
     }
-
 }

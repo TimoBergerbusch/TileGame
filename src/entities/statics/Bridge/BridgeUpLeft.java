@@ -23,7 +23,7 @@ public class BridgeUpLeft extends StaticEntity {
      */
     public BridgeUpLeft(Handler handler, float x, float y) {
         super(handler, x, y, Tile.TILE_WIDTH, Tile.TILE_HEIGHT);
-        bounds.x=bounds.width=Tile.TILE_WIDTH/2;
+        bounds.x = bounds.width = Tile.TILE_WIDTH / 2;
     }
 
     //Implemented Methods

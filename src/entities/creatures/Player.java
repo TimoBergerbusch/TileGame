@@ -3,13 +3,12 @@ package entities.creatures;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import entities.StaticInteractableEntity;
 import entities.Entity;
+import entities.StaticInteractableEntity;
 import gfx.Animation;
+import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
-
-import gfx.Assets;
 import utils.Direction;
 
 import static utils.Direction.DOWN;
@@ -135,8 +134,8 @@ public class Player extends Creature {
         if (!checkEntityCollision(xMove, 0)) {
             moveX();
         }
-//        if (!checkEntityCollision(0, yMove) && xMove == 0)
-        if (!checkEntityCollision(0, yMove))
+        if (!checkEntityCollision(0, yMove) && xMove == 0)
+//        if (!checkEntityCollision(0, yMove))
             moveY();
 
     }

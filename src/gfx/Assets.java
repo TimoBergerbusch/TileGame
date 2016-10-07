@@ -1,14 +1,12 @@
 package gfx;
 
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 public class Assets {
 
     public static final int TileWidth = 16, TileHeight = 16;
-    public static final int interactionWidth = 1250, interactionHeight = 250;
+    private static final int interactionWidth = 1250, interactionHeight = 250;
     //Enviroment (Town)
     public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, metalSign, woodSign, tree, treeShadowLeft, treeShadowRight, statue;
     public static BufferedImage pavilionLeft, pavilionMid, pavilionRight;
@@ -21,15 +19,16 @@ public class Assets {
     public static BufferedImage woodFenceTop, woodFenceLeft, woodFenceRight, woodFenceCornerTopRight, woodFenceCornerTopLeft, woodFenceCornerBottumLeft, woodFenceCornerBottumRight;
 
     //Water
-    public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottumLeft, stillWaterEdgeBottum, stillWaterEdgeBottumRight;
-    public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottumLeft, deepWaterEdgeBottum, deepWaterEdgeBottumRight, deepWaterOutsideEdgeTopLeft, deepWaterOutsideEdgeTopRight, deepWaterOutsideEdgeBottumLeft, deepWaterOutsideEdgeBottumRight;
+    public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottomLeft, stillWaterEdgeBottom, stillWaterEdgeBottomRight;
+    public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottomLeft, deepWaterEdgeBottom, deepWaterEdgeBottomRight, deepWaterOutsideEdgeTopLeft, deepWaterOutsideEdgeTopRight, deepWaterOutsideEdgeBottomLeft, deepWaterOutsideEdgeBottomRight;
+    public static BufferedImage beach, beachEdgeTop, beachEdgeBottom, beachEdgeLeft, beachEdgeRight, beachEdgeTopLeft, beachEdgeTopRight, beachEdgeBottomLeft, beachEdgeBottomRight, beachOutsideTopLeftEdge, beachOutsideTopRightEdge, beachOutsideBottomLeftEdge, beachOutsideBottomRightEdge;
 
     //Bridge
     public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlanksMid, bridgeStairsDownMid, bridgeStairsUpRight,
             bridgePlanksEndRight, bridgeStairsDownRight, bridgeUpRight, bridgeHandrailRight, bridgePostRight, bridgeDownRight;
 
     //Path
-    public static BufferedImage pathEndTopLeft, pathEndTopRight, pathLeft, pathRight, pathEndBottumLeft, pathEndBottumRight, pathTop, pathBottum, pathFull;
+    public static BufferedImage lightStonePathEndTopLeft, lightStonePathEndTopRight, lightStonePathLeft, lightStonePathRight, lightStonePathEndBottomLeft, lightStonePathEndBottomRight, lightStonePathTop, lightStonePathBottom, lightStonePathFull;
 
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
@@ -65,9 +64,9 @@ public class Assets {
         treeShadowLeft = tileSheet.crop(0, 11 * TileHeight, TileWidth, TileHeight);
         treeShadowRight = tileSheet.crop(TileWidth, 11 * TileHeight, TileWidth, TileHeight);
 
-        pavilionLeft = tileSheet.crop(7 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
-        pavilionMid = tileSheet.crop(8 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
-        pavilionRight = tileSheet.crop(9 * TileWidth, 9 * TileHeight, TileWidth, 3 * TileHeight);
+        pavilionLeft = tileSheet.crop(7 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
+        pavilionMid = tileSheet.crop(8 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
+        pavilionRight = tileSheet.crop(9 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
 
         initTowns(tileSheet);
 
@@ -146,20 +145,21 @@ public class Assets {
 
     private static void initPath(SpriteSheet tileSheet) {
         //Path
-        pathEndTopLeft = tileSheet.crop(3 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        pathEndTopRight = tileSheet.crop(4 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        pathLeft = tileSheet.crop(3 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        pathRight = tileSheet.crop(4 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        pathEndBottumLeft = tileSheet.crop(3 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
-        pathEndBottumRight = tileSheet.crop(4 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
-        pathTop = tileSheet.crop(5 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
-        pathBottum = tileSheet.crop(5 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
-        pathFull = tileSheet.crop(5 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
+        lightStonePathEndTopLeft = tileSheet.crop(3 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
+        lightStonePathEndTopRight = tileSheet.crop(4 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
+        lightStonePathLeft = tileSheet.crop(3 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
+        lightStonePathRight = tileSheet.crop(4 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
+        lightStonePathEndBottomLeft = tileSheet.crop(3 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
+        lightStonePathEndBottomRight = tileSheet.crop(4 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
+        lightStonePathTop = tileSheet.crop(5 * TileWidth, 3 * TileHeight, TileWidth, TileHeight);
+        lightStonePathBottom = tileSheet.crop(5 * TileWidth, 4 * TileHeight, TileWidth, TileHeight);
+        lightStonePathFull = tileSheet.crop(5 * TileWidth, 5 * TileHeight, TileWidth, TileHeight);
     }
 
     private static void initWater(SpriteSheet tileSheet) {
         initStillWater(tileSheet);
         initDeepWater(tileSheet);
+        initBeach(tileSheet);
     }
 
     private static void initDeepWater(SpriteSheet tileSheet) {
@@ -169,18 +169,18 @@ public class Assets {
         deepWaterEdgeLeft = tileSheet.crop(3 * TileWidth, 7 * TileHeight);
         deepWater = tileSheet.crop(4 * TileWidth, 7 * TileHeight);
         deepWaterEdgeRight = tileSheet.crop(5 * TileWidth, 7 * TileHeight);
-        deepWaterEdgeBottumLeft = tileSheet.crop(3 * TileWidth, 8 * TileHeight);
-        deepWaterEdgeBottum = tileSheet.crop(4 * TileWidth, 8 * TileHeight);
-        deepWaterEdgeBottumRight = tileSheet.crop(5 * TileWidth, 8 * TileHeight);
+        deepWaterEdgeBottomLeft = tileSheet.crop(3 * TileWidth, 8 * TileHeight);
+        deepWaterEdgeBottom = tileSheet.crop(4 * TileWidth, 8 * TileHeight);
+        deepWaterEdgeBottomRight = tileSheet.crop(5 * TileWidth, 8 * TileHeight);
         deepWaterOutsideEdgeTopLeft = tileSheet.crop(8 * TileWidth, 12 * TileHeight);
         deepWaterOutsideEdgeTopRight = tileSheet.crop(7 * TileWidth, 12 * TileHeight);
-        deepWaterOutsideEdgeBottumLeft = tileSheet.crop(8 * TileWidth, 11 * TileHeight);
-        deepWaterOutsideEdgeBottumRight = tileSheet.crop(7 * TileWidth, 11 * TileHeight);
-//        deepWater = new BufferedImage[4];
-//        deepWater[0] = tileSheet.crop(2 * TileWidth, 11 * TileHeight);
-//        deepWater[1] = tileSheet.crop(3 * TileWidth, 11 * TileHeight);
-//        deepWater[2] = tileSheet.crop(4 * TileWidth, 11 * TileHeight);
-//        deepWater[3] = tileSheet.crop(5 * TileWidth, 11 * TileHeight);
+        deepWaterOutsideEdgeBottomLeft = tileSheet.crop(8 * TileWidth, 11 * TileHeight);
+        deepWaterOutsideEdgeBottomRight = tileSheet.crop(7 * TileWidth, 11 * TileHeight);
+//        deepWaterTiles = new BufferedImage[4];
+//        deepWaterTiles[0] = tileSheet.crop(2 * TileWidth, 11 * TileHeight);
+//        deepWaterTiles[1] = tileSheet.crop(3 * TileWidth, 11 * TileHeight);
+//        deepWaterTiles[2] = tileSheet.crop(4 * TileWidth, 11 * TileHeight);
+//        deepWaterTiles[3] = tileSheet.crop(5 * TileWidth, 11 * TileHeight);
 
     }
 
@@ -192,9 +192,28 @@ public class Assets {
         stillWaterEdgeLeft = tileSheet.crop(3 * TileWidth, TileHeight, TileWidth, TileHeight);
         stillWater = tileSheet.crop(4 * TileWidth, TileHeight, TileWidth, TileHeight);
         stillWaterEdgeRight = tileSheet.crop(5 * TileWidth, TileHeight, TileWidth, TileHeight);
-        stillWaterEdgeBottumLeft = tileSheet.crop(3 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
-        stillWaterEdgeBottum = tileSheet.crop(4 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
-        stillWaterEdgeBottumRight = tileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+        stillWaterEdgeBottomLeft = tileSheet.crop(3 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+        stillWaterEdgeBottom = tileSheet.crop(4 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+        stillWaterEdgeBottomRight = tileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
+    }
+
+    private static void initBeach(SpriteSheet tileSheet) {
+        beachEdgeLeft = tileSheet.crop(7 * TileWidth, 5 * TileHeight);
+        beachEdgeRight = tileSheet.crop(8 * TileWidth, 5 * TileHeight);
+        beachEdgeTop = tileSheet.crop(9 * TileWidth, 5 * TileHeight);
+        beachEdgeBottom = tileSheet.crop(10 * TileWidth, 5 * TileHeight);
+        beach = tileSheet.crop(11 * TileWidth, 5 * TileHeight);
+
+        beachEdgeBottomLeft = tileSheet.crop(7 * TileWidth, 6 * TileHeight);
+        beachEdgeBottomRight = tileSheet.crop(8 * TileWidth, 6 * TileHeight);
+        beachEdgeTopLeft = tileSheet.crop(9 * TileWidth, 6 * TileHeight);
+        beachEdgeTopRight = tileSheet.crop(10 * TileWidth, 6 * TileHeight);
+
+        beachOutsideBottomRightEdge = tileSheet.crop(7 * TileWidth, 7 * TileHeight);
+        beachOutsideBottomLeftEdge = tileSheet.crop(8 * TileWidth, 7 * TileHeight);
+        beachOutsideTopRightEdge = tileSheet.crop(9 * TileWidth, 7 * TileHeight);
+        beachOutsideTopLeftEdge = tileSheet.crop(10 * TileWidth, 7 * TileHeight);
+
     }
 
     //Player start

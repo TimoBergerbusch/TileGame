@@ -9,11 +9,6 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
     /**
-     * a boolean array to represent if the key is pressed. A key can be indexed by {@link
-     * KeyEvent#getKeyCode()}
-     */
-    private boolean[] keys;
-    /**
      * a boolean to represent if the up key is pressed. the up key is {@link KeyEvent#VK_W}
      */
     public boolean up;
@@ -44,24 +39,22 @@ public class KeyManager implements KeyListener {
      * KeyEvent#VK_ENTER}
      */
     public boolean interact;
-
     /**
      * a boolean to represent if the backtoMenu button is pressed. The interact button is {@link
      * KeyEvent#VK_ESCAPE}
      */
     public boolean backToMenu;
-
     public boolean load;
-
     public boolean save;
-
     public boolean zoomIn;
-
     public boolean zoomOut;
-
     public boolean delete;
-
     public boolean showTileChooser;
+    /**
+     * a boolean array to represent if the key is pressed. A key can be indexed by {@link
+     * KeyEvent#getKeyCode()}
+     */
+    private boolean[] keys;
 
     //Constructor
 

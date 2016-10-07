@@ -5,7 +5,6 @@ import java.awt.*;
 import entities.statics.StaticEntity;
 import gfx.Assets;
 import tilegame.Handler;
-import tiles.StaticTiles;
 import tiles.Tile;
 
 /**
@@ -28,7 +27,7 @@ public class BridgeStairsDownMid extends StaticEntity {
     }
 
     //Implemented Methods
-    
+
     @Override
     public void tick() {
 

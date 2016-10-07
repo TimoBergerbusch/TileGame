@@ -6,7 +6,6 @@ import gfx.Assets;
 import tilegame.Handler;
 import ui.ClickListener;
 import ui.UIImageButton;
-import ui.UIManager;
 import utils.Utils;
 
 public class WorldControls {
@@ -69,10 +68,8 @@ public class WorldControls {
 
             }
         });
-        worldEditor.getUiManager().addObject(load);
-        worldEditor.getUiManager().addObject(save);
-        worldEditor.getUiManager().addObject(zoomIn);
-        worldEditor.getUiManager().addObject(zoomOut);
+
+        addControls();
     }
 
     public void render(Graphics g) {
@@ -87,6 +84,13 @@ public class WorldControls {
             zoom(1.2);
         if (handler.getKeyManager().zoomOut)
             zoom(0.8);
+    }
+
+    public void addControls() {
+        worldEditor.uiManager.addObject(load);
+        worldEditor.uiManager.addObject(save);
+        worldEditor.uiManager.addObject(zoomIn);
+        worldEditor.uiManager.addObject(zoomOut);
     }
 
     private void zoom(double zoomFactor) {

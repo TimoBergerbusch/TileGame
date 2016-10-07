@@ -7,13 +7,12 @@ public class RoundBushTile extends Tile {
         super(Assets.roundBush, id);
     }
 
-    @Override
-    public boolean isSolid() {
-        return true;
+    public RoundBushTile(int id, String s) {
+        super(Assets.roundBush, id, s);
     }
 
     @Override
-    public String toString() {
-        return "Round Bush";
+    public boolean isSolid() {
+        return true;
     }
 }

@@ -2,7 +2,6 @@ package messages;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 /**
  * This class is the background on with a {@link Message} is written. It can be drawn like normal
@@ -92,12 +91,33 @@ public class MessageField {
     }
 
     /**
+     * StaticSets new the height of the [@link {@link MessageField}}, which is one third of the
+     * window height as default.
+     *
+     * @param height New value of the height of the [@link {@link MessageField}}, which is one third
+     *               of the window height as default.
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
      * Gets the texture which can be drawn instead of a default grey background.
      *
      * @return Value of the texture which can be drawn instead of a default grey background.
      */
     public BufferedImage getTexture() {
         return texture;
+    }
+
+    /**
+     * StaticSets new the texture which can be drawn instead of a default grey background.
+     *
+     * @param texture New value of the texture which can be drawn instead of a default grey
+     *                background.
+     */
+    public void setTexture(BufferedImage texture) {
+        this.texture = texture;
     }
 
     /**
@@ -110,7 +130,7 @@ public class MessageField {
     }
 
     /**
-     * Sets new the x-Position of the [@link {@link MessageField}}.
+     * StaticSets new the x-Position of the [@link {@link MessageField}}.
      *
      * @param x New value of the x-Position of the [@link {@link MessageField}}.
      */
@@ -128,34 +148,12 @@ public class MessageField {
     }
 
     /**
-     * Sets new the width of the [@link {@link MessageField}}, which should be full window width.
+     * StaticSets new the y-Position of the [@link {@link MessageField}}.
      *
-     * @param width New value of the width of the [@link {@link MessageField}}, which should be full
-     *              window width.
+     * @param y New value of the y-Position of the [@link {@link MessageField}}.
      */
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    /**
-     * Sets new the height of the [@link {@link MessageField}}, which is one third of the window
-     * height as default.
-     *
-     * @param height New value of the height of the [@link {@link MessageField}}, which is one third
-     *               of the window height as default.
-     */
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    /**
-     * Sets new the texture which can be drawn instead of a default grey background.
-     *
-     * @param texture New value of the texture which can be drawn instead of a default grey
-     *                background.
-     */
-    public void setTexture(BufferedImage texture) {
-        this.texture = texture;
+    public void setY(float y) {
+        this.y = y;
     }
 
     /**
@@ -169,11 +167,13 @@ public class MessageField {
     }
 
     /**
-     * Sets new the y-Position of the [@link {@link MessageField}}.
+     * StaticSets new the width of the [@link {@link MessageField}}, which should be full window
+     * width.
      *
-     * @param y New value of the y-Position of the [@link {@link MessageField}}.
+     * @param width New value of the width of the [@link {@link MessageField}}, which should be full
+     *              window width.
      */
-    public void setY(float y) {
-        this.y = y;
+    public void setWidth(int width) {
+        this.width = width;
     }
 }

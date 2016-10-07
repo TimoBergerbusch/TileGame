@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Utils {
 
@@ -65,7 +64,7 @@ public class Utils {
         if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             return chooser.getSelectedFile().getAbsolutePath();
         } else {
-            return "res/worlds1";
+            return "res/worlds/world1.lvl";
         }
     }
 

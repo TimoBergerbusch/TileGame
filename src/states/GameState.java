@@ -2,12 +2,7 @@ package states;
 
 import java.awt.*;
 
-import entities.creatures.Player;
-import entities.statics.Tree;
-import gfx.Assets;
-import tilegame.Game;
 import tilegame.Handler;
-import tiles.Tile;
 import worlds.World;
 
 public class GameState extends State {
@@ -16,13 +11,13 @@ public class GameState extends State {
 
     public GameState(Handler handler) {
         super(handler);
-        world = new World(handler, "res/worlds/world3.lvl");
+        world = new World(handler, "res/worlds/test");
         handler.setWorld(world);
     }
 
     @Override
     public void tick() {
-        if(handler.getKeyManager().backToMenu)
+        if (handler.getKeyManager().backToMenu)
             State.setState(handler.getGame().menuState);
         world.tick();
     }

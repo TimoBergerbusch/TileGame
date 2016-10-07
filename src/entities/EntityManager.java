@@ -4,8 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import tilegame.Handler;
 import entities.creatures.Player;
+import tilegame.Handler;
 
 /**
  * this class is used to store every {@link Entity} the {@link tilegame.Game} should contain. It is
@@ -109,24 +109,12 @@ public class EntityManager {
     }
 
     /**
-     * Sets new a comparator to render the {@link Entity Entities} in a strategy. It renders {@link
-     * Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true</code> behind
-     * every other {@link Entity} and everything else depending on their bottom left bound corner.
-     * If the value is smaller it's rendered before the other one..
+     * StaticSets new a {@link Handler} to the {@link tilegame.Game}.
      *
-     * @param renderSorter New value of {@link #renderSorter}
+     * @param handler New value of a {@link Handler} to the {@link tilegame.Game}.
      */
-    public void setRenderSorter(Comparator<Entity> renderSorter) {
-        this.renderSorter = renderSorter;
-    }
-
-    /**
-     * Sets new the {@link Player} NOTE: only one player.
-     *
-     * @param player New value of the {@link Player} NOTE: only one player.
-     */
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setHandler(Handler handler) {
+        this.handler = handler;
     }
 
     /**
@@ -139,6 +127,15 @@ public class EntityManager {
     }
 
     /**
+     * StaticSets new an ArrayList of all the {@link Entity Entities}.
+     *
+     * @param entities New value of an ArrayList of all the {@link Entity Entities}.
+     */
+    public void setEntities(ArrayList<Entity> entities) {
+        this.entities = entities;
+    }
+
+    /**
      * Gets the {@link Player} NOTE: only one player.
      *
      * @return Value of the {@link Player} NOTE: only one player.
@@ -148,21 +145,12 @@ public class EntityManager {
     }
 
     /**
-     * Sets new a {@link Handler} to the {@link tilegame.Game}.
+     * StaticSets new the {@link Player} NOTE: only one player.
      *
-     * @param handler New value of a {@link Handler} to the {@link tilegame.Game}.
+     * @param player New value of the {@link Player} NOTE: only one player.
      */
-    public void setHandler(Handler handler) {
-        this.handler = handler;
-    }
-
-    /**
-     * Sets new an ArrayList of all the {@link Entity Entities}.
-     *
-     * @param entities New value of an ArrayList of all the {@link Entity Entities}.
-     */
-    public void setEntities(ArrayList<Entity> entities) {
-        this.entities = entities;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     /**
@@ -175,5 +163,17 @@ public class EntityManager {
      */
     public Comparator<Entity> getRenderSorter() {
         return renderSorter;
+    }
+
+    /**
+     * StaticSets new a comparator to render the {@link Entity Entities} in a strategy. It renders
+     * {@link Entity Entities} that have set {@link Entity#alwaysInBack} equal to <code> true</code>
+     * behind every other {@link Entity} and everything else depending on their bottom left bound
+     * corner. If the value is smaller it's rendered before the other one..
+     *
+     * @param renderSorter New value of {@link #renderSorter}
+     */
+    public void setRenderSorter(Comparator<Entity> renderSorter) {
+        this.renderSorter = renderSorter;
     }
 }

@@ -25,7 +25,8 @@ public class Display {
         frame.setSize(width, heigth);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
+//        frame.setLocationRelativeTo(null);
+        frame.setLocation(100, 50);
         frame.setVisible(true);
 
         canvas = new Canvas();

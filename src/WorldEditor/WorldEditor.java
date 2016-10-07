@@ -8,11 +8,11 @@ import ui.UIManager;
 
 public class WorldEditor {
 
+    public UIManager uiManager;
     private Handler handler;
     private WorldEditorPanel worldEditorPanel;
     private WorldControls worldControls;
     private TileChooser tileChooser;
-    public UIManager uiManager;
 
     public WorldEditor(Handler handler) {
         this.handler = handler;
@@ -23,19 +23,20 @@ public class WorldEditor {
     }
 
     public void tick() {
-        if(handler.getKeyManager().showTileChooser && !tileChooser.getVisible())
+        if (handler.getKeyManager().showTileChooser && !tileChooser.getVisible())
             tileChooser.setVisible(true);
         if (handler.getMouseManager().getUIManager() != this.uiManager)
             handler.getMouseManager().setUIManager(this.uiManager);
-        uiManager.tick();
+
         worldControls.tick();
         worldEditorPanel.tick();
+        uiManager.tick();
     }
 
     public void render(Graphics g) {
-        uiManager.render(g);
-        worldEditorPanel.render(g);
         worldControls.render(g);
+        worldEditorPanel.render(g);
+        uiManager.render(g);
     }
 
     public UIManager getUiManager() {

@@ -3,7 +3,6 @@ package entities;
 import java.awt.*;
 import java.util.ArrayList;
 
-import entities.Entity;
 import tilegame.Handler;
 
 /**
