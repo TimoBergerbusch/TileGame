@@ -12,7 +12,8 @@ public class StaticSets {
     public static Tile[] woodFenceTiles = {StaticTiles.woodFenceTopTile, StaticTiles.woodFenceLeftTile, StaticTiles.woodFenceRightTile, StaticTiles.woodFenceCornerTopLeftTile, StaticTiles.woodFenceCornerTopRightTile, StaticTiles.woodFenceCornerBottomLeftTile, StaticTiles.woodFenceCornerBottomRightTile};
     public static Tile[] pathTiles = {StaticTiles.brownStonePathTile, StaticTiles.brownStonePathTopTile, StaticTiles.brownStonePathBottomTile, StaticTiles.brownStonePathLeftTile, StaticTiles.brownStonePathRightTile, StaticTiles.brownStonePathTopLeftTile, StaticTiles.brownStonePathTopRightTile, StaticTiles.brownStonePathBottomLeftTile, StaticTiles.brownStonePathBottomRightTile,
             StaticTiles.lightGreyStonePathTile, StaticTiles.lightGreyStonePathTopTile, StaticTiles.lightGreyStonePathBottomTile, StaticTiles.lightGreyStonePathLeftTile, StaticTiles.lightGreyStonePathRightTile, StaticTiles.lightGreyStonePathTopLeftTile, StaticTiles.lightGreyStonePathTopRightTile, StaticTiles.lightGreyStonePathBottomLeftTile, StaticTiles.lightGreyStonePathBottomRightTile,
-            StaticTiles.darkGreyStonePathTile, StaticTiles.darkGreyStonePathTopTile, StaticTiles.darkGreyStonePathBottomTile, StaticTiles.darkGreyStonePathLeftTile, StaticTiles.darkGreyStonePathRightTile, StaticTiles.darkGreyStonePathTopLeftTile, StaticTiles.darkGreyStonePathTopRightTile, StaticTiles.darkGreyStonePathBottomLeftTile, StaticTiles.darkGreyStonePathBottomRightTile};
+            StaticTiles.darkGreyStonePathTile, StaticTiles.darkGreyStonePathTopTile, StaticTiles.darkGreyStonePathBottomTile, StaticTiles.darkGreyStonePathLeftTile, StaticTiles.darkGreyStonePathRightTile, StaticTiles.darkGreyStonePathTopLeftTile, StaticTiles.darkGreyStonePathTopRightTile, StaticTiles.darkGreyStonePathBottomLeftTile, StaticTiles.darkGreyStonePathBottomRightTile,
+            StaticTiles.gridPathTile, StaticTiles.gridPathTopTile, StaticTiles.gridPathBottomTile, StaticTiles.gridPathLeftTile, StaticTiles.gridPathRightTile, StaticTiles.gridPathTopLeftTile, StaticTiles.gridPathTopRightTile, StaticTiles.gridPathBottomLeftTile, StaticTiles.gridPathBottomRightTile};
     public static Tile[] stillWaterTiles = {StaticTiles.stillWaterTile, StaticTiles.stillWaterEdgeTopTile, StaticTiles.stillWaterEdgeBottomTile, StaticTiles.stillWaterEdgeLeftTile, StaticTiles.stillWaterEdgeRightTile, StaticTiles.stillWaterEdgeTopLeftTile, StaticTiles.stillWaterEdgeTopRightTile, StaticTiles.stillWaterEdgeBottomLeftTile, StaticTiles.stillWaterEdgeBottomRightTile};
     public static Tile[] deepWaterTiles = {StaticTiles.deepWaterTile, StaticTiles.deepWaterEdgeTopTile, StaticTiles.deepWaterEdgeBottomTile, StaticTiles.deepWaterEdgeLeftTile, StaticTiles.deepWaterEdgeRightTile, StaticTiles.deepWaterEdgeTopLeftTile, StaticTiles.deepWaterEdgeTopRightTile, StaticTiles.deepWaterEdgeBottomLeftTile, StaticTiles.deepWaterEdgeBottomRightTile, StaticTiles.deepWaterOutsideEdgeTopLeftTile, StaticTiles.deepWaterOutsideEdgeTopRightTile, StaticTiles.deepWaterOutsideEdgeBottomLeftTile, StaticTiles.deepWaterOutsideEdgeBottomRightTile};
     public static Tile[] beachTiles = {StaticTiles.beachTile, StaticTiles.beachEdgeTopTile, StaticTiles.beachEdgeBottomTile, StaticTiles.beachEdgeLeftTile, StaticTiles.beachEdgeRightTile, StaticTiles.beachEdgeTopLeftTile, StaticTiles.beachEdgeTopRightTile, StaticTiles.beachEdgeBottomLeftTile, StaticTiles.beachEdgeBottomRightTile, StaticTiles.beachOutsideEdgeTopLeftTile, StaticTiles.beachOutsideEdgeTopRightTile, StaticTiles.beachOutsideEdgeBottomLeftTile, StaticTiles.beachOutsideEdgeBottomRightTile};
@@ -29,8 +30,8 @@ public class StaticSets {
         mgr.addSet("Still Water", stillWaterTiles);
         mgr.addSet("Deep Water", deepWaterTiles);
         mgr.addSet("Beach", beachTiles);
-        mgr.addSet("Fence", fenceTiles);
-        mgr.addSet("Wood Fence", woodFenceTiles);
+        mgr.addSet("fence", fenceTiles);
+        mgr.addSet("Wood fence", woodFenceTiles);
         mgr.setAllTiles();
         return mgr;
     }

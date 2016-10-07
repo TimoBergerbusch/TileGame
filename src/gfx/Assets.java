@@ -13,7 +13,7 @@ public class Assets {
     public static BufferedImage greenHouse, redHouse;
     //bushwall
     public static BufferedImage bushwallCornerTopLeft, bushwallDown, bushwallEndLeft, bushwallEndRight, bushwallEndDown, bushwallEndUp;
-    //Fence
+    //fence
     public static BufferedImage fenceTop, fenceLeft, fenceRight, fenceIntersectionLeft, fenceIntersectionRight, fenceCornerTopRight, fenceCornerTopLeft, fenceCornerBottumLeft, fenceCornerBottumRight;
 
     public static BufferedImage woodFenceTop, woodFenceLeft, woodFenceRight, woodFenceCornerTopRight, woodFenceCornerTopLeft, woodFenceCornerBottumLeft, woodFenceCornerBottumRight;
@@ -170,7 +170,7 @@ public class Assets {
         brownStonePath = initSimplePath(simplePathSheet, 1, 0);
         lightGreyStonePath = initSimplePath(simplePathSheet, 0, 1);
         darkGreyStonePath = initSimplePath(simplePathSheet, 1, 1);
-        gridPath = initSimplePath(simplePathSheet, 0, 2);
+        gridPath = initSimplePath(simplePathSheet, 2, 0);
     }
 
     private static void initWater(SpriteSheet tileSheet) {

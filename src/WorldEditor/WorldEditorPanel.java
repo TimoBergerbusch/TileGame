@@ -32,7 +32,7 @@ public class WorldEditorPanel {
     }
 
     public void tick() {
-        double factor = 0.1;
+        double factor = 0.3;
         if (handler.getKeyManager().left)
             xOffset -= EDITOR_TILE_WIDTH * factor;
         if (handler.getKeyManager().right)

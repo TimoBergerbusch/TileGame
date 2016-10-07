@@ -3,6 +3,16 @@ package tiles;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import tiles.Bushwalls.BushwallCornerBottomLeftTile;
+import tiles.Bushwalls.BushwallCornerBottomRightTile;
+import tiles.Bushwalls.BushwallCornerTopLeftTile;
+import tiles.Bushwalls.BushwallCornerTopRightTile;
+import tiles.Bushwalls.BushwallDownTile;
+import tiles.Bushwalls.BushwallEndDownTile;
+import tiles.Bushwalls.BushwallEndLeftTile;
+import tiles.Bushwalls.BushwallEndRightTile;
+import tiles.Bushwalls.BushwallEndUpTile;
+import tiles.Bushwalls.BushwallSideTile;
 import tiles.beach.BeachEdgeBottomLeftTile;
 import tiles.beach.BeachEdgeBottomRightTile;
 import tiles.beach.BeachEdgeBottomTile;
@@ -16,16 +26,6 @@ import tiles.beach.BeachOutsideEdgeBottomRightTile;
 import tiles.beach.BeachOutsideEdgeTopLeftTile;
 import tiles.beach.BeachOutsideEdgeTopRightTile;
 import tiles.beach.BeachTile;
-import tiles.bushwalls.BushwallCornerBottomLeftTile;
-import tiles.bushwalls.BushwallCornerBottomRightTile;
-import tiles.bushwalls.BushwallCornerTopLeftTile;
-import tiles.bushwalls.BushwallCornerTopRightTile;
-import tiles.bushwalls.BushwallDownTile;
-import tiles.bushwalls.BushwallEndDownTile;
-import tiles.bushwalls.BushwallEndLeftTile;
-import tiles.bushwalls.BushwallEndRightTile;
-import tiles.bushwalls.BushwallEndUpTile;
-import tiles.bushwalls.BushwallSideTile;
 import tiles.fence.fence.FenceCornerBottomLeftTile;
 import tiles.fence.fence.FenceCornerBottomRightTile;
 import tiles.fence.fence.FenceCornerTopLeftTile;
@@ -60,11 +60,20 @@ import tiles.pathes.darkGreyStonePath.DarkGreyStonePathFullTile;
 import tiles.pathes.darkGreyStonePath.DarkGreyStonePathLeftTile;
 import tiles.pathes.darkGreyStonePath.DarkGreyStonePathRightTile;
 import tiles.pathes.darkGreyStonePath.DarkGreyStonePathTopTile;
+import tiles.pathes.gridPath.GridPathBottomTile;
+import tiles.pathes.gridPath.GridPathEndBottomLeftTile;
+import tiles.pathes.gridPath.GridPathEndBottomRightTile;
+import tiles.pathes.gridPath.GridPathEndTopLeftTile;
+import tiles.pathes.gridPath.GridPathEndTopRightTile;
+import tiles.pathes.gridPath.GridPathFullTile;
+import tiles.pathes.gridPath.GridPathLeftTile;
+import tiles.pathes.gridPath.GridPathRightTile;
+import tiles.pathes.gridPath.GridPathTopTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathBottomTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomLeftTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndBottomRightTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopLeftTile;
-import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopRightTile;
+import tiles.pathes.lightGreyStonePath.LightGreyStonePathEndTopRightTileTEST;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathFullTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathLeftTile;
 import tiles.pathes.lightGreyStonePath.LightGreyStonePathRightTile;
@@ -103,17 +112,17 @@ public class StaticTiles {
     public static Tile treeShadowRightTile = new TreeShadowRightTile(5, "Right Treeshadow");
 
     //fence
-    public static Tile fenceTopTile = new FenceTopTile(10, "Top Fence");
-    public static Tile fenceLeftTile = new FenceLeftTile(11, " Left Fence");
-    public static Tile fenceRightTile = new FenceRightTile(12, "Right Fence");
-    public static Tile fenceCornerTopLeftTile = new FenceCornerTopLeftTile(13, "Top Left Fence Corner");
-    public static Tile fenceCornerTopRightTile = new FenceCornerTopRightTile(14, "Top Right Fence Corner");
-    public static Tile fenceCornerBottomLeftTile = new FenceCornerBottomLeftTile(15, "Bottom Left Fence Corner");
-    public static Tile fenceCornerBottomRightTile = new FenceCornerBottomRightTile(16, "Bottom Right Fence Corner");
-    public static Tile fenceIntersectionLeftTile = new FenceIntersectionLeftTile(17, "Left Fence Intersection ");
-    public static Tile fenceIntersectionRightTile = new FenceIntersectionRightTile(18, "Right Fence Intersection");
+    public static Tile fenceTopTile = new FenceTopTile(10, "Top fence");
+    public static Tile fenceLeftTile = new FenceLeftTile(11, " Left fence");
+    public static Tile fenceRightTile = new FenceRightTile(12, "Right fence");
+    public static Tile fenceCornerTopLeftTile = new FenceCornerTopLeftTile(13, "Top Left fence Corner");
+    public static Tile fenceCornerTopRightTile = new FenceCornerTopRightTile(14, "Top Right fence Corner");
+    public static Tile fenceCornerBottomLeftTile = new FenceCornerBottomLeftTile(15, "Bottom Left fence Corner");
+    public static Tile fenceCornerBottomRightTile = new FenceCornerBottomRightTile(16, "Bottom Right fence Corner");
+    public static Tile fenceIntersectionLeftTile = new FenceIntersectionLeftTile(17, "Left fence Intersection ");
+    public static Tile fenceIntersectionRightTile = new FenceIntersectionRightTile(18, "Right fence Intersection");
 
-    //bushwalls
+    //Bushwalls
     public static Tile bushwallSideTile = new BushwallSideTile(20, "Side Bushwall");
     public static Tile bushwallDownTile = new BushwallDownTile(21, "Bushwall Down");
     public static Tile bushwallCornerTopLeftTile = new BushwallCornerTopLeftTile(22, "Top Left Bushwall Corner");
@@ -193,7 +202,7 @@ public class StaticTiles {
     public static Tile lightGreyStonePathLeftTile = new LightGreyStonePathLeftTile(203, "Light Grey Stonepath Left");
     public static Tile lightGreyStonePathRightTile = new LightGreyStonePathRightTile(204, "Light Grey Stonepath Right");
     public static Tile lightGreyStonePathTopLeftTile = new LightGreyStonePathEndTopLeftTile(205, "Light Grey Stonepath End Top Left");
-    public static Tile lightGreyStonePathTopRightTile = new LightGreyStonePathEndTopRightTile(206, "Light Grey Stonepath End Top Right");
+    public static Tile lightGreyStonePathTopRightTile = new LightGreyStonePathEndTopRightTileTEST(206, "Light Grey Stonepath End Top Right");
     public static Tile lightGreyStonePathBottomLeftTile = new LightGreyStonePathEndBottomLeftTile(207, "Light Grey Stonepath End Bottom Left");
     public static Tile lightGreyStonePathBottomRightTile = new LightGreyStonePathEndBottomRightTile(208, "Light Grey Stonepath End Bottom Right");
 
@@ -208,6 +217,16 @@ public class StaticTiles {
     public static Tile darkGreyStonePathBottomLeftTile = new DarkGreyStonePathEndBottomLeftTile(207, "Dark Grey Stonepath End Bottom Left");
     public static Tile darkGreyStonePathBottomRightTile = new DarkGreyStonePathEndBottomRightTile(208, "Dark Grey Stonepath End Bottom Right");
 
+    //GridPath
+    public static Tile gridPathTile = new GridPathFullTile(210, "Full Gridpath");
+    public static Tile gridPathTopTile = new GridPathTopTile(211, "Gridpath Top");
+    public static Tile gridPathBottomTile = new GridPathBottomTile(212, "Gridpath Bottom");
+    public static Tile gridPathLeftTile = new GridPathLeftTile(213, "Gridpath Left");
+    public static Tile gridPathRightTile = new GridPathRightTile(214, "Gridpath Right");
+    public static Tile gridPathTopLeftTile = new GridPathEndTopLeftTile(215, "Gridpath End Top Left");
+    public static Tile gridPathTopRightTile = new GridPathEndTopRightTile(216, "Gridpath End Top Right");
+    public static Tile gridPathBottomLeftTile = new GridPathEndBottomLeftTile(217, "Gridpath End Bottom Left");
+    public static Tile gridPathBottomRightTile = new GridPathEndBottomRightTile(218, "Gridpath End Bottom Right");
 
     public static int getTilesNumber(Tile t) {
         ArrayList<Tile> list = new ArrayList<Tile>();

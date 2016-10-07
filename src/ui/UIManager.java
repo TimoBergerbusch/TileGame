@@ -29,8 +29,8 @@ public class UIManager {
     }
 
     public void render(Graphics g) {
-        for (UIObject o : objects)
-            o.render(g);
+        for (int i = 0; i < objects.size(); i++)
+            objects.get(i).render(g);
     }
 
     public void onMouseMove(MouseEvent e) {
@@ -39,8 +39,8 @@ public class UIManager {
     }
 
     public void onMouseRelease(MouseEvent e) {
-        for (UIObject o : objects)
-            o.onMouseRelease(e);
+        for (int i = 0; i < objects.size(); i++)
+            objects.get(i).onMouseRelease(e);
     }
 
     public void addObject(UIObject o) {
