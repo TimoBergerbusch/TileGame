@@ -2,7 +2,6 @@ package entities.statics;
 
 import java.awt.*;
 
-import entities.StaticInteractableEntity;
 import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
@@ -38,7 +37,7 @@ public class WoodSign extends StaticInteractableEntity {
      */
     public WoodSign(Handler handler, float x, float y, Message message) {
         this(handler, x, y);
-        this.message = message;
+        setMessage(message);
     }
 
     @Override
@@ -50,6 +49,6 @@ public class WoodSign extends StaticInteractableEntity {
     public void render(Graphics g) {
         g.drawImage(Assets.woodSign, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-        message.render(g);
+//        message.render(g);
     }
 }

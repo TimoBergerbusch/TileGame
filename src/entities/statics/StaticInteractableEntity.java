@@ -1,7 +1,6 @@
-package entities;
+package entities.statics;
 
-import entities.statics.StaticEntity;
-import entities.statics.Statue;
+import entities.Entity;
 import messages.Message;
 import tilegame.Handler;
 
@@ -31,6 +30,7 @@ public abstract class StaticInteractableEntity extends StaticEntity {
      */
     public StaticInteractableEntity(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
+        handler.getMessageManager().addMessage(this.message);
     }
 
     //Methods
@@ -67,6 +67,8 @@ public abstract class StaticInteractableEntity extends StaticEntity {
      * @param message New value of the default {@link Message} this {@link Statue} shows.
      */
     public void setMessage(Message message) {
+        handler.getMessageManager().removeMessage(this.message);
         this.message = message;
+        handler.getMessageManager().addMessage(this.message);
     }
 }

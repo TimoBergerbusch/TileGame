@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import entities.Entity;
-import entities.StaticInteractableEntity;
+import entities.statics.StaticInteractableEntity;
 import gfx.Animation;
 import gfx.Assets;
 import messages.Message;

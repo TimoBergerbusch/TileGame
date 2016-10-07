@@ -3,6 +3,7 @@ package tilegame;
 import gfx.GameCamera;
 import input.KeyManager;
 import input.MouseManager;
+import messages.MessageManager;
 import worlds.World;
 
 public class Handler {
@@ -68,6 +69,13 @@ public class Handler {
      */
     public void setWorld(World world) {
         this.world = world;
+    }
+
+    public MessageManager getMessageManager() {
+        return world.getMessageManager();
+//        if (getWorld() != null)
+//            return world.getMessageManager();
+//        return null;
     }
 
 

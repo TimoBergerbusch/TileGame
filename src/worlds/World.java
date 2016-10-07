@@ -17,6 +17,7 @@ import entities.statics.WoodSign;
 import entities.statics.houses.GreenHouse;
 import gfx.Assets;
 import messages.Message;
+import messages.MessageManager;
 import tilegame.Handler;
 import tiles.FarneTile;
 import tiles.MetalSignTile;
@@ -34,9 +35,12 @@ public class World {
     private int[][] tiles;
     //entites
     private EntityManager entityManager;
+    private MessageManager messageManager;
 
     public World(Handler handler, String path) {
         this.handler = handler;
+        handler.setWorld(this);
+        messageManager = new MessageManager(handler);
         entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 
         //TestEntitys
@@ -51,6 +55,7 @@ public class World {
         entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
 
         entityManager.addEntity(new Pavilion(handler, 39 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new MetalSign(handler, 30 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new GreenHouse(handler, 30 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
         //TestEntitys
 
@@ -62,6 +67,7 @@ public class World {
 
     public void tick() {
         entityManager.tick();
+        messageManager.tick();
     }
 
     public void render(Graphics g) {
@@ -78,6 +84,7 @@ public class World {
         }
 
         entityManager.render(g);
+        messageManager.render(g);
     }
 
     public Tile getTile(int x, int y) {
@@ -167,5 +174,9 @@ public class World {
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public MessageManager getMessageManager() {
+        return messageManager;
     }
 }

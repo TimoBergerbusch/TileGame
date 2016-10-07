@@ -3,7 +3,7 @@ package messages;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-import entities.StaticInteractableEntity;
+import entities.statics.StaticInteractableEntity;
 
 
 /**
@@ -155,8 +155,10 @@ public class Message {
      * @param g the {@link Graphics}-Object to draw with
      */
     public void render(Graphics g) {
+//        System.out.println("render");
         if (!active)
             return;
+//        System.out.println("Message drawn");
         messageField.render(g);
         g.setColor(Color.BLACK);
         g.setFont(font);

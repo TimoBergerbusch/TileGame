@@ -2,7 +2,6 @@ package entities.statics;
 
 import java.awt.*;
 
-import entities.StaticInteractableEntity;
 import gfx.Assets;
 import messages.Message;
 import tilegame.Handler;
@@ -46,7 +45,7 @@ public class Statue extends StaticInteractableEntity {
      */
     public Statue(Handler handler, float x, float y, Message message) {
         this(handler, x, y);
-        this.message = message;
+        setMessage(message);
     }
 
     //Methods
@@ -59,6 +58,6 @@ public class Statue extends StaticInteractableEntity {
     public void render(Graphics g) {
         g.drawImage(Assets.statue, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-        message.render(g);
+//        message.render(g);
     }
 }
