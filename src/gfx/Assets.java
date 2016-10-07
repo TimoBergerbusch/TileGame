@@ -28,7 +28,7 @@ public class Assets {
             bridgePlanksEndRight, bridgeStairsDownRight, bridgeUpRight, bridgeHandrailRight, bridgePostRight, bridgeDownRight;
 
     //SimplePath
-    public static BufferedImage[] brownStonePath, lightGreyStonePath, darkGreyStonePath;
+    public static BufferedImage[] brownStonePath, lightGreyStonePath, darkGreyStonePath, gridPath;
 
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
@@ -170,6 +170,7 @@ public class Assets {
         brownStonePath = initSimplePath(simplePathSheet, 1, 0);
         lightGreyStonePath = initSimplePath(simplePathSheet, 0, 1);
         darkGreyStonePath = initSimplePath(simplePathSheet, 1, 1);
+        gridPath = initSimplePath(simplePathSheet, 0, 2);
     }
 
     private static void initWater(SpriteSheet tileSheet) {
