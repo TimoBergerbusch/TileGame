@@ -1,8 +1,8 @@
 package entities.creatures;
 
-import entities.Entity;
-import tilegame.Handler;
-import tiles.Tile;
+import entities.*;
+import tilegame.*;
+import tiles.*;
 
 /**
  * defines a creature as a subclass of {@link Entity}
@@ -16,7 +16,12 @@ public abstract class Creature extends Entity {
     /**
      * the default width/height of a {@link Creature}
      */
-    public static final int DEFAULT_CREATURE_WIDTH = 64, DEFAULT_CREATURE_HEIGHT = 96;
+    public static final int DEFAULT_CREATURE_WIDTH = Tile.TILE_WIDTH, DEFAULT_CREATURE_HEIGHT = (int) (Tile.TILE_HEIGHT * 1.5);
+
+    /**
+     * the default speed of the {@link gfx.Animation#speed animation changing time}
+     */
+    public static final int DEFAULT_ANIMATION_SPEED = 250;
 
     /**
      * the speed the {@link Creature} moves with
@@ -42,6 +47,11 @@ public abstract class Creature extends Entity {
         super(handler, x, y, width, height);
         speed = DEFAULT_SPEED;
         xMove = yMove = 0;
+
+        bounds.x = (int) (width * 0.3);
+        bounds.y = (int) (height * 0.5);
+        bounds.width = (int) (width * 0.475);
+        bounds.height = (int) (height * 0.46);
     }
 
     //Implemented Methods

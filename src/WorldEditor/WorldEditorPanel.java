@@ -1,16 +1,14 @@
 package WorldEditor;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
+import java.io.*;
 
-import gfx.Assets;
-import tilegame.Handler;
-import tiles.StaticTiles;
-import tiles.Tile;
-import ui.ClickListener;
-import ui.UIImageButton;
-import ui.UITileButton;
-import utils.Utils;
+import gfx.*;
+import tilegame.*;
+import tiles.*;
+import ui.*;
+import utils.*;
 
 public class WorldEditorPanel {
 
@@ -104,6 +102,18 @@ public class WorldEditorPanel {
 
     public void loadWorld() {
         String s = Utils.loadWorld();
+
+        clear();
+
+        loadWorld(s);
+    }
+
+    public void loadWorld(File f) {
+        clear();
+        loadWorld(f.getPath());
+    }
+
+    public void clear() {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 worldEditor.uiManager.removeObject(tiles[x][y]);
@@ -112,7 +122,5 @@ public class WorldEditorPanel {
         worldEditor.uiManager.removeObject(spawn);
         handler.getGame().getDisplay().getFrame().revalidate();
         handler.getGame().getDisplay().getFrame().repaint();
-
-        loadWorld(s);
     }
 }

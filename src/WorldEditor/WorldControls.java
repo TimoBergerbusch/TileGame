@@ -1,17 +1,20 @@
 package WorldEditor;
 
 import java.awt.*;
+import java.io.*;
+import java.nio.file.*;
 
-import gfx.Assets;
-import tilegame.Handler;
-import ui.ClickListener;
-import ui.UIImageButton;
-import utils.Utils;
+import javax.swing.*;
+
+import gfx.*;
+import tilegame.*;
+import ui.*;
+import utils.*;
 
 public class WorldControls {
 
     private WorldEditorPanel worldEditorPanel;
-    private UIImageButton load, save, zoomIn, zoomOut;
+    private UIImageButton load, save, zoomIn, zoomOut, newWorld;
     private Handler handler;
     private WorldEditor worldEditor;
 
@@ -68,6 +71,17 @@ public class WorldControls {
 
             }
         });
+        newWorld = new UIImageButton((int) (zoomIn.getX() + zoomIn.getWidth() + 10), handler.getHeight() - 40, 64, 35, Assets.newWorld, new ClickListener() {
+            @Override
+            public void onLeftClick() {
+                createNewWorld();
+            }
+
+            @Override
+            public void onRightClick() {
+
+            }
+        });
 
         addControls();
     }
@@ -91,6 +105,7 @@ public class WorldControls {
         worldEditor.uiManager.addObject(save);
         worldEditor.uiManager.addObject(zoomIn);
         worldEditor.uiManager.addObject(zoomOut);
+        worldEditor.uiManager.addObject(newWorld);
     }
 
     private void zoom(double zoomFactor) {
@@ -101,6 +116,49 @@ public class WorldControls {
         if ((int) worldEditorPanel.EDITOR_TILE_WIDTH * zoomFactor > 10) {
             worldEditorPanel.EDITOR_TILE_WIDTH *= zoomFactor;
             worldEditorPanel.xOffset *= zoomFactor;
+        }
+    }
+
+    private void createNewWorld() {
+        JTextField name, width, height;
+        int result = JOptionPane.showConfirmDialog(handler.getGame().getDisplay().getFrame(), new Component[]{
+                new JLabel("Please enter the following Infos"),
+                new JLabel("Name:"),
+                name = new JTextField("newWorld"),
+                new JLabel("width(in Tiles):"),
+                width = new JTextField("50"),
+                new JLabel("heigh(in Tiles):"),
+                height = new JTextField("20")
+        }, "Create new World", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+//                    System.out.println("Name: " + name.getText());
+//                    System.out.println("Width: " + width.getText());
+//                    System.out.println("Height: " + height.getText());
+
+//                    PrintWriter writer = new PrintWriter("res/worlds/" + name + ".lvl", "UTF-8");
+            try {
+                if (new File("res/worlds/" + name.getText() + ".lvl").exists())
+                    new File("res/worlds/" + name.getText() + ".lvl").delete();
+                new File("res/worlds/" + name.getText() + ".lvl").createNewFile();
+
+                BufferedWriter writer = Files.newBufferedWriter(Paths.get("res/worlds/" + name.getText() + ".lvl"));
+                writer.write(width.getText() + " " + height.getText());
+                writer.newLine();
+                writer.write("0 0");
+                writer.newLine();
+                for (int x = 0; x < Utils.parseInt(height.getText()); x++) {
+                    for (int z = 0; z < Utils.parseInt(width.getText()); z++)
+                        writer.write(0 + " ");
+                    writer.newLine();
+                }
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            System.out.println("written");
+            worldEditorPanel.loadWorld(new File("res/worlds/" + name.getText() + ".lvl"));
         }
     }
 }

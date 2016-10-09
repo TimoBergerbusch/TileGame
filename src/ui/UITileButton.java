@@ -1,12 +1,11 @@
 package ui;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
-import WorldEditor.WorldEditorPanel;
-import tilegame.Handler;
-import tiles.StaticTiles;
-import tiles.Tile;
+import WorldEditor.*;
+import tilegame.*;
+import tiles.*;
 
 public class UITileButton extends UIObject {
 
@@ -88,7 +87,8 @@ public class UITileButton extends UIObject {
             g2.setStroke(new BasicStroke(2));
             g2.drawRect((int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height);
         }
-        g.drawImage(tile.getTexture(), (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
+        if (tile != null)
+            g.drawImage(tile.getTexture(), (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
     }
 
     @Override

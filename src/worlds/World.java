@@ -2,30 +2,18 @@ package worlds;
 
 import java.awt.*;
 
-import entities.EntityManager;
-import entities.Farne;
-import entities.creatures.Player;
-import entities.statics.Bridge.BridgeDown;
-import entities.statics.Bridge.BridgeHandrail;
-import entities.statics.Bridge.BridgePost;
-import entities.statics.Bridge.BridgeUp;
-import entities.statics.MetalSign;
-import entities.statics.Pavilion.Pavilion;
-import entities.statics.Statue;
-import entities.statics.Tree;
-import entities.statics.WoodSign;
-import entities.statics.houses.GreenHouse;
-import gfx.Assets;
-import messages.Message;
-import messages.MessageManager;
-import tilegame.Handler;
-import tiles.FarneTile;
-import tiles.MetalSignTile;
-import tiles.StaticTiles;
-import tiles.Tile;
-import tiles.TreeShadowLeftTile;
-import tiles.TreeShadowRightTile;
-import utils.Utils;
+import entities.*;
+import entities.creatures.*;
+import entities.creatures.persons.*;
+import entities.statics.Bridge.*;
+import entities.statics.*;
+import entities.statics.Pavilion.*;
+import entities.statics.houses.*;
+import gfx.*;
+import messages.*;
+import tilegame.*;
+import tiles.*;
+import utils.*;
 
 public class World {
 
@@ -48,7 +36,8 @@ public class World {
         entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgePost(handler, 6 * Tile.TILE_WIDTH, 14 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 17 * Tile.TILE_HEIGHT));
 
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen", "Hier liegen die Stunden in denen ich hätte schlafen sollen. Mögen sie mehr Ruhe bekommen als ich. "}, Assets.metalSignBackground, new Font("Times New Roman", Font.BOLD, 45))));
@@ -56,7 +45,10 @@ public class World {
 
         entityManager.addEntity(new Pavilion(handler, 39 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new MetalSign(handler, 30 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
-        entityManager.addEntity(new GreenHouse(handler, 30 * Tile.TILE_WIDTH, 15 * Tile.TILE_HEIGHT));
+        entityManager.addEntity(new GreenHouse(handler, 28 * Tile.TILE_WIDTH, 2 * Tile.TILE_HEIGHT));
+
+        entityManager.addEntity(new Grandfather(handler, 1100, 1100, Assets.grandfather));
+        entityManager.addEntity(new Grandmother(handler, 1164, 1100, Assets.grandmother));
         //TestEntitys
 
         loadWorld(path);

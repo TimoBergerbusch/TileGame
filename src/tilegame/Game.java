@@ -1,17 +1,12 @@
 package tilegame;
 
 import java.awt.*;
-import java.awt.image.BufferStrategy;
+import java.awt.image.*;
 
-import Display.Display;
-import gfx.Assets;
-import gfx.GameCamera;
-import input.KeyManager;
-import input.MouseManager;
-import states.EditorState;
-import states.GameState;
-import states.MenuState;
-import states.State;
+import Display.*;
+import gfx.*;
+import input.*;
+import states.*;
 
 public class Game implements Runnable {
 
@@ -60,7 +55,7 @@ public class Game implements Runnable {
         gameState = new GameState(handler);
         editorState = new EditorState(handler);
         menuState = new MenuState(handler);
-        State.setState(menuState);
+        State.setState(gameState);
     }
 
     private void tick() {

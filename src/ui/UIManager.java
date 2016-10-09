@@ -1,10 +1,10 @@
 package ui;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.awt.event.*;
+import java.util.*;
 
-import tilegame.Handler;
+import tilegame.*;
 
 public class UIManager {
 
@@ -21,10 +21,10 @@ public class UIManager {
     }
 
     public void tick() {
-        for (UIObject o : objects) {
-            if (o == null)
-                removeObject(o);
-            o.tick();
+        for (int i = 0; i < objects.size(); i++) {
+            if (objects.get(i) == null)
+                removeObject(objects.get(i));
+            objects.get(i).tick();
         }
     }
 

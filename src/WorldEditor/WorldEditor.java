@@ -34,8 +34,8 @@ public class WorldEditor {
     }
 
     public void render(Graphics g) {
-        worldControls.render(g);
         worldEditorPanel.render(g);
+        worldControls.render(g);
         uiManager.render(g);
     }
 

@@ -1,7 +1,9 @@
 package gfx;
 
 
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
+
+import utils.*;
 
 public class Assets {
 
@@ -21,7 +23,6 @@ public class Assets {
     //Water
     public static BufferedImage stillWaterEdgeTopLeft, stillWaterEdgeTop, stillWaterEdgeTopRight, stillWaterEdgeLeft, stillWater, stillWaterEdgeRight, stillWaterEdgeBottomLeft, stillWaterEdgeBottom, stillWaterEdgeBottomRight;
     public static BufferedImage deepWater, deepWaterEdgeTopLeft, deepWaterEdgeTop, deepWaterEdgeTopRight, deepWaterEdgeLeft, deepWaterEdgeRight, deepWaterEdgeBottomLeft, deepWaterEdgeBottom, deepWaterEdgeBottomRight, deepWaterOutsideEdgeTopLeft, deepWaterOutsideEdgeTopRight, deepWaterOutsideEdgeBottomLeft, deepWaterOutsideEdgeBottomRight;
-    public static BufferedImage beach, beachEdgeTop, beachEdgeBottom, beachEdgeLeft, beachEdgeRight, beachEdgeTopLeft, beachEdgeTopRight, beachEdgeBottomLeft, beachEdgeBottomRight, beachOutsideTopLeftEdge, beachOutsideTopRightEdge, beachOutsideBottomLeftEdge, beachOutsideBottomRightEdge;
 
     //Bridge
     public static BufferedImage bridgeUpLeft, bridgeHandrailLeft, bridgePostLeft, bridgeDownLeft, bridgeStairsUpLeft, bridgePlanksEndLeft, bridgeStairsDownLeft, bridgeStairsUpMid, bridgePlanksMid, bridgeStairsDownMid, bridgeStairsUpRight,
@@ -29,12 +30,23 @@ public class Assets {
 
     //SimplePath
     public static BufferedImage[] brownStonePath, lightGreyStonePath, darkGreyStonePath, gridPath;
+    //ComplexPath
+    /**
+     * Complex Path with the following pattern: <ul> <li> 0 = Full Tile</li> <li> 1 = TopEdge</li>
+     * <li> 2 = Bottom Edge</li> <li> 3 = Left Edge</li> <li> 4 = Right Edge</li> <li> 5 = Top Left
+     * Edge</li> <li> 6 = Top Right Edge</li> <li> 7 = Bottom Left Edge</li> <li> 8 = Bottom Right
+     * Edge</li> <li> 9 = Outside Top Left</li> <li> 10 = Outside Top Right</li> <li> 11 = Outside
+     * Bottom Left</li> <li> 12 = Outside Bottom Right</li> </ul>
+     */
+    public static BufferedImage[] beachPath, gravelPath, dirtPath, lightGravelPath, darkGrassPath, lightGrassPath, mudPath, pavingPath, sandPath, cavePath;
 
     //Player
     public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
     public static BufferedImage[] player_walking_down, player_walking_up, player_walking_left, player_walking_right;
     public static BufferedImage[] player_running_down, player_running_up, player_running_left, player_running_right;
     public static BufferedImage spawn;
+    //other Person
+    public static BufferedImage[] grandfather, grandmother;
 
     //Interaction Backgrounds
     public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
@@ -43,7 +55,7 @@ public class Assets {
     public static BufferedImage[] startButton, worldEditorButton, endButton;
 
     //WorldControls
-    public static BufferedImage[] load, save, zoomIn, zoomOut;
+    public static BufferedImage[] load, save, zoomIn, zoomOut, newWorld;
 
     public static void init() {
         initMenuStateButtons();
@@ -78,14 +90,17 @@ public class Assets {
         initWater(tileSheet);
 
         initSimplePath();
+        initComplexPath();
 
         initBridge(tileSheet);
 
         initPlayer();
+        initOtherPersons();
 
         initInteractionBackgrounds();
 
         initWorldControls();
+
     }
 
     private static void initWorldControls() {
@@ -103,6 +118,9 @@ public class Assets {
         zoomOut = new BufferedImage[2];
         zoomOut[0] = worldControlsSheet.crop(2 * 35, 4 * height, 35, 35);
         zoomOut[1] = worldControlsSheet.crop(3 * 35, 4 * height, 35, 35);
+        newWorld = new BufferedImage[2];
+        newWorld[0] = worldControlsSheet.crop(4 * 35, 4 * height, 70, 35);
+        newWorld[1] = worldControlsSheet.crop(4 * 35, 4 * height, 70, 35);
     }
 
     private static void initMenuStateButtons() {
@@ -123,6 +141,7 @@ public class Assets {
 
     }
 
+    //MessageBackgroundsStart
     private static void initInteractionBackgrounds() {
         SpriteSheet backgroundSheet = new SpriteSheet(ImageLoader.loadImage("/textures/dialogBackgrounds/backgrounds.png"));
 
@@ -130,7 +149,9 @@ public class Assets {
         scriptRollBackground = backgroundSheet.crop(0, interactionHeight, interactionWidth, interactionHeight);
         metalSignBackground = backgroundSheet.crop(0, 2 * interactionHeight, interactionWidth, interactionHeight);
     }
+    //MessageBackgroundsEnd
 
+    //EnvironmentStart
     private static void initTowns(SpriteSheet tileSheet) {
         initHouses(tileSheet);
 
@@ -142,12 +163,70 @@ public class Assets {
         greenHouse = tileSheet.crop(6 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
         redHouse = tileSheet.crop(11 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
     }
+    //EnivornmentEnd
+
+    //pathes
+
+    /**
+     * Returns a complex Path with the following pattern: <ul> <li> 0 = Full Tile</li> <li> 1 =
+     * TopEdge</li> <li> 2 = Bottom Edge</li> <li> 3 = Left Edge</li> <li> 4 = Right Edge</li> <li>
+     * 5 = Top Left Edge</li> <li> 6 = Top Right Edge</li> <li> 7 = Bottom Left Edge</li> <li> 8 =
+     * Bottom Right Edge</li> <li> 9 = Outside Top Left</li> <li> 10 = Outside Top Right</li> <li>
+     * 11 = Outside Bottom Left</li> <li> 12 = Outside Bottom Right</li> </ul>
+     */
+    private static BufferedImage[] initComplexPath(SpriteSheet tileSheet, int x, int y) {
+        BufferedImage[] complexPath = new BufferedImage[13];
+        int xOffset = 4 * x * TileWidth, yOffset = 3 * y * TileHeight;
+        complexPath[0] = tileSheet.crop(x * TileWidth, y * TileHeight);
+        complexPath[1] = tileSheet.crop(xOffset + 2 * TileWidth, yOffset);
+        complexPath[2] = tileSheet.crop(xOffset + 3 * TileWidth, yOffset);
+        complexPath[3] = tileSheet.crop(xOffset, yOffset);
+        complexPath[4] = tileSheet.crop(xOffset + TileWidth, yOffset);
+        complexPath[5] = tileSheet.crop(xOffset + 2 * TileWidth, yOffset + TileHeight);
+        complexPath[6] = tileSheet.crop(xOffset + 3 * TileWidth, yOffset + TileHeight);
+        complexPath[7] = tileSheet.crop(xOffset, yOffset + TileHeight);
+        complexPath[8] = tileSheet.crop(xOffset + TileWidth, yOffset + TileHeight);
+        complexPath[9] = tileSheet.crop(xOffset, yOffset + 2 * TileHeight);
+        complexPath[10] = tileSheet.crop(xOffset + TileWidth, yOffset + 2 * TileHeight);
+        complexPath[11] = tileSheet.crop(xOffset + 2 * TileWidth, yOffset + 2 * TileHeight);
+        complexPath[12] = tileSheet.crop(xOffset + 3 * TileWidth, yOffset + 2 * TileHeight);
+
+        return complexPath;
+    }
+
+    private static void initComplexPath() {
+        SpriteSheet complexPathSheet = new SpriteSheet(ImageLoader.loadImage("/textures/pathes/Pathes.png"));
+        gravelPath = initComplexPath(complexPathSheet, 1, 0);
+        beachPath = initComplexPath(complexPathSheet, 2, 0);
+        dirtPath = initComplexPath(complexPathSheet, 3, 0);
+        lightGravelPath = initComplexPath(complexPathSheet, 0, 1);
+        darkGrassPath = initComplexPath(complexPathSheet, 1, 1);
+        lightGrassPath = initComplexPath(complexPathSheet, 2, 1);
+        mudPath = initComplexPath(complexPathSheet, 3, 1);
+        pavingPath = initComplexPath(complexPathSheet, 0, 2);
+        sandPath = initComplexPath(complexPathSheet, 1, 2);
+        cavePath = initComplexPath(complexPathSheet, 2, 2);
+    }
+
+    private static void initSimplePath() {
+        SpriteSheet simplePathSheet = new SpriteSheet(ImageLoader.loadImage("/textures/pathes/SimplePathes.png"));
+        //Path
+        brownStonePath = initSimplePath(simplePathSheet, 1, 0);
+        lightGreyStonePath = initSimplePath(simplePathSheet, 0, 1);
+        darkGreyStonePath = initSimplePath(simplePathSheet, 1, 1);
+        gridPath = initSimplePath(simplePathSheet, 2, 0);
+    }
 
     /**
      * Returns a simple Path with the following pattern: <ul> <li> 0 = Full Tile</li> <li> 1 = Top
      * Edge</li> <li> 2 = Bottom Edge</li> <li> 3 = Left Edge</li> <li> 4 = Right Edge</li> <li> 5 =
      * Top Left Edge</li> <li> 6 = Top Right Edge</li> <li> 7 = Bottom Left Edge</li> <li> 8 =
      * Bottom Right Edge</li> </ul>
+     *
+     * @param tileSheet the {@link SpriteSheet} containing the path
+     * @param x         the xOffset
+     * @param y         the yOffset
+     * @return an Array with the described scheme
      */
     private static BufferedImage[] initSimplePath(SpriteSheet tileSheet, int x, int y) {
         BufferedImage[] simplePath = new BufferedImage[9];
@@ -163,20 +242,12 @@ public class Assets {
         simplePath[8] = tileSheet.crop(xOffset + TileWidth, yOffset + TileHeight);
         return simplePath;
     }
+    //PathesEnd
 
-    private static void initSimplePath() {
-        SpriteSheet simplePathSheet = new SpriteSheet(ImageLoader.loadImage("/textures/Pathes/SimplePathes.png"));
-        //Path
-        brownStonePath = initSimplePath(simplePathSheet, 1, 0);
-        lightGreyStonePath = initSimplePath(simplePathSheet, 0, 1);
-        darkGreyStonePath = initSimplePath(simplePathSheet, 1, 1);
-        gridPath = initSimplePath(simplePathSheet, 2, 0);
-    }
-
+    //Water
     private static void initWater(SpriteSheet tileSheet) {
         initStillWater(tileSheet);
         initDeepWater(tileSheet);
-        initBeach(tileSheet);
     }
 
     private static void initDeepWater(SpriteSheet tileSheet) {
@@ -213,27 +284,9 @@ public class Assets {
         stillWaterEdgeBottom = tileSheet.crop(4 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
         stillWaterEdgeBottomRight = tileSheet.crop(5 * TileWidth, 2 * TileHeight, TileWidth, TileHeight);
     }
+    //WaterEnd
 
-    private static void initBeach(SpriteSheet tileSheet) {
-        beachEdgeLeft = tileSheet.crop(7 * TileWidth, 5 * TileHeight);
-        beachEdgeRight = tileSheet.crop(8 * TileWidth, 5 * TileHeight);
-        beachEdgeTop = tileSheet.crop(9 * TileWidth, 5 * TileHeight);
-        beachEdgeBottom = tileSheet.crop(10 * TileWidth, 5 * TileHeight);
-        beach = tileSheet.crop(11 * TileWidth, 5 * TileHeight);
-
-        beachEdgeBottomLeft = tileSheet.crop(7 * TileWidth, 6 * TileHeight);
-        beachEdgeBottomRight = tileSheet.crop(8 * TileWidth, 6 * TileHeight);
-        beachEdgeTopLeft = tileSheet.crop(9 * TileWidth, 6 * TileHeight);
-        beachEdgeTopRight = tileSheet.crop(10 * TileWidth, 6 * TileHeight);
-
-        beachOutsideBottomRightEdge = tileSheet.crop(7 * TileWidth, 7 * TileHeight);
-        beachOutsideBottomLeftEdge = tileSheet.crop(8 * TileWidth, 7 * TileHeight);
-        beachOutsideTopRightEdge = tileSheet.crop(9 * TileWidth, 7 * TileHeight);
-        beachOutsideTopLeftEdge = tileSheet.crop(10 * TileWidth, 7 * TileHeight);
-
-    }
-
-    //Player start
+    //PlayerStart
     private static void initPlayer() {
         int playerWidth = 20, playerHeight = 25;
         SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/PlayerWalking.png"));
@@ -304,8 +357,53 @@ public class Assets {
         player_running_right[3] = player_running_right[1];
 
     }
-    //Player end
+    //PlayerEnd
 
+
+    //OtherPeople
+    private static void initOtherPersons() {
+        SpriteSheet adultPersonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/people/adults.png"));
+        grandfather = initOtherPerson(adultPersonSheet, 0, 0);
+        grandmother = initOtherPerson(adultPersonSheet, 0, 1);
+    }
+
+    /**
+     * Returns an Array of BufferedImages containing a person in the following pattern: <ul> <li> 0
+     * = standing facing down</li> <li> 1 = standing facing up</li> <li> 2 = standing facing
+     * left</li> <li> 3 = standing facing right</li> <li> 4 = walking down {@link Animation} part
+     * 1</li> <li> 5 = walking down {@link Animation} part 2</li> <li> 6 = walking up {@link
+     * Animation} part 1</li> <li> 7 = walking up {@link Animation} part 2</li> <li> 8 = walking
+     * left {@link Animation} part 1</li> <li> 9 = walking left {@link Animation} part 2</li> <li>
+     * 10 =walking right {@link Animation} part 1</li> <li> 11 = walking right {@link Animation}
+     * part 2</li> </ul>
+     *
+     * @param peopleSheet the {@link SpriteSheet} containing the path
+     * @param x           the xOffset
+     * @param y           the yOffset
+     * @return an Array with the described scheme
+     */
+    private static BufferedImage[] initOtherPerson(SpriteSheet peopleSheet, int x, int y) {
+        int width = 16, height = 19;
+        int xOffset = x * width, yOffset = y * height;
+
+        BufferedImage[] images = new BufferedImage[12];
+        images[0] = peopleSheet.crop(xOffset, yOffset, width, height);
+        images[1] = peopleSheet.crop(xOffset + width, yOffset, width, height);
+        images[2] = peopleSheet.crop(xOffset + 2 * width, yOffset, width, height);
+        images[3] = Utils.flipImage(images[2]);
+        images[4] = peopleSheet.crop(xOffset + 3 * width, yOffset, width, height);
+        images[5] = Utils.flipImage(images[4]);
+        images[6] = peopleSheet.crop(xOffset + 4 * width, yOffset, width, height);
+        images[7] = Utils.flipImage(images[6]);
+        images[8] = peopleSheet.crop(xOffset + 5 * width, yOffset, width, height);
+        images[9] = peopleSheet.crop(xOffset + 6 * width, yOffset, width, height);
+        images[10] = Utils.flipImage(images[8]);
+        images[11] = Utils.flipImage(images[9]);
+
+        return images;
+    }
+
+    //OtherPeopleEnd
     private static void initBushwall(SpriteSheet TileSheet) {
         //Bushwall
         bushwallCornerTopLeft = TileSheet.crop(TileWidth, 0, TileWidth, TileHeight);

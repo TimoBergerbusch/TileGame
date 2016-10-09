@@ -1,14 +1,9 @@
 package utils;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.awt.geom.*;
+import java.awt.image.*;
+import java.io.*;
 
 import javax.swing.*;
 
@@ -16,6 +11,8 @@ public class Utils {
 
     public static String loadFileAsString(String path) {
         StringBuilder builder = new StringBuilder();
+
+        System.out.println(path);
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -28,6 +25,13 @@ public class Utils {
             e.printStackTrace();
         }
         return builder.toString();
+    }
+
+    public static BufferedImage[] getArrayPart(BufferedImage[] array, int start, int end) {
+        BufferedImage[] tmp = new BufferedImage[end - start + 1];
+        for (int i = 0; i < end - start; i++)
+            tmp[i] = array[start + i];
+        return tmp;
     }
 
     public static int parseInt(String number) {
@@ -56,6 +60,24 @@ public class Utils {
         g.setTransform(affineTransform);
         g.drawImage(src, 0, 0, null);
         return rotatedImage;
+    }
+
+    public static BufferedImage flipImage(BufferedImage image) {
+        AffineTransform at = new AffineTransform();
+        at.concatenate(AffineTransform.getScaleInstance(-1, 1));
+        at.concatenate(AffineTransform.getTranslateInstance(-image.getWidth(), 0));
+        return createTransformed(image, at);
+    }
+
+    private static BufferedImage createTransformed(BufferedImage image, AffineTransform at) {
+        BufferedImage newImage = new BufferedImage(
+                image.getWidth(), image.getHeight(),
+                BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = newImage.createGraphics();
+        g.transform(at);
+        g.drawImage(image, 0, 0, null);
+        g.dispose();
+        return newImage;
     }
 
     public static String loadWorld() {

@@ -1,20 +1,16 @@
 package entities.creatures;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 
-import entities.Entity;
-import entities.statics.StaticInteractableEntity;
-import gfx.Animation;
-import gfx.Assets;
-import messages.Message;
-import tilegame.Handler;
-import utils.Direction;
+import entities.*;
+import entities.statics.*;
+import gfx.*;
+import messages.*;
+import tilegame.*;
+import utils.*;
 
-import static utils.Direction.DOWN;
-import static utils.Direction.LEFT;
-import static utils.Direction.RIGHT;
-import static utils.Direction.UP;
+import static utils.Direction.*;
 
 /**
  * defines a Player as a subclass of {@link Creature}
@@ -107,11 +103,6 @@ public class Player extends Creature {
      */
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
-
-        bounds.x = 13;
-        bounds.y = 44;
-        bounds.width = 38;
-        bounds.height = 45;
 
         //Animation Start
         //walking
@@ -208,6 +199,9 @@ public class Player extends Creature {
             if (e instanceof StaticInteractableEntity && e.getCollisionBounds(0, 0).intersects(ar)) {
                 ((StaticInteractableEntity) e).interact();
                 return;
+            } else if (e instanceof InteractableCreature && e.getCollisionBounds(0, 0).intersects(ar)) {
+                ((InteractableCreature) e).interact();
+                return;
             }
         }
     }
@@ -288,8 +282,8 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-//        g.setColor(Color.red);
-//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+        g.setColor(Color.red);
+        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
     /**
@@ -331,5 +325,11 @@ public class Player extends Creature {
                     return Assets.playerStillDown;
             }
         }
+    }
+
+    //Getter und Setter
+
+    public Direction getDirection() {
+        return direction;
     }
 }

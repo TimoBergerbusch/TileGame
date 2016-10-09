@@ -2,9 +2,9 @@ package entities.statics;
 
 import java.awt.*;
 
-import gfx.Assets;
-import tilegame.Handler;
-import tiles.Tile;
+import gfx.*;
+import tilegame.*;
+import tiles.*;
 
 /**
  * defines a Tree as a {@link StaticEntity}
