@@ -16,8 +16,8 @@ public class Grandfather extends Person {
      * @param y       the y-position of the {@link Grandfather}
      * @param texture the texture of the {@link Grandfather}
      */
-    public Grandfather(Handler handler, float x, float y, BufferedImage[] texture) {
-        super(handler, x, y, texture);
+    public Grandfather(Handler handler, float x, float y, BufferedImage[] texture, boolean bool) {
+        super(handler, x, y, texture, bool);
     }
 
     /**
@@ -28,14 +28,8 @@ public class Grandfather extends Person {
      * @param y       the y-position of the {@link Grandfather}
      * @param texture the texture of the {@link Grandfather}
      */
-    public Grandfather(Handler handler, float x, float y, BufferedImage[] texture, Message message) {
-        super(handler, x, y, texture, message);
-    }
-
-
-    @Override
-    public void tick() {
-
+    public Grandfather(Handler handler, float x, float y, BufferedImage[] texture, boolean bool, Message message) {
+        super(handler, x, y, texture, bool, message);
     }
 
     @Override

@@ -1,9 +1,10 @@
 package messages;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 
-import entities.statics.StaticInteractableEntity;
+import entities.statics.*;
+import utils.*;
 
 
 /**
@@ -369,5 +370,10 @@ public class Message {
      */
     public int getSides() {
         return sides;
+    }
+
+    @Override
+    public String toString() {
+        return "/nbspM/" + Utils.getArrayToString(message, "/nbspA/");
     }
 }

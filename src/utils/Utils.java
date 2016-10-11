@@ -12,7 +12,7 @@ public class Utils {
     public static String loadFileAsString(String path) {
         StringBuilder builder = new StringBuilder();
 
-        System.out.println(path);
+//        System.out.println(path);
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(path));
@@ -29,14 +29,16 @@ public class Utils {
 
     public static BufferedImage[] getArrayPart(BufferedImage[] array, int start, int end) {
         BufferedImage[] tmp = new BufferedImage[end - start + 1];
-        for (int i = 0; i < end - start; i++)
+        for (int i = 0; i <= end - start; i++)
             tmp[i] = array[start + i];
         return tmp;
     }
 
     public static int parseInt(String number) {
         try {
-            return Integer.parseInt(number);
+            return (int) new Double(number).intValue();
+
+//            return Integer.parseInt(number);
         } catch (NumberFormatException e) {
             e.printStackTrace();
             return 0;
@@ -97,15 +99,65 @@ public class Utils {
         if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             printIntoFile(chooser.getSelectedFile(), s);
         }
+
+
     }
 
-    private static void printIntoFile(File f, String s) {
+    public static void printIntoFile(File f, String s) {
         try {
             PrintWriter out = new PrintWriter(f);
             out.print(s);
             out.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String getArrayToString(String[] message, String braker) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < message.length; i++) {
+            sb.append(message[i]);
+            if (!(i == message.length - 1))
+                sb.append(braker);
+        }
+        return sb.toString();
+    }
+
+    public static BufferedImage[] getPersonAnimation(Direction direction, BufferedImage[] texture) {
+
+        int start, end;
+        switch (direction) {
+            case UP:
+                start = 6;
+                end = 7;
+                break;
+            case DOWN:
+                start = 4;
+                end = 5;
+                break;
+            case LEFT:
+                start = 8;
+                end = 9;
+                break;
+            default:
+                start = 10;
+                end = 11;
+                break;
+        }
+        return getAddStandingTExtureToAnimation(direction, texture, Utils.getArrayPart(texture, start, end));
+
+    }
+
+    private static BufferedImage[] getAddStandingTExtureToAnimation(Direction direction, BufferedImage[] texture, BufferedImage[] tmp) {
+        switch (direction) {
+            case UP:
+                return new BufferedImage[]{tmp[0], texture[1], tmp[1], texture[1]};
+            case DOWN:
+                return new BufferedImage[]{tmp[0], texture[0], tmp[1], texture[0]};
+            case LEFT:
+                return new BufferedImage[]{tmp[0], texture[2], tmp[1], texture[2]};
+            default:
+                return new BufferedImage[]{tmp[0], texture[3], tmp[1], texture[3]};
         }
     }
 }

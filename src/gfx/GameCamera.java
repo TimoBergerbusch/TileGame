@@ -41,7 +41,7 @@ public class GameCamera {
     //Implemented Methods
 
     /**
-     * moves the {@link GameCamera} by the given amounts and calls {@link #checkBlankSpace()}
+     * shouldMove the {@link GameCamera} by the given amounts and calls {@link #checkBlankSpace()}
      *
      * @param xAmt the amount on the x-axis
      * @param yAmt the amount on the y-axis

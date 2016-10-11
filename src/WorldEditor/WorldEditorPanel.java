@@ -98,6 +98,7 @@ public class WorldEditorPanel {
         }
 
         Utils.saveWorld(sb.toString());
+        handler.getWorld().getEntityManager().save();
     }
 
     public void loadWorld() {

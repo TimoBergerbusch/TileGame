@@ -1,11 +1,13 @@
 package entities;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.io.*;
+import java.util.*;
 
-import entities.creatures.Player;
-import tilegame.Handler;
+import entities.creatures.*;
+import entities.statics.*;
+import tilegame.*;
+import utils.*;
 
 /**
  * this class is used to store every {@link Entity} the {@link tilegame.Game} should contain. It is
@@ -175,5 +177,31 @@ public class EntityManager {
      */
     public void setRenderSorter(Comparator<Entity> renderSorter) {
         this.renderSorter = renderSorter;
+    }
+
+    public void save() {
+        StringBuilder sb = new StringBuilder();
+        int index;
+        for (int i = 0; i < entities.size(); i++) {
+            Entity e = entities.get(i);
+            index = StaticEntitys.getIndexOfClass(e.getClass());
+            if (index == -1)
+                continue;
+            sb.append(index).append("/nbsp/");
+            sb.append(e.getX()).append("/nbsp/");
+            sb.append(e.getY()).append("/nbsp/");
+            sb.append(e.getWidth()).append("/nbsp/");
+            sb.append(e.getHeight()).append("/nbsp/");
+            if (e instanceof StaticInteractableEntity)
+                sb.append(((StaticInteractableEntity) e).getMessage());
+            else if (e instanceof InteractableCreature)
+                sb.append(((InteractableCreature) e).getMessage());
+            else
+                sb.append("no message");
+            sb.append("\n");
+        }
+        System.out.println(sb.toString());
+
+        Utils.printIntoFile(new File("res/worlds/" + handler.getWorld().getName() + ".ntt"), sb.toString());
     }
 }

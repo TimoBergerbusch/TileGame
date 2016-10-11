@@ -402,8 +402,8 @@ public class Assets {
 
         return images;
     }
-
     //OtherPeopleEnd
+
     private static void initBushwall(SpriteSheet TileSheet) {
         //Bushwall
         bushwallCornerTopLeft = TileSheet.crop(TileWidth, 0, TileWidth, TileHeight);

@@ -10,7 +10,7 @@ import tiles.*;
 public abstract class Creature extends Entity {
 
     /**
-     * the default speed a {@link Creature} moves with
+     * the default speed a {@link Creature} shouldMove with
      */
     public static final float DEFAULT_SPEED = 3.0f;
     /**
@@ -24,7 +24,7 @@ public abstract class Creature extends Entity {
     public static final int DEFAULT_ANIMATION_SPEED = 250;
 
     /**
-     * the speed the {@link Creature} moves with
+     * the speed the {@link Creature} shouldMove with
      */
     protected float speed;
     /**
@@ -133,18 +133,18 @@ public abstract class Creature extends Entity {
     //Getters and Setters
 
     /**
-     * Gets the speed the {@link Creature} moves with.
+     * Gets the speed the {@link Creature} shouldMove with.
      *
-     * @return Value of the speed the {@link Creature} moves with.
+     * @return Value of the speed the {@link Creature} shouldMove with.
      */
     public float getSpeed() {
         return speed;
     }
 
     /**
-     * StaticSets new the speed the {@link Creature} moves with.
+     * StaticSets new the speed the {@link Creature} shouldMove with.
      *
-     * @param speed New value of the speed the {@link Creature} moves with.
+     * @param speed New value of the speed the {@link Creature} shouldMove with.
      */
     public void setSpeed(float speed) {
         this.speed = speed;

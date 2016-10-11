@@ -37,7 +37,7 @@ public abstract class EntityBuild extends Entity {
     /**
      * checks if the {@link entities.creatures.Player#bounds Players Collisionbounds} would
      * intersects with the {@link #bounds} of any other {@link Entity} of the whole {@link
-     * EntityBuild} if the {@link entities.creatures.Player} moves by the given x/yOffsets
+     * EntityBuild} if the {@link entities.creatures.Player} shouldMove by the given x/yOffsets
      *
      * @param xOffset the offset on the x-axis
      * @param yOffset the offset on the y-axis

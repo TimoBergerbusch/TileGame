@@ -1,6 +1,7 @@
 package worlds;
 
 import java.awt.*;
+import java.io.*;
 
 import entities.*;
 import entities.creatures.*;
@@ -24,9 +25,11 @@ public class World {
     //entites
     private EntityManager entityManager;
     private MessageManager messageManager;
+    private String name;
 
     public World(Handler handler, String path) {
         this.handler = handler;
+        setName(path);
         handler.setWorld(this);
         messageManager = new MessageManager(handler);
         entityManager = new EntityManager(handler, new Player(handler, 100, 100));
@@ -39,6 +42,7 @@ public class World {
         entityManager.addEntity(new BridgeHandrail(handler, 6 * Tile.TILE_WIDTH, 16 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new BridgeUp(handler, 6 * Tile.TILE_WIDTH, 17 * Tile.TILE_HEIGHT));
 
+        loadEntitys(path);
         entityManager.addEntity(new Statue(handler, 4 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new MetalSign(handler, 3 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Park der Vergessenen", "Hier liegen die Stunden in denen ich hätte schlafen sollen. Mögen sie mehr Ruhe bekommen als ich. "}, Assets.metalSignBackground, new Font("Times New Roman", Font.BOLD, 45))));
         entityManager.addEntity(new WoodSign(handler, 5 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT, new Message(new String[]{"Schriftrollenbeispiel"}, Assets.scriptRollBackground, new Font("Times New Roman", Font.ITALIC, 45))));
@@ -47,14 +51,30 @@ public class World {
         entityManager.addEntity(new MetalSign(handler, 30 * Tile.TILE_WIDTH, 13 * Tile.TILE_HEIGHT));
         entityManager.addEntity(new GreenHouse(handler, 28 * Tile.TILE_WIDTH, 2 * Tile.TILE_HEIGHT));
 
-        entityManager.addEntity(new Grandfather(handler, 1100, 1100, Assets.grandfather));
-        entityManager.addEntity(new Grandmother(handler, 1164, 1100, Assets.grandmother));
+        entityManager.addEntity(new Grandfather(handler, 1100, 1100, Assets.grandfather, true));
+//        entityManager.addEntity(new Grandmother(handler, 1164, 1100, Assets.grandmother));
         //TestEntitys
 
         loadWorld(path);
 
         entityManager.getPlayer().setX(spawnX);
         entityManager.getPlayer().setY(spawnY);
+    }
+
+    private void loadEntitys(String path) {
+//        String[] entitys = Utils.loadFileAsString(path + ".ntt").split("\n");
+//        if (entitys[0].equals(""))
+//            return;
+//        for (int i = 0; i < entitys.length; i++) {
+//            String[] entity = entitys[i].split("/nbsp/");
+//            System.out.print(StaticEntitys.getClassByIndex(Utils.parseInt(entity[0])));
+//            System.out.print(" X: " + Utils.parseInt(entity[1]));
+//            System.out.print(" Y: " + Utils.parseInt(entity[2]));
+//            System.out.print(" Width: " + Utils.parseInt(entity[3]));
+//            System.out.print(" Height: " + Utils.parseInt(entity[4]));
+//            System.out.println(" Rest: " + entity[5]);
+//        }
+//        entityManager.addEntity(new );
     }
 
     public void tick() {
@@ -91,6 +111,8 @@ public class World {
     private void loadWorld(String path) {
         String file = Utils.loadFileAsString(path);
         String[] tokens = file.split("\\s+");
+
+        setName(path);
 
         width = Utils.parseInt(tokens[0]);
         height = Utils.parseInt(tokens[1]);
@@ -170,5 +192,13 @@ public class World {
 
     public MessageManager getMessageManager() {
         return messageManager;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String path) {
+        this.name = new File(path).getName();
     }
 }

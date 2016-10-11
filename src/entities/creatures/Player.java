@@ -133,7 +133,6 @@ public class Player extends Creature {
 
     @Override
     public void tick() {
-
         if (!Message.isShown) {     // only move if no message is shown
             //animation
             animDown.tick();
@@ -282,8 +281,8 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-        g.setColor(Color.red);
-        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+//        g.setColor(Color.red);
+//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
     /**

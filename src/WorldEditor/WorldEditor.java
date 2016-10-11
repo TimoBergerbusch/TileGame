@@ -17,7 +17,7 @@ public class WorldEditor {
     public WorldEditor(Handler handler) {
         this.handler = handler;
         uiManager = new UIManager(handler);
-        worldEditorPanel = new WorldEditorPanel(handler, this, "res/worlds/world3.lvl");
+        worldEditorPanel = new WorldEditorPanel(handler, this, "res/worlds/test.lvl");
         worldControls = new WorldControls(handler, this, worldEditorPanel);
         tileChooser = new TileChooser(handler);
     }
