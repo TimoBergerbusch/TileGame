@@ -2,8 +2,8 @@ package states;
 
 import java.awt.*;
 
-import tilegame.Handler;
-import worlds.World;
+import tilegame.*;
+import worlds.*;
 
 public class GameState extends State {
 

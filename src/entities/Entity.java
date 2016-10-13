@@ -1,8 +1,10 @@
 package entities;
 
 import java.awt.*;
+import java.util.*;
 
-import tilegame.Handler;
+import entities.statics.*;
+import tilegame.*;
 
 /**
  * a class to represent every element of the game, which can't be shown as a {@link tiles.Tile}, or
@@ -100,16 +102,23 @@ public abstract class Entity {
      * Entity}. <code>false</code> otherwise
      */
     protected boolean checkEntityCollision(float xOffset, float yOffset) {
-        for (Entity e : handler.getWorld().getEntityManager().getEntities()) {
-            if (e.equals(this))
+        ArrayList<Entity> entities = handler.getWorld().getEntityManager().getEntities();
+        for (int i = 0; i < entities.size(); i++) {
+            if (entities.get(i).equals(this))
                 continue;
-            if (e instanceof EntityBuild) {
-                for (Rectangle r : ((EntityBuild) e).getCollisionBoundsOfBuild(0f, 0f)) {
+            if (entities.get(i) instanceof EntityBuild) {
+                for (Rectangle r : ((EntityBuild) entities.get(i)).getCollisionBoundsOfBuild(0f, 0f)) {
                     if (r.intersects(getCollisionBounds(xOffset, yOffset)))
                         return true;
                 }
             }
-            if (e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
+            if (entities.get(i) instanceof StaticEnterAbleEntity) {
+                if (((StaticEnterAbleEntity) (entities.get(i))).getEnterBounds(0, 0).intersects(getCollisionBounds(xOffset, yOffset))) {
+//                    System.out.println("ENTER");
+                    handler.getWorld().changeLevel(((StaticEnterAbleEntity) (entities.get(i))).getEnteredWorld());
+                }
+            }
+            if (entities.get(i).getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset)))
                 return true;
         }
         return false;

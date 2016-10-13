@@ -3,6 +3,8 @@ package messages;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import gfx.*;
+
 /**
  * This class is the background on with a {@link Message} is written. It can be drawn like normal
  * objects or it can hold a {@link BufferedImage} called {@link #texture}.
@@ -175,5 +177,14 @@ public class MessageField {
      */
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    @Override
+    public String toString(){
+        if(texture == Assets.metalSignBackground)
+            return "metalSignBackground";
+        if(texture == Assets.scriptRollBackground)
+            return "scriptRollBackground";
+        return "default";
     }
 }

@@ -6,7 +6,7 @@ import tiles.*;
 
 public class StaticSets {
 
-    public static Tile[] environmentTiles = {StaticTiles.grassTile, StaticTiles.farnTile, StaticTiles.roundBushTile, StaticTiles.metalSignTile, StaticTiles.treeShadowLeftTile, StaticTiles.treeShadowRightTile};
+    public static Tile[] environmentTiles = {StaticTiles.grassTile, StaticTiles.roundBushTile, StaticTiles.treeShadowLeftTile, StaticTiles.treeShadowRightTile};
     public static Tile[] fenceTiles = {StaticTiles.fenceTopTile, StaticTiles.fenceLeftTile, StaticTiles.fenceRightTile, StaticTiles.fenceCornerTopLeftTile, StaticTiles.fenceCornerTopRightTile, StaticTiles.fenceCornerBottomLeftTile, StaticTiles.fenceCornerBottomRightTile, StaticTiles.fenceIntersectionLeftTile, StaticTiles.fenceIntersectionRightTile};
     public static Tile[] woodFenceTiles = {StaticTiles.woodFenceTopTile, StaticTiles.woodFenceLeftTile, StaticTiles.woodFenceRightTile, StaticTiles.woodFenceCornerTopLeftTile, StaticTiles.woodFenceCornerTopRightTile, StaticTiles.woodFenceCornerBottomLeftTile, StaticTiles.woodFenceCornerBottomRightTile};
     public static Tile[] pathTiles = {StaticTiles.brownStonePathTile, StaticTiles.brownStonePathTopTile, StaticTiles.brownStonePathBottomTile, StaticTiles.brownStonePathLeftTile, StaticTiles.brownStonePathRightTile, StaticTiles.brownStonePathTopLeftTile, StaticTiles.brownStonePathTopRightTile, StaticTiles.brownStonePathBottomLeftTile, StaticTiles.brownStonePathBottomRightTile,
@@ -25,12 +25,14 @@ public class StaticSets {
             StaticTiles.pavingTile, StaticTiles.pavingEdgeTopTile, StaticTiles.pavingEdgeBottomTile, StaticTiles.pavingEdgeLeftTile, StaticTiles.pavingEdgeRightTile, StaticTiles.pavingEdgeTopLeftTile, StaticTiles.pavingEdgeTopRightTile, StaticTiles.pavingEdgeBottomLeftTile, StaticTiles.pavingEdgeBottomRightTile, StaticTiles.pavingOutsideEdgeTopLeftTile, StaticTiles.pavingOutsideEdgeTopRightTile, StaticTiles.pavingOutsideEdgeBottomLeftTile, StaticTiles.pavingOutsideEdgeBottomRightTile,
             StaticTiles.sandTile, StaticTiles.sandEdgeTopTile, StaticTiles.sandEdgeBottomTile, StaticTiles.sandEdgeLeftTile, StaticTiles.sandEdgeRightTile, StaticTiles.sandEdgeTopLeftTile, StaticTiles.sandEdgeTopRightTile, StaticTiles.sandEdgeBottomLeftTile, StaticTiles.sandEdgeBottomRightTile, StaticTiles.sandOutsideEdgeTopLeftTile, StaticTiles.sandOutsideEdgeTopRightTile, StaticTiles.sandOutsideEdgeBottomLeftTile, StaticTiles.sandOutsideEdgeBottomRightTile};
     public static Tile[] bushwallTiles = {StaticTiles.bushwallDownTile, StaticTiles.bushwallSideTile, StaticTiles.bushwallCornerTopLeftTile, StaticTiles.bushwallCornerTopRightTile, StaticTiles.bushwallCornerBottomLeftTile, StaticTiles.bushwallCornerBottomRightTile, StaticTiles.bushwallEndUpTile, StaticTiles.bushwallEndDownTile, StaticTiles.bushwallEndLeftTile, StaticTiles.bushwallEndRightTile};
+    public static Tile[] indoorTiles = {StaticTiles.blackTile, StaticTiles.woodFloor, StaticTiles.wallSideLeft, StaticTiles.wallSideRight, StaticTiles.leftWallEndBottom, StaticTiles.leftWallEndMiddle, StaticTiles.leftWallEndTop, StaticTiles.wallEndBottom, StaticTiles.wallEndMiddle, StaticTiles.wallEndTop, StaticTiles.rightWallEndBottom, StaticTiles.rightWallEndMiddle, StaticTiles.rightWallEndTop};
     public static Tile[] allTiles;
     public static SetManager setManager = initSetManager();
 
     private static SetManager initSetManager() {
         SetManager mgr = new SetManager();
         mgr.addSet("Environment", environmentTiles);
+        mgr.addSet("IndoortTiles", indoorTiles);
         mgr.addSet("Bushwall", bushwallTiles);
         mgr.addSet("Simple Paths", pathTiles);
         mgr.addSet("Complex Paths", complexPathTiles);

@@ -1,5 +1,7 @@
 package utils;
 
+import org.jetbrains.annotations.*;
+
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.*;
@@ -9,6 +11,7 @@ import javax.swing.*;
 
 public class Utils {
 
+    @NotNull
     public static String loadFileAsString(String path) {
         StringBuilder builder = new StringBuilder();
 
@@ -32,6 +35,12 @@ public class Utils {
         for (int i = 0; i <= end - start; i++)
             tmp[i] = array[start + i];
         return tmp;
+    }
+
+    public static void printArray(Object[] objects){
+        for(Object o : objects){
+            System.out.println(o.toString());
+        }
     }
 
     public static int parseInt(String number) {

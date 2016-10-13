@@ -14,7 +14,7 @@ import utils.*;
 public class WorldControls {
 
     private WorldEditorPanel worldEditorPanel;
-    private UIImageButton load, save, zoomIn, zoomOut, newWorld;
+    private UIImageButton load, save, zoomIn, zoomOut, newWorld, setSpawn;
     private Handler handler;
     private WorldEditor worldEditor;
 
@@ -82,8 +82,32 @@ public class WorldControls {
 
             }
         });
+        setSpawn = new UIImageButton((int) (zoomIn.getX() + zoomIn.getWidth() + newWorld.getWidth() + 20), handler.getHeight() - 40, 64, 35, Assets.setSpawn, new ClickListener() {
+            @Override
+            public void onLeftClick() {
+                setSpawnDialog();
+            }
 
+            @Override
+            public void onRightClick() {
+
+            }
+        });
         addControls();
+    }
+
+    private void setSpawnDialog() {
+        JTextField xPos, yPos;
+        int result = JOptionPane.showConfirmDialog(handler.getGame().getDisplay().getFrame(), new Component[]{
+                new JLabel("Please enter the following Infos"),
+                new JLabel("X-Pos(in Tiles):"),
+                xPos = new JTextField("0"),
+                new JLabel("Y-Pos(in Tiles):"),
+                yPos = new JTextField("0")
+        }, "Set Spawn", JOptionPane.OK_CANCEL_OPTION);
+        if (result == JOptionPane.OK_OPTION) {
+            worldEditorPanel.setSpawn(Utils.parseInt(xPos.getText()), Utils.parseInt(yPos.getText()));
+        }
     }
 
     public void render(Graphics g) {
@@ -106,6 +130,7 @@ public class WorldControls {
         worldEditor.uiManager.addObject(zoomIn);
         worldEditor.uiManager.addObject(zoomOut);
         worldEditor.uiManager.addObject(newWorld);
+        worldEditor.uiManager.addObject(setSpawn);
     }
 
     private void zoom(double zoomFactor) {

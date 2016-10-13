@@ -8,6 +8,7 @@ import entities.statics.*;
 import gfx.*;
 import messages.*;
 import tilegame.*;
+import tiles.*;
 import utils.*;
 
 import static utils.Direction.*;
@@ -92,6 +93,8 @@ public class Player extends Creature {
      */
     private int animationTime = 250;
 
+    private boolean isMale;
+
     //Constructors
 
     /**
@@ -101,22 +104,44 @@ public class Player extends Creature {
      * @param x       the x-position of the {@link entities.Entity}
      * @param y       the y-position of the {@link entities.Entity}
      */
-    public Player(Handler handler, float x, float y) {
+    public Player(Handler handler, float x, float y, boolean isMale) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, DEFAULT_CREATURE_HEIGHT);
 
         //Animation Start
         //walking
-        direction = Direction.DOWN;
-        animDown = new Animation(animationTime, Assets.player_walking_down);
-        animUp = new Animation(animationTime, Assets.player_walking_up);
-        animLeft = new Animation(animationTime, Assets.player_walking_left);
-        animRight = new Animation(animationTime, Assets.player_walking_right);
-        //Running
-        animRunningUp = new Animation((int) (animationTime * 0.5), Assets.player_running_up);
-        animRunningDown = new Animation((int) (animationTime * 0.5), Assets.player_running_down);
-        animRunningLeft = new Animation((int) (animationTime * 0.5), Assets.player_running_left);
-        animRunningRight = new Animation((int) (animationTime * 0.5), Assets.player_running_right);
+        direction = DOWN;
+        this.isMale = isMale;
+        if (isMale)
+            initMale();
+        else
+            initFemale();
         //Animations End
+    }
+
+    public void initMale() {
+        animUp = new Animation(animationTime, Utils.getArrayPart(Assets.male_player_walking, 0, 3));
+        animDown = new Animation(animationTime, Utils.getArrayPart(Assets.male_player_walking, 4, 7));
+        animLeft = new Animation(animationTime, Utils.getArrayPart(Assets.male_player_walking, 8, 11));
+        animRight = new Animation(animationTime, Utils.getArrayPart(Assets.male_player_walking, 12, 15));
+
+        //Running
+        animRunningUp = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.male_player_running, 0, 3));
+        animRunningDown = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.male_player_running, 4, 7));
+        animRunningLeft = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.male_player_running, 8, 11));
+        animRunningRight = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.male_player_running, 12, 15));
+    }
+
+    public void initFemale() {
+        animUp = new Animation(animationTime, Utils.getArrayPart(Assets.female_player_walking, 0, 3));
+        animDown = new Animation(animationTime, Utils.getArrayPart(Assets.female_player_walking, 4, 7));
+        animLeft = new Animation(animationTime, Utils.getArrayPart(Assets.female_player_walking, 8, 11));
+        animRight = new Animation(animationTime, Utils.getArrayPart(Assets.female_player_walking, 12, 15));
+
+        //Running
+        animRunningUp = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 0, 3));
+        animRunningDown = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 4, 7));
+        animRunningLeft = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 8, 11));
+        animRunningRight = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 12, 15));
     }
 
     //implemented Methods
@@ -174,16 +199,16 @@ public class Player extends Creature {
         ar.width = arSize;
         ar.height = arSize;
 
-        if (direction == Direction.UP) {
+        if (direction == UP) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y - arSize;
-        } else if (direction == Direction.DOWN) {
+        } else if (direction == DOWN) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y + cb.height;
-        } else if (direction == Direction.LEFT) {
+        } else if (direction == LEFT) {
             ar.x = cb.x - arSize;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if (direction == Direction.RIGHT) {
+        } else if (direction == RIGHT) {
             ar.x = cb.x + cb.width;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
         } else {
@@ -221,16 +246,16 @@ public class Player extends Creature {
         ar.width = arSize;
         ar.height = arSize;
 
-        if (direction == Direction.UP) {
+        if (direction == UP) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y - arSize;
-        } else if (direction == Direction.DOWN) {
+        } else if (direction == DOWN) {
             ar.x = cb.x + cb.width / 2 - arSize / 2;
             ar.y = cb.y + cb.height;
-        } else if (direction == Direction.LEFT) {
+        } else if (direction == LEFT) {
             ar.x = cb.x - arSize;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
-        } else if (direction == Direction.RIGHT) {
+        } else if (direction == RIGHT) {
             ar.x = cb.x + cb.width;
             ar.y = cb.y + cb.height / 2 - arSize / 2;
         } else {
@@ -281,7 +306,7 @@ public class Player extends Creature {
     public void render(Graphics g) {
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-//        g.setColor(Color.red);
+////        g.setColor(Color.green);
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
     }
 
@@ -315,13 +340,25 @@ public class Player extends Creature {
         } else {
             switch (direction) {
                 case UP:
-                    return Assets.playerStillUp;
+                    if (isMale)
+                        return Assets.malePlayerStillUp;
+                    else
+                        return Assets.femalePlayerStillUp;
                 case LEFT:
-                    return Assets.playerStillLeft;
+                    if (isMale)
+                        return Assets.malePlayerStillLeft;
+                    else
+                        return Assets.femalePlayerStillLeft;
                 case RIGHT:
-                    return Assets.playerStillRight;
+                    if (isMale)
+                        return Assets.malePlayerStillRight;
+                    else
+                        return Assets.femalePlayerStillRight;
                 default:
-                    return Assets.playerStillDown;
+                    if (isMale)
+                        return Assets.malePlayerStillDown;
+                    else
+                        return Assets.femalePlayerStillDown;
             }
         }
     }
@@ -330,5 +367,22 @@ public class Player extends Creature {
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public void setPositionOnTile(int x, int y) {
+        switch (direction) {
+            case UP:
+                setX(x);
+                setY(y - (height - Tile.TILE_HEIGHT));
+                break;
+            case DOWN:
+                setX(x);
+                setY(y + height - Tile.TILE_HEIGHT);
+                break;
+            default:
+                setX(x);
+                setY(y);
+                break;
+        }
     }
 }

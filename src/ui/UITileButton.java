@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import WorldEditor.*;
+import gfx.*;
 import tilegame.*;
 import tiles.*;
 
@@ -13,6 +14,7 @@ public class UITileButton extends UIObject {
     private ClickListener clicker;
     private Handler handler;
     private Color normalColor = Color.lightGray, hoveringColor = Color.RED;
+    public boolean isSpawn;
 
     public UITileButton(Handler handler, Tile tile, int x, int y, int width, int height) {
         super(x, y, width, height);
@@ -89,6 +91,8 @@ public class UITileButton extends UIObject {
         }
         if (tile != null)
             g.drawImage(tile.getTexture(), (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
+        if(isSpawn)
+            g.drawImage(Assets.spawn, (int) x - WorldEditorPanel.xOffset, (int) y - WorldEditorPanel.yOffset, width, height, null);
     }
 
     @Override

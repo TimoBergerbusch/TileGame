@@ -7,6 +7,7 @@ import java.util.*;
 import entities.creatures.*;
 import entities.statics.*;
 import tilegame.*;
+import tiles.*;
 import utils.*;
 
 /**
@@ -188,8 +189,8 @@ public class EntityManager {
             if (index == -1)
                 continue;
             sb.append(index).append("/nbsp/");
-            sb.append(e.getX()).append("/nbsp/");
-            sb.append(e.getY()).append("/nbsp/");
+            sb.append(e.getX() / Tile.TILE_WIDTH).append("/nbsp/");
+            sb.append(e.getY() / Tile.TILE_HEIGHT).append("/nbsp/");
             sb.append(e.getWidth()).append("/nbsp/");
             sb.append(e.getHeight()).append("/nbsp/");
             if (e instanceof StaticInteractableEntity)
@@ -203,5 +204,12 @@ public class EntityManager {
         System.out.println(sb.toString());
 
         Utils.printIntoFile(new File("res/worlds/" + handler.getWorld().getName() + ".ntt"), sb.toString());
+    }
+
+    public void clear() {
+        for (int i = 0; i < entities.size(); i++) {
+            if (entities.get(i) != player)
+                entities.get(i).setActive(false);
+        }
     }
 }

@@ -1,10 +1,8 @@
 package WorldEditor;
 
 import java.awt.*;
-import java.awt.image.*;
 import java.io.*;
 
-import gfx.*;
 import tilegame.*;
 import tiles.*;
 import ui.*;
@@ -19,7 +17,7 @@ public class WorldEditorPanel {
 
     private Handler handler;
     private UITileButton[][] tiles;
-    private UIImageButton spawn;
+    private UITileButton spawn;
     private WorldEditor worldEditor;
 
     public WorldEditorPanel(Handler handler, WorldEditor worldEditor, String path) {
@@ -73,24 +71,14 @@ public class WorldEditorPanel {
                         y * EDITOR_TILE_HEIGHT, EDITOR_TILE_WIDTH, EDITOR_TILE_HEIGHT);
                 worldEditor.getUiManager().addObject(tiles[x][y]);
             }
-        spawn = new UIImageButton(spawnX, spawnY, 4, 4, new BufferedImage[]{Assets.spawn, Assets.spawn}, new ClickListener() {
-            @Override
-            public void onLeftClick() {
-                System.out.println("Spawn left click");
-            }
-
-            @Override
-            public void onRightClick() {
-                System.out.println("Spawn right click");
-            }
-        }, true);
-        worldEditor.getUiManager().addObject(spawn);
+        spawn = tiles[spawnX / Tile.TILE_WIDTH + 1][spawnY / Tile.TILE_HEIGHT + 1];
+        spawn.isSpawn = true;
     }
 
     public void saveWorld() {
         StringBuilder sb = new StringBuilder();
         sb.append(width).append(" ").append(height).append("\n");
-        sb.append((int) spawn.getX()).append(" ").append((int) spawn.getY()).append("\n");
+        sb.append(spawnX).append(" ").append(spawnY).append("\n");
         for (int y = 0; y < tiles[0].length; y++) {
             for (int x = 0; x < tiles.length; x++)
                 sb.append(StaticTiles.getTilesNumber(tiles[x][y].getTile())).append(" ");
@@ -123,5 +111,14 @@ public class WorldEditorPanel {
         worldEditor.uiManager.removeObject(spawn);
         handler.getGame().getDisplay().getFrame().revalidate();
         handler.getGame().getDisplay().getFrame().repaint();
+    }
+
+    public void setSpawn(int x, int y) {
+        if (0 <= x && x <= tiles.length && 0 <= y && y <= tiles[0].length) {
+            spawn.isSpawn = false;
+            tiles[x][y].isSpawn = true;
+            spawnX = x * Tile.TILE_WIDTH;
+            spawnY = y * Tile.TILE_HEIGHT;
+        }
     }
 }

@@ -11,8 +11,14 @@ public class Assets {
     private static final int interactionWidth = 1250, interactionHeight = 250;
     //Enviroment (Town)
     public static BufferedImage grass, farne, flower, roundBush, hopedgeLeft, hopedgeBottum, hopedgeRight, metalSign, woodSign, tree, treeShadowLeft, treeShadowRight, statue;
-    public static BufferedImage pavilionLeft, pavilionMid, pavilionRight;
-    public static BufferedImage greenHouse, redHouse;
+    public static BufferedImage pavilionLeft, pavilionMid, pavilionRight, carpet;
+
+    //Buildings
+    public static BufferedImage landscapeHouseGreen, landscapeHouseGreenSmall, landscapeHouseRed, landscapeHouseGreySmall, doubleHouseRed, doubleHouseBaige, PKMNMarket, PKMNCenter, bigStore;
+
+    //Indoor
+    public static BufferedImage blackTile, woodFloor, wallSideLeft, wallSideRight, leftWallEndBottom, leftWallEndMiddle, leftWallEndTop, wallEndBottom, wallEndMiddle, wallEndTop, rightWallEndBottom, rightWallEndMiddle, rightWallEndTop;
+
     //bushwall
     public static BufferedImage bushwallCornerTopLeft, bushwallDown, bushwallEndLeft, bushwallEndRight, bushwallEndDown, bushwallEndUp;
     //fence
@@ -41,12 +47,14 @@ public class Assets {
     public static BufferedImage[] beachPath, gravelPath, dirtPath, lightGravelPath, darkGrassPath, lightGrassPath, mudPath, pavingPath, sandPath, cavePath;
 
     //Player
-    public static BufferedImage playerStillDown, playerStillUp, playerStillLeft, playerStillRight;
-    public static BufferedImage[] player_walking_down, player_walking_up, player_walking_left, player_walking_right;
-    public static BufferedImage[] player_running_down, player_running_up, player_running_left, player_running_right;
+    public static BufferedImage malePlayerStillDown, malePlayerStillUp, malePlayerStillLeft, malePlayerStillRight;
+    public static BufferedImage femalePlayerStillDown, femalePlayerStillUp, femalePlayerStillLeft, femalePlayerStillRight;
+    public static BufferedImage[] male_player_walking, female_player_walking;
+    public static BufferedImage[] male_player_running, female_player_running;
     public static BufferedImage spawn;
     //other Person
-    public static BufferedImage[] grandfather, grandmother;
+    public static BufferedImage[] womanInGreenDress, baldMan, nurse, karateGuy;
+    public static BufferedImage[][] grandparent, parkRanger;
 
     //Interaction Backgrounds
     public static BufferedImage greyBackground, scriptRollBackground, metalSignBackground;
@@ -55,7 +63,7 @@ public class Assets {
     public static BufferedImage[] startButton, worldEditorButton, endButton;
 
     //WorldControls
-    public static BufferedImage[] load, save, zoomIn, zoomOut, newWorld;
+    public static BufferedImage[] load, save, zoomIn, zoomOut, newWorld, setSpawn;
 
     public static void init() {
         initMenuStateButtons();
@@ -121,6 +129,9 @@ public class Assets {
         newWorld = new BufferedImage[2];
         newWorld[0] = worldControlsSheet.crop(4 * 35, 4 * height, 70, 35);
         newWorld[1] = worldControlsSheet.crop(4 * 35, 4 * height, 70, 35);
+        setSpawn = new BufferedImage[2];
+        setSpawn[0] = worldControlsSheet.crop(6 * 35, 4 * height, 70, 35);
+        setSpawn[1] = worldControlsSheet.crop(6 * 35, 4 * height, 70, 35);
     }
 
     private static void initMenuStateButtons() {
@@ -153,15 +164,38 @@ public class Assets {
 
     //EnvironmentStart
     private static void initTowns(SpriteSheet tileSheet) {
-        initHouses(tileSheet);
+        initBuildings();
 
         metalSign = tileSheet.crop(0, 7 * TileHeight);
         woodSign = tileSheet.crop(TileWidth, 7 * TileHeight);
+
+        blackTile = tileSheet.crop(8 * TileWidth, TileHeight);
+        woodFloor = tileSheet.crop(6 * TileWidth, 0);
+        wallSideLeft = tileSheet.crop(7 * TileWidth, TileHeight);
+        wallSideRight = Utils.rotateImage(wallSideLeft, 180);
+        leftWallEndBottom = tileSheet.crop(6 * TileWidth, 4 * TileHeight);
+        leftWallEndMiddle = tileSheet.crop(6 * TileWidth, 3 * TileHeight);
+        leftWallEndTop = tileSheet.crop(6 * TileWidth, 2 * TileHeight);
+        wallEndBottom = tileSheet.crop(7 * TileWidth, 4 * TileHeight);
+        wallEndMiddle = tileSheet.crop(7 * TileWidth, 3 * TileHeight);
+        wallEndTop = tileSheet.crop(7 * TileWidth, 2 * TileHeight);
+        rightWallEndBottom = tileSheet.crop(8 * TileWidth, 4 * TileHeight);
+        rightWallEndMiddle = tileSheet.crop(8 * TileWidth, 3 * TileHeight);
+        rightWallEndTop = tileSheet.crop(8 * TileWidth, 2 * TileHeight);
+        carpet = tileSheet.crop(7 * TileWidth, 0, 2 * TileWidth, TileHeight);
     }
 
-    private static void initHouses(SpriteSheet tileSheet) {
-        greenHouse = tileSheet.crop(6 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
-        redHouse = tileSheet.crop(11 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
+    private static void initBuildings() {
+        SpriteSheet buildings = new SpriteSheet(ImageLoader.loadImage("/textures/Buildings.png"));
+        landscapeHouseGreen = buildings.crop(0, 0, 5 * TileWidth, 5 * TileHeight);
+        landscapeHouseRed = buildings.crop(5 * TileWidth, 0, 5 * TileWidth, 5 * TileHeight);
+        landscapeHouseGreenSmall = buildings.crop(10 * TileWidth, 0, 5 * TileWidth, 4 * TileHeight);
+        landscapeHouseGreySmall = buildings.crop(15 * TileWidth, 0, 5 * TileWidth, 4 * TileHeight);
+        doubleHouseRed = buildings.crop(0, 5 * TileHeight, 5 * TileWidth, 5 * TileHeight);
+        doubleHouseBaige = buildings.crop(5 * TileWidth, 5 * TileHeight, 5 * TileWidth, 5 * TileHeight);
+        PKMNMarket = buildings.crop(10 * TileWidth, 6 * TileHeight, 4 * TileWidth, 4 * TileHeight);
+        PKMNMarket = buildings.crop(15 * TileWidth, 5 * TileHeight, 5 * TileWidth, 5 * TileHeight);
+        bigStore = buildings.crop(0, 10 * TileHeight, 5 * TileWidth, 6 * TileHeight);
     }
     //EnivornmentEnd
 
@@ -289,72 +323,55 @@ public class Assets {
     //PlayerStart
     private static void initPlayer() {
         int playerWidth = 20, playerHeight = 25;
-        SpriteSheet PlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/PlayerWalking.png"));
-        spawn = PlayerSheet.crop(68, 85, 4, 4);
-        initPlayerStanding(PlayerSheet, playerWidth, playerHeight);
-        initPlayerWalking(PlayerSheet, playerWidth, playerHeight);
-        initPlayerRunning(new SpriteSheet(ImageLoader.loadImage("/textures/PlayerRunningSprite.png")), playerWidth, playerHeight);
+        SpriteSheet MalePlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/people/player/PlayerMaleWalking.png"));
+        male_player_walking = initPlayerAnimation(MalePlayerSheet, playerWidth, playerHeight);
+        male_player_running = initPlayerAnimation(new SpriteSheet(ImageLoader.loadImage("/textures/people/player/PlayerMaleRunning.png")), playerWidth, playerHeight);
+        initMalePlayerStanding(MalePlayerSheet, playerWidth, playerHeight);
+        spawn = MalePlayerSheet.crop(62, 79);
+
+        SpriteSheet FemalePlayerSheet = new SpriteSheet(ImageLoader.loadImage("/textures/people/player/PlayerFemaleWalking.png"));
+        female_player_walking = initPlayerAnimation(FemalePlayerSheet, playerWidth, playerHeight);
+        female_player_running = initPlayerAnimation(new SpriteSheet(ImageLoader.loadImage("/textures/people/player/PlayerFemaleRunning.png")), playerWidth, playerHeight);
+        initFemalePlayerStanding(FemalePlayerSheet, playerWidth, playerHeight);
     }
 
-    private static void initPlayerStanding(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
-        playerStillUp = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
-        playerStillDown = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
-        playerStillLeft = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        playerStillRight = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+    private static void initMalePlayerStanding(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+        malePlayerStillUp = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
+        malePlayerStillDown = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
+        malePlayerStillLeft = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        malePlayerStillRight = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
     }
 
-    private static void initPlayerWalking(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
-
-        player_walking_up = new BufferedImage[4];
-        player_walking_up[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
-        player_walking_up[1] = playerStillUp;
-        player_walking_up[2] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
-        player_walking_up[3] = playerStillUp;
-
-        player_walking_down = new BufferedImage[4];
-        player_walking_down[0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
-        player_walking_down[1] = playerStillDown;
-        player_walking_down[2] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
-        player_walking_down[3] = playerStillDown;
-
-        player_walking_left = new BufferedImage[4];
-        player_walking_left[0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
-        player_walking_left[1] = playerStillLeft;
-        player_walking_left[2] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_walking_left[3] = playerStillLeft;
-
-        player_walking_right = new BufferedImage[4];
-        player_walking_right[0] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_walking_right[1] = playerStillRight;
-        player_walking_right[2] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_walking_right[3] = playerStillRight;
+    private static void initFemalePlayerStanding(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+        femalePlayerStillUp = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
+        femalePlayerStillDown = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
+        femalePlayerStillLeft = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        femalePlayerStillRight = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
     }
 
-    private static void initPlayerRunning(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+    private static BufferedImage[] initPlayerAnimation(SpriteSheet PlayerSheet, int playerWidth, int playerHeight) {
+        BufferedImage[] player_running = new BufferedImage[16];
+        player_running[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
+        player_running[1] = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
+        player_running[2] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
+        player_running[3] = player_running[1];
 
-        player_running_up = new BufferedImage[4];
-        player_running_up[0] = PlayerSheet.crop(3 * playerWidth, 0, playerWidth, playerHeight);
-        player_running_up[1] = PlayerSheet.crop(3 * playerWidth, 2 * playerHeight, playerWidth, playerHeight);
-        player_running_up[2] = PlayerSheet.crop(3 * playerWidth, playerHeight, playerWidth, playerHeight);
-        player_running_up[3] = player_running_up[1];
+        player_running[4 + 0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
+        player_running[4 + 1] = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
+        player_running[4 + 2] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
+        player_running[4 + 3] = player_running[4 + 1];
 
-        player_running_down = new BufferedImage[4];
-        player_running_down[0] = PlayerSheet.crop(3 * playerWidth, 5 * playerHeight, playerWidth, playerHeight);
-        player_running_down[1] = PlayerSheet.crop(3 * playerWidth, 4 * playerHeight, playerWidth, playerHeight);
-        player_running_down[2] = PlayerSheet.crop(3 * playerWidth, 6 * playerHeight, playerWidth, playerHeight);
-        player_running_down[3] = player_running_down[1];
+        player_running[2 * 4 + 0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[2 * 4 + 1] = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[2 * 4 + 2] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[2 * 4 + 3] = player_running[2 * 4 + 1];
 
-        player_running_left = new BufferedImage[4];
-        player_running_left[0] = PlayerSheet.crop(0, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_left[1] = PlayerSheet.crop(2 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_left[2] = PlayerSheet.crop(playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_left[3] = player_running_left[1];
+        player_running[3 * 4 + 0] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[3 * 4 + 1] = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[3 * 4 + 2] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
+        player_running[3 * 4 + 3] = player_running[3 * 4 + 1];
 
-        player_running_right = new BufferedImage[4];
-        player_running_right[0] = PlayerSheet.crop(6 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_right[1] = PlayerSheet.crop(4 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_right[2] = PlayerSheet.crop(5 * playerWidth, 3 * playerHeight, playerWidth, playerHeight);
-        player_running_right[3] = player_running_right[1];
+        return player_running;
 
     }
     //PlayerEnd
@@ -363,8 +380,16 @@ public class Assets {
     //OtherPeople
     private static void initOtherPersons() {
         SpriteSheet adultPersonSheet = new SpriteSheet(ImageLoader.loadImage("/textures/people/adults.png"));
-        grandfather = initOtherPerson(adultPersonSheet, 0, 0);
-        grandmother = initOtherPerson(adultPersonSheet, 0, 1);
+        womanInGreenDress = initOtherPerson(adultPersonSheet, 0, 2);
+        baldMan = initOtherPerson(adultPersonSheet, 0, 3);
+        parkRanger = new BufferedImage[2][12];
+        parkRanger[0] = initOtherPerson(adultPersonSheet, 0, 4);
+        parkRanger[1] = initOtherPerson(adultPersonSheet, 0, 5);
+        grandparent = new BufferedImage[2][12];
+        grandparent[0] = initOtherPerson(adultPersonSheet, 0, 0);
+        grandparent[1] = initOtherPerson(adultPersonSheet, 0, 1);
+        nurse = initOtherPerson(adultPersonSheet, 0, 6);
+        karateGuy = initOtherPerson(adultPersonSheet, 0, 7);
     }
 
     /**
@@ -383,7 +408,7 @@ public class Assets {
      * @return an Array with the described scheme
      */
     private static BufferedImage[] initOtherPerson(SpriteSheet peopleSheet, int x, int y) {
-        int width = 16, height = 19;
+        int width = 16, height = 21;
         int xOffset = x * width, yOffset = y * height;
 
         BufferedImage[] images = new BufferedImage[12];

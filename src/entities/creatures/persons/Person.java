@@ -1,5 +1,6 @@
 package entities.creatures.persons;
 
+import java.awt.*;
 import java.awt.image.*;
 import java.util.*;
 
@@ -19,8 +20,7 @@ public abstract class Person extends InteractableCreature {
     protected Animation animUp, animDown, animLeft, animRight;
     protected boolean shouldMove;
     private float movesX = 0, movesY = 0;
-    private float originalX, originalY;
-    
+    protected Rectangle walkingBounds;
 
     /**
      * creates a new {@link Person} using {@link Creature#Creature(Handler, float, float, int, int)}
@@ -31,11 +31,10 @@ public abstract class Person extends InteractableCreature {
      * @param y       the y-Position of the {@link Creature}
      * @see Creature
      */
-    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean bool) {
+    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean shouldMove) {
         super(handler, x, y, DEFAULT_CREATURE_WIDTH, (int) (Tile.TILE_HEIGHT * 1.25));
         this.texture = texture;
-        this.originalX = x;
-        this.originalY = y;
+        walkingBounds = new Rectangle((int) (x - 1 * Tile.TILE_WIDTH), (int) (y - 1 * Tile.TILE_HEIGHT), 3 * Tile.TILE_WIDTH, 3 * Tile.TILE_HEIGHT);
 
         animUp = new Animation(Creature.DEFAULT_ANIMATION_SPEED, Utils.getPersonAnimation(UP, texture));
         animDown = new Animation(Creature.DEFAULT_ANIMATION_SPEED, Utils.getPersonAnimation(DOWN, texture));
@@ -50,7 +49,21 @@ public abstract class Person extends InteractableCreature {
         bounds.height = (int) (height * 0.46);
 
         this.speed = Tile.TILE_WIDTH / 16;
-        this.shouldMove = bool;
+        this.shouldMove = shouldMove;
+    }
+
+    /**
+     * creates a new {@link Person} using {@link Creature#Creature(Handler, float, float, int, int)}
+     * extending {@link InteractableCreature}
+     *
+     * @param handler the {@link Handler} to the {@link Game}
+     * @param x       the x-Position of the {@link Creature}
+     * @param y       the y-Position of the {@link Creature}
+     * @see Creature
+     */
+    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean shouldMove, Direction direction) {
+        this(handler, x, y, texture, shouldMove);
+        this.direction = direction;
     }
 
     /**
@@ -62,11 +75,26 @@ public abstract class Person extends InteractableCreature {
      * @param y       the y-Position of the {@link Creature}
      * @see Creature
      */
-    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean bool, Message message) {
-        this(handler, x, y, texture, bool);
+    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean shouldMove, Message message) {
+        this(handler, x, y, texture, shouldMove);
         setMessage(message);
     }
 
+    /**
+     * creates a new {@link Person} using {@link Creature#Creature(Handler, float, float, int, int)}
+     * extending {@link InteractableCreature} with an individual {@link Message}
+     *
+     * @param handler the {@link Handler} to the {@link Game}
+     * @param x       the x-Position of the {@link Creature}
+     * @param y       the y-Position of the {@link Creature}
+     * @see Creature
+     */
+    public Person(Handler handler, float x, float y, BufferedImage[] texture, boolean shouldMove, Direction direction, Message message) {
+        this(handler, x, y, texture, shouldMove, direction);
+        setMessage(message);
+    }
+
+    @Override
     public void tick() {
         if (!Message.isShown) {
             animUp.tick();
@@ -82,7 +110,8 @@ public abstract class Person extends InteractableCreature {
 
     private void randomMove() {
         randomMoveX();
-        randomMoveY();
+        if (xMove == 0)
+            randomMoveY();
     }
 
     private void randomMoveX() {
@@ -92,10 +121,11 @@ public abstract class Person extends InteractableCreature {
             xMove = randomMoveAxis();
             movesX = 0;
         }
-        if (x - originalX >= 3 * Tile.TILE_WIDTH)
-            xMove = -speed;
-        else if (x - originalX <= -3 * Tile.TILE_WIDTH)
-            xMove = speed;
+
+        Rectangle newBounds = bounds.getBounds();
+        newBounds.setLocation((int) (x + xMove), (int) y);
+        if (!newBounds.intersects(walkingBounds))
+            xMove = 0;
     }
 
     private void randomMoveY() {
@@ -105,15 +135,16 @@ public abstract class Person extends InteractableCreature {
             yMove = randomMoveAxis();
             movesY = 0;
         }
-        if (y - originalY >= 3 * Tile.TILE_HEIGHT)
-            yMove = -speed;
-        else if (y - originalY <= -3 * Tile.TILE_HEIGHT)
-            yMove = speed;
+
+        Rectangle newBounds = bounds.getBounds();
+        newBounds.setLocation((int) x + bounds.x, (int) (y + bounds.y + yMove));
+        if (!newBounds.intersects(walkingBounds))
+            yMove = 0;
     }
 
     private float randomMoveAxis() {
         float move = 0f;
-        int rndBound = 150;
+        int rndBound = 10;
         Random rnd = new Random();
         switch (rnd.nextInt(rndBound)) {
             case 0:

@@ -374,6 +374,6 @@ public class Message {
 
     @Override
     public String toString() {
-        return "/nbspM/" + Utils.getArrayToString(message, "/nbspA/");
+        return Utils.getArrayToString(message, "/nbspA/") + "/nbspMF/" + messageField.toString();
     }
 }

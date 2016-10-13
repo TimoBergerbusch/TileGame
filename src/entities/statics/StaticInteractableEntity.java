@@ -1,8 +1,8 @@
 package entities.statics;
 
-import entities.Entity;
-import messages.Message;
-import tilegame.Handler;
+import entities.*;
+import messages.*;
+import tilegame.*;
 
 /**
  * This interface defines that the {@link entities.creatures.Player} can interact with the {@link
@@ -13,7 +13,7 @@ public abstract class StaticInteractableEntity extends StaticEntity {
     /**
      * the default {@link Message} this {@link Statue} shows
      */
-    protected Message message = new Message(new String[]{"Not implemented message"});
+    public Message message = new Message(new String[]{"Not implemented message"});
 
     //Constructors
 
@@ -67,6 +67,7 @@ public abstract class StaticInteractableEntity extends StaticEntity {
      * @param message New value of the default {@link Message} this {@link Statue} shows.
      */
     public void setMessage(Message message) {
+        System.out.println(message.toString());
         handler.getMessageManager().removeMessage(this.message);
         this.message = message;
         handler.getMessageManager().addMessage(this.message);
