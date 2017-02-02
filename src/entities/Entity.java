@@ -80,6 +80,11 @@ public abstract class Entity {
      */
     public abstract void render(Graphics g);
 
+    public void renderBounds(Graphics g) {
+        g.setColor(Color.red);
+        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+    }
+
     /**
      * defines whether or not an {@link Entity} should allways be drawn behind the {@link
      * entities.creatures.Player}
@@ -114,7 +119,8 @@ public abstract class Entity {
             }
             if (entities.get(i) instanceof StaticEnterAbleEntity) {
                 if (((StaticEnterAbleEntity) (entities.get(i))).getEnterBounds(0, 0).intersects(getCollisionBounds(xOffset, yOffset))) {
-//                    System.out.println("ENTER");
+
+                    //System.out.println("ENTER");
                     handler.getWorld().changeLevel(((StaticEnterAbleEntity) (entities.get(i))).getEnteredWorld());
                 }
             }

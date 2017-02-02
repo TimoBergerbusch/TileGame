@@ -34,7 +34,7 @@ public class Display {
         canvas.setMaximumSize(new Dimension(width, heigth));
         canvas.setMinimumSize(new Dimension(width, heigth));
         canvas.setFocusable(false);
-//        canvas.setBackground(Color.BLACK);
+        canvas.setBackground(Color.BLACK);
 
         frame.add(canvas);
         frame.pack();

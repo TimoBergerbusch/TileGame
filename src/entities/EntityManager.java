@@ -201,7 +201,7 @@ public class EntityManager {
                 sb.append("no message");
             sb.append("\n");
         }
-        System.out.println(sb.toString());
+//        System.out.println(sb.toString());
 
         Utils.printIntoFile(new File("res/worlds/" + handler.getWorld().getName() + ".ntt"), sb.toString());
     }

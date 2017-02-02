@@ -1,17 +1,15 @@
 package WorldEditor.tileChooser;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
+import javax.swing.border.*;
 
-import WorldEditor.WorldEditorPanel;
-import sets.StaticSets;
-import tilegame.Handler;
-import tiles.Tile;
+import WorldEditor.*;
+import sets.*;
+import tilegame.*;
+import tiles.*;
 
 public class TileGrid extends JPanel {
 

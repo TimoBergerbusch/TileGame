@@ -67,7 +67,7 @@ public abstract class StaticInteractableEntity extends StaticEntity {
      * @param message New value of the default {@link Message} this {@link Statue} shows.
      */
     public void setMessage(Message message) {
-        System.out.println(message.toString());
+//        System.out.println(message.toString());
         handler.getMessageManager().removeMessage(this.message);
         this.message = message;
         handler.getMessageManager().addMessage(this.message);

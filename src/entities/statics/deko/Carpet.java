@@ -1,8 +1,9 @@
-package entities.statics;
+package entities.statics.deko;
 
 import java.awt.*;
 
 import entities.*;
+import entities.statics.*;
 import gfx.*;
 import tilegame.*;
 import tiles.*;
@@ -38,7 +39,7 @@ public class Carpet extends StaticEnterAbleEntity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.carpet, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
+        g.drawImage(Assets.carpet, (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height/2, null);
         g.drawImage(Assets.blackTile, (int) (x - handler.getGameCamera().getXOffset()), (int) (y + Tile.TILE_HEIGHT - handler.getGameCamera().getYOffset()), width, height, null);
         g.drawImage(Assets.blackTile, (int) (x + Tile.TILE_WIDTH - handler.getGameCamera().getXOffset()), (int) (y + Tile.TILE_HEIGHT - handler.getGameCamera().getYOffset()), width, height, null);
 

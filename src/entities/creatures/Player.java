@@ -116,6 +116,8 @@ public class Player extends Creature {
         else
             initFemale();
         //Animations End
+
+        computeBounds();
     }
 
     public void initMale() {
@@ -142,6 +144,20 @@ public class Player extends Creature {
         animRunningDown = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 4, 7));
         animRunningLeft = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 8, 11));
         animRunningRight = new Animation((int) (animationTime * 0.5), Utils.getArrayPart(Assets.female_player_running, 12, 15));
+    }
+
+    private void computeBounds() {
+//        if(direction == LEFT || direction == RIGHT){
+//            bounds.x = (int) (width * 0.3);
+//            bounds.y = (int) (height * 0.5);
+//            bounds.width = (int) (width * 0.475);
+//            bounds.height = (int) (height * 0.46);
+//        } else {
+        bounds.x = (int) (width * 0.2);
+        bounds.y = (int) (height * 0.5);
+        bounds.width = (int) (width * 0.6);
+        bounds.height = (int) (height * 0.46);
+//        }
     }
 
     //implemented Methods
@@ -304,10 +320,10 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
+
         g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getXOffset()), (int) (y - handler.getGameCamera().getYOffset()), width, height, null);
 
-////        g.setColor(Color.green);
-//        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+//        renderBounds(g);
     }
 
     /**
@@ -317,6 +333,7 @@ public class Player extends Creature {
      * @return the {@link BufferedImage} that fits the current situation
      */
     private BufferedImage getCurrentAnimationFrame() {
+//        computeBounds();
         if (xMove < 0) {
             direction = LEFT;
             if (handler.getKeyManager().running)
@@ -361,6 +378,7 @@ public class Player extends Creature {
                         return Assets.femalePlayerStillDown;
             }
         }
+
     }
 
     //Getter und Setter
@@ -372,16 +390,16 @@ public class Player extends Creature {
     public void setPositionOnTile(int x, int y) {
         switch (direction) {
             case UP:
-                setX(x);
-                setY(y - (height - Tile.TILE_HEIGHT));
+                setX(x * Tile.TILE_WIDTH);
+                setY(y * Tile.TILE_HEIGHT - (height - Tile.TILE_HEIGHT));
                 break;
             case DOWN:
-                setX(x);
-                setY(y + height - Tile.TILE_HEIGHT);
+                setX(x * Tile.TILE_WIDTH);
+                setY(y * Tile.TILE_HEIGHT + height - Tile.TILE_HEIGHT);
                 break;
             default:
-                setX(x);
-                setY(y);
+                setX(x * Tile.TILE_WIDTH);
+                setY(y * Tile.TILE_HEIGHT);
                 break;
         }
     }

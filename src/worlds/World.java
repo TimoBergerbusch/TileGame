@@ -9,6 +9,7 @@ import entities.creatures.persons.*;
 import entities.statics.Bridge.*;
 import entities.statics.*;
 import entities.statics.Pavilion.*;
+import entities.statics.deko.*;
 import entities.statics.houses.*;
 import gfx.*;
 import messages.*;
@@ -41,8 +42,10 @@ public class World {
 
         loadWorld(path);
 
-        entityManager.getPlayer().setX(spawnX);
-        entityManager.getPlayer().setY(spawnY);
+        System.out.println(spawnX + " " + spawnY);
+        entityManager.getPlayer().setPositionOnTile(spawnX, spawnY);
+//        entityManager.getPlayer().setX(spawnX);
+//        entityManager.getPlayer().setY(spawnY);
     }
 
     private void loadEntitys(String path) {
@@ -73,6 +76,18 @@ public class World {
             entityManager.addEntity(new Grandparent(handler, 19 * Tile.TILE_WIDTH, (float) (11.5 * Tile.TILE_HEIGHT), false, false, Direction.LEFT, new Message(new String[]{"Das neben mir ist mein Puschler.", "Wir sind schon weit über 60 Jahre verheiratet und ich liebe ihn jeden Tag mehr."})));
         } else if (path.equals("res/worlds/IndoorTest1.lvl")) {
             entityManager.addEntity(new Carpet(handler, 8 * Tile.TILE_WIDTH, 11 * Tile.TILE_HEIGHT));
+//            entityManager.addEntity(new PlantWithPot(handler, 7 * Tile.TILE_WIDTH, 9 * Tile.TILE_HEIGHT));
+//            entityManager.addEntity(new Couch(handler, 7 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Direction.DOWN));
+//            entityManager.addEntity(new WoodChair(handler, 7 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Direction.UP));
+//            entityManager.addEntity(new WoodChair(handler, 8 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Direction.DOWN));
+            entityManager.addEntity(new WoodChair(handler, 9 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Direction.RIGHT));
+            entityManager.addEntity(new WoodChair(handler, 9 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT, Direction.RIGHT));
+            entityManager.addEntity(new WoodChair(handler, 12 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Direction.LEFT));
+            entityManager.addEntity(new WoodChair(handler, 12 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT, Direction.LEFT));
+            entityManager.addEntity(new Table(handler, 10 * Tile.TILE_WIDTH, 7 * Tile.TILE_HEIGHT, Table.Tabletype.SIMPLETABLE));
+//            entityManager.addEntity(new PlantWithPot(handler, 10 * Tile.TILE_WIDTH, 8 * Tile.TILE_HEIGHT, Color.WHITE));
+        } else if (path.equals("res/worlds/IndoorTest2.lvl")) {
+            entityManager.addEntity(new Carpet(handler, 7 * Tile.TILE_WIDTH, 12 * Tile.TILE_HEIGHT));
         }
     }
 
@@ -235,8 +250,8 @@ public class World {
         String[] tokens = Utils.loadFileAsString("res/worlds/tmp").split("\\s+");
         for (int i = 0; i < tokens.length; i += 3) {
             if (tokens[i].equals(name)) {
-                tokens[i + 1] = entityManager.getPlayer().getX() + "";
-                tokens[i + 2] = entityManager.getPlayer().getY() + "";
+                tokens[i + 1] = Math.floor(entityManager.getPlayer().getX() / Tile.TILE_WIDTH) + "";
+                tokens[i + 2] = Math.floor(entityManager.getPlayer().getY() / Tile.TILE_HEIGHT) + 1 + "";
                 saved = true;
             }
         }
@@ -248,8 +263,8 @@ public class World {
         }
         if (!saved) {
             sb.append(name).append(" ");
-            sb.append(entityManager.getPlayer().getX() + "").append(" ");
-            sb.append(entityManager.getPlayer().getY() + "").append("\n");
+            sb.append(Math.floor(entityManager.getPlayer().getX() / Tile.TILE_WIDTH) + "").append(" ");
+            sb.append(Math.floor(entityManager.getPlayer().getY() / Tile.TILE_HEIGHT) + 1 + "").append("\n");
         }
         Utils.printIntoFile(new File("res/worlds/tmp"), sb.toString());
     }

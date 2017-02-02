@@ -17,7 +17,14 @@ public class Assets {
     public static BufferedImage landscapeHouseGreen, landscapeHouseGreenSmall, landscapeHouseRed, landscapeHouseGreySmall, doubleHouseRed, doubleHouseBaige, PKMNMarket, PKMNCenter, bigStore;
 
     //Indoor
-    public static BufferedImage blackTile, woodFloor, wallSideLeft, wallSideRight, leftWallEndBottom, leftWallEndMiddle, leftWallEndTop, wallEndBottom, wallEndMiddle, wallEndTop, rightWallEndBottom, rightWallEndMiddle, rightWallEndTop;
+    public static BufferedImage blackTile;
+    public static BufferedImage woodPlankWallEndLeftTop, woodPlankWallEndLeftMid, woodPlankWallEndLeftBottom, woodPlankWallMidTop, woodPlankWallMidMid, woodPlankWallMidBottom, woodPlankWallEndRightTop, woodPlankWallEndRightMid, woodPlankWallEndRightBottom;
+    public static BufferedImage woodTileWallEndLeftTop, woodTileWallEndLeftMid, woodTileWallEndLeftBottom, woodTileWallMidTop, woodTileWallMidMid, woodTileWallMidBottom, woodTileWallEndRightTop, woodTileWallEndRightMid, woodTileWallEndRightBottom;
+    public static BufferedImage stripeWallEndLeftTop, stripeWallEndLeftMid, stripeWallEndLeftBottom, stripeWallMidTop, stripeWallMidMid, stripeWallMidBottom, stripeWallEndRightTop, stripeWallEndRightMid, stripeWallEndRightBottom;
+    public static BufferedImage blankWallEndLeftTop, blankWallEndLeftMid, blankWallEndLeftBottom, blankWallMidTop, blankWallMidMid, blankWallMidBottom, blankWallEndRightTop, blankWallEndRightMid, blankWallEndRightBottom;
+    public static BufferedImage woodFloorDark, woodFloorLight, woodFloorTopShadow, woodFloorLeftTopShadow, woodFloorTopShadowRightWall, woodFloorLeftShadow, woodFloorRightShadow, woodFloorLeft, woodFloorRight;
+    //Deko
+    public static BufferedImage[] table, plantWithPot, couch, chair;
 
     //bushwall
     public static BufferedImage bushwallCornerTopLeft, bushwallDown, bushwallEndLeft, bushwallEndRight, bushwallEndDown, bushwallEndUp;
@@ -87,7 +94,7 @@ public class Assets {
         pavilionLeft = tileSheet.crop(7 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
         pavilionMid = tileSheet.crop(8 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
         pavilionRight = tileSheet.crop(9 * TileWidth, 8 * TileHeight, TileWidth, 3 * TileHeight);
-
+        carpet = tileSheet.crop(7 * TileWidth, 0, 2 * TileWidth, TileHeight);
         initTowns(tileSheet);
 
         initBushwall(tileSheet);
@@ -165,24 +172,12 @@ public class Assets {
     //EnvironmentStart
     private static void initTowns(SpriteSheet tileSheet) {
         initBuildings();
+        initIndoors();
 
         metalSign = tileSheet.crop(0, 7 * TileHeight);
         woodSign = tileSheet.crop(TileWidth, 7 * TileHeight);
 
         blackTile = tileSheet.crop(8 * TileWidth, TileHeight);
-        woodFloor = tileSheet.crop(6 * TileWidth, 0);
-        wallSideLeft = tileSheet.crop(7 * TileWidth, TileHeight);
-        wallSideRight = Utils.rotateImage(wallSideLeft, 180);
-        leftWallEndBottom = tileSheet.crop(6 * TileWidth, 4 * TileHeight);
-        leftWallEndMiddle = tileSheet.crop(6 * TileWidth, 3 * TileHeight);
-        leftWallEndTop = tileSheet.crop(6 * TileWidth, 2 * TileHeight);
-        wallEndBottom = tileSheet.crop(7 * TileWidth, 4 * TileHeight);
-        wallEndMiddle = tileSheet.crop(7 * TileWidth, 3 * TileHeight);
-        wallEndTop = tileSheet.crop(7 * TileWidth, 2 * TileHeight);
-        rightWallEndBottom = tileSheet.crop(8 * TileWidth, 4 * TileHeight);
-        rightWallEndMiddle = tileSheet.crop(8 * TileWidth, 3 * TileHeight);
-        rightWallEndTop = tileSheet.crop(8 * TileWidth, 2 * TileHeight);
-        carpet = tileSheet.crop(7 * TileWidth, 0, 2 * TileWidth, TileHeight);
     }
 
     private static void initBuildings() {
@@ -196,6 +191,96 @@ public class Assets {
         PKMNMarket = buildings.crop(10 * TileWidth, 6 * TileHeight, 4 * TileWidth, 4 * TileHeight);
         PKMNMarket = buildings.crop(15 * TileWidth, 5 * TileHeight, 5 * TileWidth, 5 * TileHeight);
         bigStore = buildings.crop(0, 10 * TileHeight, 5 * TileWidth, 6 * TileHeight);
+    }
+
+    private static void initIndoors() {
+        SpriteSheet indoorSheet = new SpriteSheet(ImageLoader.loadImage("/textures/IndoorSheet.png"));
+
+        //WoodPlank
+        woodPlankWallEndLeftTop = indoorSheet.crop(0, 0);
+        woodPlankWallEndLeftMid = indoorSheet.crop(0, TileHeight);
+        woodPlankWallEndLeftBottom = indoorSheet.crop(0, 2 * TileHeight);
+
+        woodPlankWallMidTop = indoorSheet.crop(TileWidth, 0);
+        woodPlankWallMidMid = indoorSheet.crop(TileWidth, TileHeight);
+        woodPlankWallMidBottom = indoorSheet.crop(TileWidth, 2 * TileHeight);
+
+        woodPlankWallEndRightTop = indoorSheet.crop(2 * TileWidth, 0);
+        woodPlankWallEndRightMid = indoorSheet.crop(2 * TileWidth, TileHeight);
+        woodPlankWallEndRightBottom = indoorSheet.crop(2 * TileWidth, 2 * TileHeight);
+
+        //woodTile
+        woodTileWallEndLeftTop = indoorSheet.crop(3 * TileWidth, 0);
+        woodTileWallEndLeftMid = indoorSheet.crop(3 * TileWidth, TileHeight);
+        woodTileWallEndLeftBottom = indoorSheet.crop(3 * TileWidth, 2 * TileHeight);
+
+        woodTileWallMidTop = indoorSheet.crop(4 * TileWidth, 0);
+        woodTileWallMidMid = indoorSheet.crop(4 * TileWidth, TileHeight);
+        woodTileWallMidBottom = indoorSheet.crop(4 * TileWidth, 2 * TileHeight);
+
+        woodTileWallEndRightTop = indoorSheet.crop(5 * TileWidth, 0);
+        woodTileWallEndRightMid = indoorSheet.crop(5 * TileWidth, TileHeight);
+        woodTileWallEndRightBottom = indoorSheet.crop(5 * TileWidth, 2 * TileHeight);
+
+        //Stripewall
+        stripeWallEndLeftTop = indoorSheet.crop(6 * TileWidth, 0);
+        stripeWallEndLeftMid = indoorSheet.crop(6 * TileWidth, TileHeight);
+        stripeWallEndLeftBottom = indoorSheet.crop(6 * TileWidth, 2 * TileHeight);
+
+        stripeWallMidTop = indoorSheet.crop(7 * TileWidth, 0);
+        stripeWallMidMid = indoorSheet.crop(7 * TileWidth, TileHeight);
+        stripeWallMidBottom = indoorSheet.crop(7 * TileWidth, 2 * TileHeight);
+
+        stripeWallEndRightTop = indoorSheet.crop(8 * TileWidth, 0);
+        stripeWallEndRightMid = indoorSheet.crop(8 * TileWidth, TileHeight);
+        stripeWallEndRightBottom = indoorSheet.crop(8 * TileWidth, 2 * TileHeight);
+
+        //Blankwall
+        blankWallEndLeftTop = indoorSheet.crop(9 * TileWidth, 0);
+        blankWallEndLeftMid = indoorSheet.crop(9 * TileWidth, TileHeight);
+        blankWallEndLeftBottom = indoorSheet.crop(9 * TileWidth, 2 * TileHeight);
+
+        blankWallMidTop = indoorSheet.crop(10 * TileWidth, 0);
+        blankWallMidMid = indoorSheet.crop(10 * TileWidth, TileHeight);
+        blankWallMidBottom = indoorSheet.crop(10 * TileWidth, 2 * TileHeight);
+
+        blankWallEndRightTop = indoorSheet.crop(11 * TileWidth, 0);
+        blankWallEndRightMid = indoorSheet.crop(11 * TileWidth, TileHeight);
+        blankWallEndRightBottom = indoorSheet.crop(11 * TileWidth, 2 * TileHeight);
+
+        //Floor
+        woodFloorLeft = indoorSheet.crop(0, 3 * TileHeight);
+        woodFloorLight = indoorSheet.crop(TileWidth, 3 * TileHeight);
+        woodFloorRight = indoorSheet.crop(2 * TileWidth, 3 * TileHeight);
+        woodFloorDark = indoorSheet.crop(4 * TileWidth, 3 * TileHeight);
+        woodFloorTopShadow = indoorSheet.crop(7 * TileWidth, 3 * TileHeight);
+        woodFloorLeftTopShadow = indoorSheet.crop(10 * TileWidth, 3 * TileHeight);
+        woodFloorLeftShadow = indoorSheet.crop(3 * TileWidth, 3 * TileHeight);
+        woodFloorRightShadow = indoorSheet.crop(5 * TileWidth, 3 * TileHeight);
+        woodFloorTopShadowRightWall = indoorSheet.crop(8 * TileWidth, 3 * TileHeight);
+
+        initDeko(indoorSheet);
+    }
+
+    private static void initDeko(SpriteSheet indoorSheet) {
+        table = new BufferedImage[5];
+        table[0] = indoorSheet.crop(0, 11 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        table[1] = indoorSheet.crop(2 * TileWidth, 11 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        table[2] = indoorSheet.crop(4 * TileWidth, 11 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        table[3] = indoorSheet.crop(6 * TileWidth, 11 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        table[4] = indoorSheet.crop(8 * TileWidth, 11 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        couch = new BufferedImage[3];
+        couch[0] = indoorSheet.crop(4 * TileWidth, 14 * TileHeight, 3 * TileWidth, 2 * TileHeight);
+        couch[1] = indoorSheet.crop(7 * TileWidth, 8 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        couch[2] = indoorSheet.crop(9 * TileWidth, 8 * TileHeight, 2 * TileWidth, 3 * TileHeight);
+        chair = new BufferedImage[4];
+        chair[1] = indoorSheet.crop(3 * TileHeight, 14 * TileHeight, TileWidth, 2 * TileHeight);
+        chair[0] = indoorSheet.crop(2 * TileHeight, 14 * TileHeight, TileWidth, 2 * TileHeight);
+        chair[2] = indoorSheet.crop(TileHeight, 14 * TileHeight, TileWidth, 2 * TileHeight);
+        chair[3] = indoorSheet.crop(0, 14 * TileHeight, TileWidth, 2 * TileHeight);
+        plantWithPot = new BufferedImage[2];
+        plantWithPot[1] = indoorSheet.crop(7 * TileWidth, 14 * TileHeight, TileWidth, 2 * TileHeight);
+        plantWithPot[0] = indoorSheet.crop(8 * TileWidth, 14 * TileHeight, TileWidth, 2 * TileHeight);
     }
     //EnivornmentEnd
 

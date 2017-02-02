@@ -71,14 +71,17 @@ public class WorldEditorPanel {
                         y * EDITOR_TILE_HEIGHT, EDITOR_TILE_WIDTH, EDITOR_TILE_HEIGHT);
                 worldEditor.getUiManager().addObject(tiles[x][y]);
             }
-        spawn = tiles[spawnX / Tile.TILE_WIDTH + 1][spawnY / Tile.TILE_HEIGHT + 1];
+//        spawn = tiles[spawnX / Tile.TILE_WIDTH + 1][spawnY / Tile.TILE_HEIGHT + 1];
+//        System.out.println(tiles.length + "   " + tiles[0].length);
+//        System.out.println(spawnX + "     " + spawnY);
+        spawn = tiles[spawnX][spawnY];
         spawn.isSpawn = true;
     }
 
     public void saveWorld() {
         StringBuilder sb = new StringBuilder();
         sb.append(width).append(" ").append(height).append("\n");
-        sb.append(spawnX).append(" ").append(spawnY).append("\n");
+        sb.append(spawnX / Tile.TILE_WIDTH).append(" ").append(spawnY / Tile.TILE_HEIGHT).append("\n");
         for (int y = 0; y < tiles[0].length; y++) {
             for (int x = 0; x < tiles.length; x++)
                 sb.append(StaticTiles.getTilesNumber(tiles[x][y].getTile())).append(" ");
@@ -86,7 +89,7 @@ public class WorldEditorPanel {
         }
 
         Utils.saveWorld(sb.toString());
-        handler.getWorld().getEntityManager().save();
+//        handler.getWorld().getEntityManager().save();
     }
 
     public void loadWorld() {

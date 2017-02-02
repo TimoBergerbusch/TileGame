@@ -2,15 +2,15 @@ package entities.statics.houses;
 
 import java.awt.*;
 
-import entities.statics.StaticEntity;
-import gfx.Assets;
-import tilegame.Handler;
-import tiles.Tile;
+import entities.statics.*;
+import gfx.*;
+import tilegame.*;
+import tiles.*;
 
 /**
  * defines a green House as a subclass of {@link StaticEntity}
  */
-public class LandscapeHouseGreySmall extends StaticEntity {
+public class LandscapeHouseGreySmall extends StaticEnterAbleEntity {
     //Constructors
 
     /**
@@ -26,6 +26,9 @@ public class LandscapeHouseGreySmall extends StaticEntity {
         bounds.y = (int) (1.5 * Tile.TILE_HEIGHT);
         bounds.width = width;
         bounds.height = (int) (height - 1.8 * Tile.TILE_HEIGHT);
+
+        enteredWorld = "res/worlds/IndoorTest2.lvl";
+        computeEnterBounds(Tile.TILE_WIDTH);
     }
 
     //Implemented Methods
@@ -40,5 +43,7 @@ public class LandscapeHouseGreySmall extends StaticEntity {
 
 //        g.setColor(Color.red);
 //        g.fillRect((int) (x + bounds.x - handler.getGameCamera().getXOffset()), (int) (y + bounds.y - handler.getGameCamera().getYOffset()), bounds.width, bounds.height);
+//        g.setColor(Color.yellow);
+//        g.fillRect((int) (x + enterBounds.x - handler.getGameCamera().getXOffset()), (int) (y + enterBounds.y - handler.getGameCamera().getYOffset()), enterBounds.width, enterBounds.height);
     }
 }

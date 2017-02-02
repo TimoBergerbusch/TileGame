@@ -115,7 +115,7 @@ public class WorldControls {
 
     public void tick() {
         if (handler.getKeyManager().load)
-            Utils.loadWorld();
+            worldEditorPanel.loadWorld();
         if (handler.getKeyManager().save)
             worldEditorPanel.saveWorld();
         if (handler.getKeyManager().zoomIn)

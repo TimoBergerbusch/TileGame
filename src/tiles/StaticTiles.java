@@ -6,6 +6,11 @@ import tiles.Bushwalls.*;
 import tiles.fence.fence.*;
 import tiles.fence.woodFence.*;
 import tiles.indoor.*;
+import tiles.indoor.floor.*;
+import tiles.indoor.walls.blankWall.*;
+import tiles.indoor.walls.stripeWall.*;
+import tiles.indoor.walls.woodPlankWall.*;
+import tiles.indoor.walls.woodTileWall.*;
 import tiles.pathes.complexPath.beachPath.*;
 import tiles.pathes.complexPath.darkGrassPath.*;
 import tiles.pathes.complexPath.dirtPath.*;
@@ -260,19 +265,72 @@ public class StaticTiles {
     public static Tile sandOutsideEdgeBottomRightTile = new SandPathOutsideEdgeBottomRightTile(472, "Sand Bottom Right Outside Edge");
 
     //IndoorTiles
-    public static Tile blackTile = new BlackTile(480,"Blacktile");
-    public static Tile woodFloor = new WoodFloor(481, "Wood Floor");
-    public static Tile wallSideLeft = new WallSideLeft(482, "Wall Side Left");
-    public static Tile wallSideRight = new WallSideRight(483, "Wall Side Right");
-    public static Tile leftWallEndBottom = new LeftWallEndBottom(484, "Left Bottom Wall End");
-    public static Tile leftWallEndMiddle = new LeftWallEndMiddle(485, "Left Middle Wall End");
-    public static Tile leftWallEndTop = new LeftWallEndTop(486, "Left Top Wall End");
-    public static Tile wallEndBottom = new WallEndBottom(487, "Bottom Wall End");
-    public static Tile wallEndMiddle = new WallEndMiddle(488, "Middle Wall End");
-    public static Tile wallEndTop = new WallEndTop(489, "Top Wall End");
-    public static Tile rightWallEndBottom = new RightWallEndBottom(490, "Right Bottom Wall End");
-    public static Tile rightWallEndMiddle = new RightWallEndMiddle(491, "Right Middle Wall End");
-    public static Tile rightWallEndTop = new RightWallEndTop(492, "Right Top Wall End");
+    public static Tile blackTile = new BlackTile(480, "Blacktile");
+
+    //Indoorwalls
+    //woodPlankWall
+    public static Tile woodPlankWallEndLeftTop = new WoodPlankWallLeftEndTop(500);
+    public static Tile woodPlankWallEndLeftMid = new WoodPlankWallLeftEndMid(501);
+    public static Tile woodPlankWallEndLeftBottom = new WoodPlankWallLeftEndBottom(502);
+
+    public static Tile woodPlankWallMidTop = new WoodPlankWallMidTop(503);
+    public static Tile woodPlankWallMidMid = new WoodPlankWallMidMid(504);
+    public static Tile woodPlankWallMidBottom = new WoodPlankWallMidBottom(505);
+
+    public static Tile woodPlankWallEndRightTop = new WoodPlankWallEndRightTop(506);
+    public static Tile woodPlankWallEndRightMid = new WoodPlankWallEndRightMid(507);
+    public static Tile woodPlankWallEndRightBottom = new WoodPlankWallEndRightBottom(508);
+
+    //woodTileWall
+    public static Tile woodTileWallEndLeftTop = new WoodTileWallLeftEndTop(510);
+    public static Tile woodTileWallEndLeftMid = new WoodTileWallLeftEndMid(511);
+    public static Tile woodTileWallEndLeftBottom = new WoodTileWallLeftEndBottom(512);
+
+    public static Tile woodTileWallMidTop = new WoodTileWallMidTop(513);
+    public static Tile woodTileWallMidMid = new WoodTileWallMidMid(514);
+    public static Tile woodTileWallMidBottom = new WoodTileWallMidBottom(515);
+
+    public static Tile woodTileWallEndRightTop = new WoodTileWallEndRightTop(516);
+    public static Tile woodTileWallEndRightMid = new WoodTileWallEndRightMid(517);
+    public static Tile woodTileWallEndRightBottom = new WoodTileWallEndRightBottom(518);
+
+    //stripeWall
+    public static Tile stripeWallEndLeftTop = new StripeWallLeftEndTop(520);
+    public static Tile stripeWallEndLeftMid = new StripeWallLeftEndMid(521);
+    public static Tile stripeWallEndLeftBottom = new StripeWallLeftEndBottom(522);
+
+    public static Tile stripeWallMidTop = new StripeWallMidTop(523);
+    public static Tile stripeWallMidMid = new StripeWallMidMid(524);
+    public static Tile stripeWallMidBottom = new StripeWallMidBottom(525);
+
+    public static Tile stripeWallEndRightTop = new StripeWallEndRightTop(526);
+    public static Tile stripeWallEndRightMid = new StripeWallEndRightMid(527);
+    public static Tile stripeWallEndRightBottom = new StripeWallEndRightBottom(528);
+
+    //blankWall
+    public static Tile blankWallEndLeftTop = new BlankWallLeftEndTop(530);
+    public static Tile blankWallEndLeftMid = new BlankWallLeftEndMid(531);
+    public static Tile blankWallEndLeftBottom = new BlankWallLeftEndBottom(532);
+
+    public static Tile blankWallMidTop = new BlankWallMidTop(533);
+    public static Tile blankWallMidMid = new BlankWallMidMid(534);
+    public static Tile blankWallMidBottom = new BlankWallMidBottom(535);
+
+    public static Tile blankWallEndRightTop = new BlankWallEndRightTop(536);
+    public static Tile blankWallEndRightMid = new BlankWallEndRightMid(537);
+    public static Tile blankWallEndRightBottom = new BlankWallEndRightBottom(538);
+
+    //Floor
+    //woodfloor
+    public static Tile shinyWoodFloorLight = new ShinyWoodFloorLight(540);
+    public static Tile shinyWoodFloorDark = new ShinyWoodFloorDark(541);
+    public static Tile shinyWoodFloorLeftShadow = new ShinyWoodFloorLeftShadow(542);
+    public static Tile shinyWoodFloorLeftTopShadow = new ShinyWoodFloorLeftTopShadow(543);
+    public static Tile shinyWoodFloorRightShadow = new ShinyWoodFloorRightShadow(544);
+    public static Tile shinyWoodFloorTopShadow = new ShinyWoodFloorTopShadow(545);
+    public static Tile shinyWoodFloorLeft = new ShinyWoodFloorLeft(546);
+    public static Tile shinyWoodFloorRight = new ShinyWoodFloorRight(547);
+    public static Tile shinyWoodFloorTopShadowRightWall = new ShinyWoodFloorTopShadowRightWall(548);
 
     public static int getTilesNumber(Tile t) {
         ArrayList<Tile> list = new ArrayList<Tile>();
@@ -281,6 +339,10 @@ public class StaticTiles {
     }
 
     public static Tile getNumbersTile(int i) {
+        if (i < 0 || i > tiles.length) {
+            System.out.println("ERROR StaticTiles.getNumbersTile");
+            return tiles[0];
+        }
         return tiles[i];
     }
 }
